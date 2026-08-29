@@ -314,33 +314,47 @@
       position: fixed;
       top: 14px;
       right: 14px;
-      z-index: 1000;
+      z-index: 10000;
       background: #FFFDF8;
       border: 2px solid var(--border-soft);
-      width: 46px;
-      height: 46px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       box-shadow: var(--shadow-sm);
-      font-size: 18px;
-      transition: all 0.2s ease;
+      font-size: 20px;
+      transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
     }
     .floating-music-btn:hover {
-      transform: translate(-1px, -1px);
+      transform: scale(1.08) translate(-1px, -1px);
       box-shadow: var(--shadow-md);
       background: var(--pink-soft);
     }
     .floating-music-btn.playing {
-      background: var(--pink-soft);
-      animation: pulse-ring 2s infinite;
+      background: #FFD6E0;
+      border-color: var(--pink-deep);
+      animation: music-pulse-ring 1.6s infinite;
     }
-    @keyframes pulse-ring {
-      0% { box-shadow: 0 0 0 0 rgba(92, 64, 51, 0.35); }
-      70% { box-shadow: 0 0 0 8px rgba(92, 64, 51, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(92, 64, 51, 0); }
+    @keyframes music-pulse-ring {
+      0% { box-shadow: 0 0 0 0 rgba(255, 117, 151, 0.6), var(--shadow-sm); }
+      70% { box-shadow: 0 0 0 10px rgba(255, 117, 151, 0), var(--shadow-sm); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 117, 151, 0), var(--shadow-sm); }
+    }
+    .music-note-fx {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      font-size: 16px;
+      animation: float-music-note 1.4s ease-out forwards;
+    }
+    @keyframes float-music-note {
+      0% { transform: translate(0, 0) scale(0.6); opacity: 1; }
+      100% { transform: translate(calc(var(--rand-x, 1) * 28px), -48px) scale(1.2) rotate(15deg); opacity: 0; }
     }
 
     /* Floating Mobile Navigation Bar */
@@ -528,7 +542,7 @@
       gap: 10px;
       width: 100%;
       max-width: 440px;
-      margin: 14px 0 16px;
+      margin: 14px 0 12px;
     }
     .flavour-btn {
       background: #FFFFFF;
@@ -544,29 +558,118 @@
       flex-direction: column;
       align-items: center;
       gap: 4px;
-      transition: all 0.2s ease;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      user-select: none;
     }
     .flavour-btn:active, .flavour-btn:hover {
-      transform: translate(-1px, -1px);
+      transform: scale(1.05) translate(-1px, -1px);
       box-shadow: var(--shadow-sm);
       background: var(--pink-soft);
     }
-    .happiness-meter-wrap {
+    /* Interactive Ice Cream Cone Parlor */
+    .ice-cream-cone-area {
       width: 100%;
       max-width: 380px;
-      background: #FFFFFF;
-      border: 1.5px solid var(--border-soft);
+      margin: 6px auto 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .ice-cone-stack-box {
+      position: relative;
+      width: 130px;
+      min-height: 110px;
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      justify-content: flex-end;
+      margin-bottom: 6px;
+    }
+    .stacked-scoops-list {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      width: 100%;
+      z-index: 2;
+    }
+    .single-stacked-scoop {
+      width: 52px;
+      height: 38px;
+      border-radius: 50% 50% 42% 42%;
+      border: 2px solid var(--border-soft);
+      box-shadow: 0 2px 4px rgba(92, 64, 51, 0.18);
+      margin-bottom: -15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      animation: scoop-land 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: all 0.2s ease;
+    }
+    @keyframes scoop-land {
+      0% { transform: translateY(-24px) scale(0.5); opacity: 0; }
+      70% { transform: translateY(4px) scale(1.15); }
+      100% { transform: translateY(0) scale(1); opacity: 1; }
+    }
+    .happiness-meter-container {
+      width: 100%;
+      max-width: 380px;
+      margin: 10px auto 4px;
+    }
+    .meter-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-deep);
+      margin-bottom: 6px;
+      padding: 0 4px;
+    }
+    .meter-percent-tag {
+      background: var(--pink-soft);
+      border: 1px solid var(--border-soft);
+      padding: 2px 10px;
       border-radius: var(--radius-pill);
-      padding: 4px;
+      font-weight: 800;
+      color: var(--pink-deep);
+      font-size: 13px;
+      box-shadow: 1px 1px 0px var(--border-soft);
+    }
+    .happiness-meter-wrap {
+      width: 100%;
+      background: #FFFFFF;
+      border: 2px solid var(--border-soft);
+      border-radius: var(--radius-pill);
+      padding: 3px;
       box-shadow: 2px 2px 0px var(--border-soft);
-      margin: 12px 0 6px;
+      position: relative;
+      overflow: hidden;
     }
     .happiness-meter-bar {
-      width: 100%;
+      width: 30%;
       height: 18px;
-      background: linear-gradient(90deg, #FFD6E0 0%, #FF7597 100%);
+      background: linear-gradient(90deg, #FFD6E0 0%, #FF8FA3 50%, #FF7597 100%);
       border-radius: var(--radius-pill);
-      transition: width 0.6s ease;
+      transition: width 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .happiness-meter-bar.maxed {
+      background: linear-gradient(90deg, #FFB3C6 0%, #FF7597 45%, #FFB703 100%);
+    }
+    .meter-shimmer-fx {
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
+      animation: bar-shimmer 2.2s infinite;
+    }
+    @keyframes bar-shimmer {
+      0% { left: -100%; }
+      100% { left: 200%; }
     }
 
     /* =========================================
@@ -591,18 +694,76 @@
        9. CHAPTER 06: THE GHOST PROBLEM 👻😂
        ========================================= */
     .ghost-haunted-card {
-      transition: background-color 0.5s ease;
+      transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+      position: relative;
     }
     .ghost-haunted-card.spooky-mode {
-      background: #F4EFF8;
+      background: #F5EDF8 !important;
+      border-color: #7B2CBF !important;
+      box-shadow: 0 8px 24px rgba(123, 44, 191, 0.16), var(--shadow-md) !important;
     }
-    .ghost-avatar-display {
-      font-size: 52px;
-      height: 80px;
+    .ghost-stage-box {
+      width: 100%;
+      max-width: 380px;
+      min-height: 140px;
+      background: #FFFFFF;
+      border: 2px dashed var(--border-soft);
+      border-radius: var(--radius-md);
+      margin: 12px auto 14px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .ghost-haunted-card.spooky-mode .ghost-stage-box {
+      background: #FAF5FF;
+      border-color: #7B2CBF;
+      border-style: solid;
+    }
+    .ghost-calm-scene {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      transition: opacity 0.3s ease;
+    }
+    .ghost-calm-scene.hidden {
+      display: none;
+    }
+    .ghost-summon-reveal {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    .ghost-summon-reveal.active {
+      display: flex;
+      animation: ghost-sudden-jump 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.35) forwards;
+    }
+    @keyframes ghost-sudden-jump {
+      0% { transform: scale(0) rotate(-15deg); opacity: 0; }
+      60% { transform: scale(1.3) rotate(8deg); opacity: 1; }
+      80% { transform: scale(0.92) rotate(-4deg); }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+    .ghost-kawaii-avatar {
+      font-size: 58px;
+      line-height: 1;
+      height: 70px;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      filter: drop-shadow(0 4px 8px rgba(123, 44, 191, 0.25));
+      animation: ghost-bob-float 2s infinite ease-in-out;
+    }
+    @keyframes ghost-bob-float {
+      0%, 100% { transform: translateY(0) rotate(-2deg); }
+      50% { transform: translateY(-8px) rotate(3deg); }
     }
     .ghost-dialogue-box {
       background: #FFFFFF;
@@ -617,6 +778,24 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      width: 100%;
+      max-width: 420px;
+      transition: all 0.3s ease;
+    }
+    .ghost-haunted-card.spooky-mode .ghost-dialogue-box {
+      border-color: #7B2CBF;
+      background: #FFFFFF;
+      color: #581C87;
+    }
+    .card-spooky-shake {
+      animation: spooky-shake-anim 0.45s ease-in-out;
+    }
+    @keyframes spooky-shake-anim {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      20% { transform: translate(-6px, -3px) rotate(-1.5deg); }
+      40% { transform: translate(6px, 3px) rotate(1.5deg); }
+      60% { transform: translate(-4px, 4px) rotate(-1deg); }
+      80% { transform: translate(4px, -2px) rotate(1deg); }
     }
 
     /* =========================================
@@ -1118,47 +1297,73 @@
 
         <!-- Tap-able Scoop Grid -->
         <div class="flavours-grid">
-          <button class="flavour-btn" data-msg="Approved by Mishi 🍓🍦">
+          <button class="flavour-btn" data-msg="Approved by Mishi! 🍓🍦" data-flavour="Strawberry" data-emoji="🍓" data-color="#FFB3C6">
             <span>🍓</span>
             <span>Strawberry</span>
           </button>
-          <button class="flavour-btn" data-msg="Excellent choice! 🍫✨">
+          <button class="flavour-btn" data-msg="Chocolate bliss! 🍫✨" data-flavour="Chocolate" data-emoji="🍫" data-color="#A16E5B">
             <span>🍫</span>
             <span>Chocolate</span>
           </button>
-          <button class="flavour-btn" data-msg="Classic & sweet! 🍦🤍">
+          <button class="flavour-btn" data-msg="Classic & sweet! 🍦🤍" data-flavour="Vanilla" data-emoji="🍦" data-color="#FFFDF0">
             <span>🍦</span>
             <span>Vanilla</span>
           </button>
-          <button class="flavour-btn" data-msg="Tropical joy! 🥭😋">
+          <button class="flavour-btn" data-msg="Tropical sunshine! 🥭😋" data-flavour="Mango" data-emoji="🥭" data-color="#FFCA3A">
             <span>🥭</span>
             <span>Mango</span>
           </button>
-          <button class="flavour-btn" data-msg="Okay... this one is dangerous! 🍪😭">
+          <button class="flavour-btn" data-msg="Oreo deliciousness! 🍪😭" data-flavour="Oreo" data-emoji="🍪" data-color="#5C4033">
             <span>🍪</span>
             <span>Oreo</span>
           </button>
-          <button class="flavour-btn" data-msg="Pure honey warmth! 🍯💗">
+          <button class="flavour-btn" data-msg="Pure golden warmth! 🍯💗" data-flavour="Butterscotch" data-emoji="🍯" data-color="#FFD166">
             <span>🍯</span>
             <span>Butterscotch</span>
           </button>
         </div>
 
+        <!-- Interactive Ice Cream Cone Parlor -->
+        <div class="ice-cream-cone-area">
+          <div class="ice-cone-stack-box" id="iceConeStackBox">
+            <!-- Waffle Cone Base -->
+            <svg class="waffle-cone-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="15,10 85,10 50,95" fill="#E0A96D" stroke="#5C4033" stroke-width="4" stroke-linejoin="round"/>
+              <!-- Waffle Cross Grid lines -->
+              <line x1="25" y1="25" x2="65" y2="80" stroke="#B87B44" stroke-width="2.5"/>
+              <line x1="35" y1="12" x2="55" y2="90" stroke="#B87B44" stroke-width="2.5"/>
+              <line x1="75" y1="25" x2="35" y2="80" stroke="#B87B44" stroke-width="2.5"/>
+              <line x1="65" y1="12" x2="45" y2="90" stroke="#B87B44" stroke-width="2.5"/>
+            </svg>
+            <!-- Dynamic Stacked Scoops List -->
+            <div class="stacked-scoops-list" id="stackedScoops">
+              <div class="single-stacked-scoop" style="background: #FFB3C6; color: #5C4033;">🍓</div>
+            </div>
+          </div>
+        </div>
+
         <!-- Ice Cream Feedback Tag -->
         <div id="iceCreamStatusTag" style="min-height: 28px; font-weight: 700; color: var(--pink-deep); font-size: 14px;">
-          Tap any flavour above! 🍨
+          Tap any flavour above to stack scoops! 🍨
         </div>
 
-        <!-- Animated Happiness Meter -->
-        <div style="font-size: 13px; font-weight: 700; margin-top: 8px;">
-          Ice Cream Happiness Level:
+        <!-- Glitch-free Animated Happiness Meter -->
+        <div class="happiness-meter-container">
+          <div class="meter-header-row">
+            <span>Mishi's Happiness Level:</span>
+            <span class="meter-percent-tag" id="meterPercentText">35%</span>
+          </div>
+          <div class="happiness-meter-wrap">
+            <div class="happiness-meter-bar" id="meterBar" style="width: 35%;">
+              <div class="meter-shimmer-fx"></div>
+            </div>
+          </div>
+          <div id="meterMoodLabel" style="font-size: 12px; font-weight: 800; color: var(--text-deep); margin-top: 6px;">
+            Needs more scoops! 🍨
+          </div>
         </div>
-        <div class="happiness-meter-wrap">
-          <div class="happiness-meter-bar" id="meterBar"></div>
-        </div>
-        <span style="font-size: 12px; font-weight: 800; color: var(--text-deep);">100% MAXIMUM HAPPINESS</span>
 
-        <a href="#ch5-chef" class="btn-storybook" style="margin-top: 18px;">
+        <a href="#ch5-chef" class="btn-storybook" style="margin-top: 16px;">
           <span>Chapter 05: Chef Mishi 👩‍🍳 →</span>
         </a>
 
@@ -1234,35 +1439,50 @@
 
         <h2>The Ghost Problem 👻😂</h2>
 
-        <div style="font-size: clamp(0.98rem, 3.2vw, 1.15rem); color: var(--text-muted); margin: 8px 0 12px;">
+        <div style="font-size: clamp(0.98rem, 3.2vw, 1.15rem); color: var(--text-muted); margin: 6px 0 10px;">
           <p>She's brave. She's smart.</p>
           <p>She can handle books. She can handle a kitchen.</p>
           <p>She can handle unlimited ice cream.</p>
         </div>
 
-        <p style="font-size: clamp(1.2rem, 4vw, 1.5rem); font-weight: 800; color: #7B2CBF; margin: 4px 0 12px;">
+        <p style="font-size: clamp(1.2rem, 4vw, 1.5rem); font-weight: 800; color: #7B2CBF; margin: 4px 0 10px;">
           BUT SHE CANNOT HANDLE GHOSTS. 👻😭
         </p>
 
-        <!-- Kawaii Ghost Display Area -->
-        <div class="ghost-avatar-display" id="ghostDisplay">
-          <span class="wiggle-anim" id="ghostEmojiIcon">👻</span>
+        <!-- Dynamic Ghost Stage: Calm at the start, Sudden Spooky Jump on summon -->
+        <div class="ghost-stage-box" id="ghostStageBox">
+          
+          <!-- Initial Calm Scene (No Ghost visible at start!) -->
+          <div class="ghost-calm-scene" id="ghostCalmScene">
+            <div style="font-size: 46px; line-height: 1;" class="float-gentle" id="catCuriousAvatar">
+              🐱 🕯️
+            </div>
+            <p style="font-size: 13.5px; font-weight: 700; color: var(--text-muted); margin: 4px 0 0;">
+              "Everything looks peaceful in the dark room... or is it? 👀"
+            </p>
+          </div>
+
+          <!-- Sudden Ghost Jump-Scare Reveal (Initially Hidden) -->
+          <div class="ghost-summon-reveal" id="ghostSummonReveal">
+            <div class="ghost-kawaii-avatar" id="ghostKawaiiAvatar">👻</div>
+          </div>
+
         </div>
 
         <div class="ghost-dialogue-box" id="ghostDialogue">
-          "Tap below to meet the harmless spooky ghost!"
+          "Tap below to summon... if you dare! 🥺"
         </div>
 
-        <button class="btn-storybook secondary" id="summonGhostBtn" style="margin: 6px 0 14px;">
-          <span>Summon Tiny Ghost 👻</span>
+        <button class="btn-storybook secondary breathe-pulse" id="summonGhostBtn" style="margin: 6px 0 14px;">
+          <span id="summonGhostBtnText">Summon Tiny Ghost 👻</span>
         </button>
 
         <p style="font-size: 13px; font-weight: 700; color: var(--text-muted); font-style: italic;">
-          Don't worry, Mishi... we'll keep all the ghosts cute and harmless! 🤍👻
+          Don't worry, Mishi... we'll make sure it's 100% harmless! 🤍👻
         </p>
 
         <!-- Smooth Emotional Transition Bridge -->
-        <div style="margin-top: 24px; padding-top: 18px; border-top: 1.5px dashed var(--border-light); width: 100%;">
+        <div style="margin-top: 22px; padding-top: 16px; border-top: 1.5px dashed var(--border-light); width: 100%;">
           <p style="font-family: var(--font-display); font-size: 1.25rem; font-style: italic; color: var(--text-muted);">
             Okay... enough teasing Mishi. 🥺
           </p>
@@ -1655,16 +1875,16 @@
     const birthdayConfig = {
       name: "Maisha",
       nickname: "Mishi",
-      birthday: "4 September 2008",
-      musicUrl: "" // Optional custom music URL
+      birthday: "4 September 2008"
     };
 
-    /* Web Audio API Birthday & Ambient Lullaby Synthesizer */
+    /* Web Audio API Birthday Synthesizer Engine (Music Box & Chimes) */
     let audioCtx = null;
     let isMusicPlaying = false;
-    let musicTimer = null;
+    let musicTimeoutId = null;
+    let noteParticleInterval = null;
 
-    function initAudioContext() {
+    function getAudioContext() {
       if (!audioCtx) {
         const AudioContextClass = window.AudioContext || window.webkitAudioContext;
         if (AudioContextClass) {
@@ -1674,75 +1894,194 @@
       if (audioCtx && audioCtx.state === 'suspended') {
         audioCtx.resume();
       }
+      return audioCtx;
     }
 
+    // Single unified tone generator with smooth attack & decay
     function playTone(freq, duration = 0.35, type = 'sine', volume = 0.08) {
-      if (!audioCtx) return;
+      const ctx = getAudioContext();
+      if (!ctx) return;
       try {
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
         osc.type = type;
-        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-        gain.gain.setValueAtTime(volume, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+        osc.frequency.setValueAtTime(freq, ctx.currentTime);
+        gain.gain.setValueAtTime(volume, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
         osc.connect(gain);
-        gain.connect(audioCtx.destination);
+        gain.connect(ctx.destination);
         osc.start();
-        osc.stop(audioCtx.currentTime + duration);
+        osc.stop(ctx.currentTime + duration);
       } catch (e) {
-        // Safe silent fail if audio is not supported
+        // Safe silent fail if audio context is blocked
+      }
+    }
+
+    // Melodic music box chime generator
+    function playMusicBoxBell(freq, duration = 0.6, volume = 0.07) {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+      try {
+        const osc1 = ctx.createOscillator();
+        const osc2 = ctx.createOscillator();
+        const gain = ctx.createGain();
+
+        osc1.type = 'sine';
+        osc1.frequency.setValueAtTime(freq, ctx.currentTime);
+
+        // Harmonic overtone for sparkling bell acoustic
+        osc2.type = 'triangle';
+        osc2.frequency.setValueAtTime(freq * 2, ctx.currentTime);
+
+        gain.gain.setValueAtTime(volume, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
+
+        osc1.connect(gain);
+        osc2.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc1.start();
+        osc2.start();
+        osc1.stop(ctx.currentTime + duration);
+        osc2.stop(ctx.currentTime + duration);
+      } catch (e) {
+        // Safe fail
       }
     }
 
     function playSweetChime() {
-      initAudioContext();
-      playTone(523.25, 0.4, 'sine', 0.1); // C5
-      setTimeout(() => playTone(659.25, 0.4, 'sine', 0.1), 100); // E5
-      setTimeout(() => playTone(783.99, 0.6, 'sine', 0.12), 200); // G5
-      setTimeout(() => playTone(1046.50, 0.8, 'sine', 0.14), 300); // C6
+      getAudioContext();
+      playTone(523.25, 0.4, 'sine', 0.09); // C5
+      setTimeout(() => playTone(659.25, 0.4, 'sine', 0.09), 90); // E5
+      setTimeout(() => playTone(783.99, 0.5, 'sine', 0.11), 180); // G5
+      setTimeout(() => playTone(1046.50, 0.7, 'sine', 0.12), 270); // C6
     }
 
-    // Cozy Ambient Birthday Melody Loop
-    const birthdayMelodyNotes = [
-      { f: 261.63, d: 0.35 }, { f: 261.63, d: 0.2 }, { f: 293.66, d: 0.5 }, { f: 261.63, d: 0.5 },
-      { f: 349.23, d: 0.5 }, { f: 329.63, d: 0.9 },
-      { f: 261.63, d: 0.35 }, { f: 261.63, d: 0.2 }, { f: 293.66, d: 0.5 }, { f: 261.63, d: 0.5 },
-      { f: 392.00, d: 0.5 }, { f: 349.23, d: 0.9 },
-      { f: 261.63, d: 0.35 }, { f: 261.63, d: 0.2 }, { f: 523.25, d: 0.5 }, { f: 440.00, d: 0.5 },
-      { f: 349.23, d: 0.5 }, { f: 329.63, d: 0.5 }, { f: 293.66, d: 0.7 },
-      { f: 466.16, d: 0.35 }, { f: 466.16, d: 0.2 }, { f: 440.00, d: 0.5 }, { f: 349.23, d: 0.5 },
-      { f: 392.00, d: 0.5 }, { f: 349.23, d: 1.1 }
+    function playSpookyWobbleTone() {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+      try {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(220, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(110, ctx.currentTime + 0.5);
+        gain.gain.setValueAtTime(0.09, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.5);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.5);
+      } catch (e) {}
+    }
+
+    // Polyphonic Happy Birthday Music Box Song Arrangement
+    const happyBirthdayScore = [
+      // Phrase 1: "Happy Birthday to you"
+      { f: 261.63, d: 0.35, chord: [130.81, 196.00] }, // C4
+      { f: 261.63, d: 0.25, chord: null },             // C4
+      { f: 293.66, d: 0.60, chord: [146.83] },         // D4
+      { f: 261.63, d: 0.60, chord: [130.81] },         // C4
+      { f: 349.23, d: 0.60, chord: [174.61, 220.00] }, // F4
+      { f: 329.63, d: 1.10, chord: [164.81, 196.00] }, // E4
+
+      // Phrase 2: "Happy Birthday to you"
+      { f: 261.63, d: 0.35, chord: [130.81] },         // C4
+      { f: 261.63, d: 0.25, chord: null },             // C4
+      { f: 293.66, d: 0.60, chord: [146.83] },         // D4
+      { f: 261.63, d: 0.60, chord: [130.81] },         // C4
+      { f: 392.00, d: 0.60, chord: [196.00, 246.94] }, // G4
+      { f: 349.23, d: 1.10, chord: [174.61, 220.00] }, // F4
+
+      // Phrase 3: "Happy Birthday dear Mishi"
+      { f: 261.63, d: 0.35, chord: [130.81] },         // C4
+      { f: 261.63, d: 0.25, chord: null },             // C4
+      { f: 523.25, d: 0.60, chord: [261.63, 329.63] }, // C5
+      { f: 440.00, d: 0.60, chord: [220.00, 261.63] }, // A4
+      { f: 349.23, d: 0.60, chord: [174.61, 220.00] }, // F4
+      { f: 329.63, d: 0.60, chord: [164.81, 196.00] }, // E4
+      { f: 293.66, d: 0.90, chord: [146.83, 174.61] }, // D4
+
+      // Phrase 4: "Happy Birthday to you"
+      { f: 466.16, d: 0.35, chord: [233.08] },         // Bb4
+      { f: 466.16, d: 0.25, chord: null },             // Bb4
+      { f: 440.00, d: 0.60, chord: [220.00, 261.63] }, // A4
+      { f: 349.23, d: 0.60, chord: [174.61, 220.00] }, // F4
+      { f: 392.00, d: 0.60, chord: [196.00, 246.94] }, // G4
+      { f: 349.23, d: 1.40, chord: [174.61, 261.63] }  // F4
     ];
-    let melodyStep = 0;
+
+    let currentScoreIndex = 0;
 
     function playMelodyLoop() {
       if (!isMusicPlaying) return;
-      const note = birthdayMelodyNotes[melodyStep];
-      playTone(note.f, note.d * 0.9, 'triangle', 0.05);
-      melodyStep = (melodyStep + 1) % birthdayMelodyNotes.length;
-      musicTimer = setTimeout(playMelodyLoop, note.d * 1000);
+      const note = happyBirthdayScore[currentScoreIndex];
+      
+      // Play lead melody bell
+      playMusicBoxBell(note.f, note.d * 1.2, 0.08);
+
+      // Play soft bass accompaniment chord if defined
+      if (note.chord && note.chord.length) {
+        note.chord.forEach((cFreq, i) => {
+          setTimeout(() => {
+            if (isMusicPlaying) {
+              playTone(cFreq, note.d * 1.1, 'sine', 0.035);
+            }
+          }, i * 40);
+        });
+      }
+
+      currentScoreIndex = (currentScoreIndex + 1) % happyBirthdayScore.length;
+      musicTimeoutId = setTimeout(playMelodyLoop, note.d * 1000);
+    }
+
+    function spawnMusicNote() {
+      if (!isMusicPlaying) return;
+      const musicBtn = document.getElementById('musicToggleBtn');
+      if (!musicBtn) return;
+      const rect = musicBtn.getBoundingClientRect();
+      const noteEl = document.createElement('span');
+      noteEl.className = 'music-note-fx';
+      const symbols = ['🎵', '🎶', '✨', '🎀', '🌸', '🤍'];
+      noteEl.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+      noteEl.style.left = `${rect.left + rect.width / 2}px`;
+      noteEl.style.top = `${rect.top}px`;
+      noteEl.style.setProperty('--rand-x', (Math.random() - 0.5) * 2);
+      document.body.appendChild(noteEl);
+      setTimeout(() => noteEl.remove(), 1400);
     }
 
     const musicToggleBtn = document.getElementById('musicToggleBtn');
     const musicIcon = document.getElementById('musicIcon');
     if (musicToggleBtn) {
       musicToggleBtn.addEventListener('click', () => {
-        initAudioContext();
+        getAudioContext();
         isMusicPlaying = !isMusicPlaying;
         if (isMusicPlaying) {
           musicToggleBtn.classList.add('playing');
-          musicIcon.textContent = '🎶';
-          melodyStep = 0;
+          if (musicIcon) musicIcon.textContent = '🎶';
+          currentScoreIndex = 0;
           playMelodyLoop();
-          showToast("🎵 Playing sweet birthday melody...");
+          clearInterval(noteParticleInterval);
+          noteParticleInterval = setInterval(spawnMusicNote, 1200);
+          showToast("🎵 Playing sweet birthday music for Mishi...");
         } else {
           musicToggleBtn.classList.remove('playing');
-          musicIcon.textContent = '🎵';
-          clearTimeout(musicTimer);
+          if (musicIcon) musicIcon.textContent = '🎵';
+          clearTimeout(musicTimeoutId);
+          clearInterval(noteParticleInterval);
           showToast("Music paused 💤");
         }
       });
     }
+
+    // Auto unlock audio on first page click or touch
+    window.addEventListener('click', () => {
+      getAudioContext();
+    }, { once: true });
+    window.addEventListener('touchstart', () => {
+      getAudioContext();
+    }, { once: true });
 
     /* Interactive Easter Egg Toast Function */
     let toastTimeout = null;
@@ -1759,7 +2098,6 @@
 
     /* Screen Tap Floating Heart Spawner */
     document.addEventListener('click', (e) => {
-      // Don't spawn if tapping buttons directly
       const heart = document.createElement('span');
       heart.className = 'tap-heart-fx';
       const symbols = ['💗', '✨', '🌷', '🎀', '🌸', '🤍'];
@@ -1818,7 +2156,6 @@
       }
     }
 
-    // Create modest particle count optimized for mobile performance
     for (let i = 0; i < 28; i++) {
       particles.push(new SparkleParticle());
     }
@@ -1908,20 +2245,81 @@
       });
     }
 
-    // Chapter 04: The Ice Cream Theory Flavours
+    // Chapter 04: The Ice Cream Theory Flavours & Glitch-Free Meter Bar
     const flavourBtns = document.querySelectorAll('.flavour-btn');
     const iceCreamStatusTag = document.getElementById('iceCreamStatusTag');
     const meterBar = document.getElementById('meterBar');
+    const meterPercentText = document.getElementById('meterPercentText');
+    const meterMoodLabel = document.getElementById('meterMoodLabel');
+    const stackedScoops = document.getElementById('stackedScoops');
+    
     let iceCreamClicks = 0;
+
     flavourBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
+      btn.addEventListener('click', (e) => {
         iceCreamClicks++;
-        playTone(600 + Math.random() * 200, 0.25, 'triangle', 0.08);
+        
+        // Play sweet bubbly pop sound
+        playTone(550 + (iceCreamClicks % 5) * 80, 0.22, 'triangle', 0.09);
+
         const msg = btn.getAttribute('data-msg');
+        const flavour = btn.getAttribute('data-flavour') || 'Scoop';
+        const emoji = btn.getAttribute('data-emoji') || '🍨';
+        const color = btn.getAttribute('data-color') || '#FFD6E0';
+
         if (iceCreamStatusTag) iceCreamStatusTag.textContent = msg;
-        if (meterBar) {
-          meterBar.style.width = `${Math.min(100, 60 + iceCreamClicks * 8)}%`;
+
+        // Dynamic scoop stacking in cone (max 6 visible scoops)
+        if (stackedScoops) {
+          const newScoop = document.createElement('div');
+          newScoop.className = 'single-stacked-scoop';
+          newScoop.style.backgroundColor = color;
+          newScoop.textContent = emoji;
+          stackedScoops.appendChild(newScoop);
+
+          // Keep max 5 stacked to prevent overflowing on small mobile screens
+          if (stackedScoops.children.length > 5) {
+            stackedScoops.removeChild(stackedScoops.firstElementChild);
+          }
         }
+
+        // Glitch-free smooth happiness calculation
+        const baseHappiness = 35;
+        const happiness = Math.min(150, baseHappiness + iceCreamClicks * 18);
+        const displayWidthPercent = Math.min(100, happiness);
+
+        if (meterBar) {
+          meterBar.style.width = `${displayWidthPercent}%`;
+          if (happiness >= 100) {
+            meterBar.classList.add('maxed');
+          }
+        }
+
+        if (meterPercentText) {
+          if (happiness >= 150) {
+            meterPercentText.textContent = `150% (Infinite Joy! 💖)`;
+          } else if (happiness >= 100) {
+            meterPercentText.textContent = `100% (Maximum Joy! 🏆)`;
+          } else {
+            meterPercentText.textContent = `${happiness}%`;
+          }
+        }
+
+        if (meterMoodLabel) {
+          if (happiness < 55) {
+            meterMoodLabel.textContent = "Needs more scoops! 🍨";
+          } else if (happiness < 80) {
+            meterMoodLabel.textContent = "Getting delicious! 😋🍦";
+          } else if (happiness < 100) {
+            meterMoodLabel.textContent = "Chef Mishi is smiling! ✨💗";
+          } else if (happiness === 100) {
+            meterMoodLabel.textContent = "🎉 100% Peak Ice Cream Euphoria!";
+            triggerConfettiBurst(e.clientX, e.clientY, ['🍦', '🍨', '🍓', '✨', '💗'], 16);
+          } else {
+            meterMoodLabel.textContent = "🚀 Sugar Rush Overload! Infinite happiness!";
+          }
+        }
+
         showToast(msg);
       });
     });
@@ -1942,27 +2340,68 @@
       });
     }
 
-    // Chapter 06: The Ghost Problem
+    // Chapter 06: The Ghost Problem (Sudden Jump-Scare & Harmless Humor)
     const summonGhostBtn = document.getElementById('summonGhostBtn');
+    const summonGhostBtnText = document.getElementById('summonGhostBtnText');
     const ghostDialogue = document.getElementById('ghostDialogue');
     const ghostCard = document.getElementById('ghostCard');
-    const ghostEmojiIcon = document.getElementById('ghostEmojiIcon');
+    const ghostCalmScene = document.getElementById('ghostCalmScene');
+    const ghostSummonReveal = document.getElementById('ghostSummonReveal');
+    const ghostKawaiiAvatar = document.getElementById('ghostKawaiiAvatar');
     let ghostStep = 0;
+
     if (summonGhostBtn && ghostDialogue) {
       summonGhostBtn.addEventListener('click', () => {
         ghostStep++;
-        if (ghostCard) ghostCard.classList.add('spooky-mode');
+
+        // Trigger spooky visual shake on card
+        if (ghostCard) {
+          ghostCard.classList.remove('card-spooky-shake');
+          void ghostCard.offsetWidth; // Trigger reflow
+          ghostCard.classList.add('card-spooky-shake');
+          ghostCard.classList.add('spooky-mode');
+        }
+
         if (ghostStep === 1) {
-          playTone(320, 0.4, 'sawtooth', 0.06);
-          ghostDialogue.textContent = "BOO! 👻";
-          if (ghostEmojiIcon) ghostEmojiIcon.textContent = "👻";
+          // SUDDEN JUMP-SCARE REVEAL!
+          playSpookyWobbleTone();
+          if (ghostCalmScene) ghostCalmScene.classList.add('hidden');
+          if (ghostSummonReveal) {
+            ghostSummonReveal.classList.add('active');
+            if (ghostKawaiiAvatar) ghostKawaiiAvatar.textContent = '👻 ⚡';
+          }
+          ghostDialogue.textContent = "BOO! 👻 Mishi: 'AAAAAH! I KNEW IT!' 😭😂";
+          if (summonGhostBtnText) summonGhostBtnText.textContent = "Calm the Ghost 🌸";
+          showToast("BOO! 👻 Don't scream Mishi! 😂");
+
         } else if (ghostStep === 2) {
+          // Ghost turns friendly
           playSweetChime();
-          ghostDialogue.textContent = "Okay okay... I'm friendly. 🥺🤍";
-          if (ghostEmojiIcon) ghostEmojiIcon.textContent = "🤍👻";
+          if (ghostKawaiiAvatar) ghostKawaiiAvatar.textContent = '👻 🌷 🍰';
+          ghostDialogue.textContent = "Ghost: 'Wait wait! I brought flowers and cake for your birthday!' 🥺🤍";
+          if (summonGhostBtnText) summonGhostBtnText.textContent = "Forgive the Ghost 🥺";
+          showToast("The ghost is harmless! 🌷👻");
+
+        } else if (ghostStep === 3) {
+          // Mishi's reaction
+          playTone(480, 0.3, 'sine', 0.08);
+          if (ghostKawaiiAvatar) ghostKawaiiAvatar.textContent = '👻 🎀 ✨';
+          ghostDialogue.textContent = "Mishi: 'STILL SCARY BUT OKAY... I'll take the cake!' 😭😋";
+          if (summonGhostBtnText) summonGhostBtnText.textContent = "Banish Ghost to Sleep 💤";
+
         } else {
-          ghostDialogue.textContent = "Mishi: 'THAT DOESN'T HELP!' 😭😂";
-          showToast("Okay Mishi, I'll leave! 😭👻");
+          // Final cute resolution
+          playSweetChime();
+          if (ghostKawaiiAvatar) ghostKawaiiAvatar.textContent = '🤍 🕊️ ✨';
+          ghostDialogue.textContent = "Ghost banished! Mishi is 100% safe forever. 🛡️💗";
+          if (summonGhostBtnText) summonGhostBtnText.textContent = "Summon Again? 👻";
+          ghostStep = 0;
+          setTimeout(() => {
+            if (ghostCard) ghostCard.classList.remove('spooky-mode');
+            if (ghostCalmScene) ghostCalmScene.classList.remove('hidden');
+            if (ghostSummonReveal) ghostSummonReveal.classList.remove('active');
+          }, 3200);
+          showToast("Ghost banished! Safe with Mishi! 🌷");
         }
       });
     }
