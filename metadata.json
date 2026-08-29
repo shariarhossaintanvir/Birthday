@@ -1,0 +1,6 @@
+{
+  "name": "Happy Birthday Maisha",
+  "description": "A magical, personalized birthday celebration website for Maisha with cozy stories, interactive personality chapters, cute cat mascot, and animations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
