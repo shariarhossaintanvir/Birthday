@@ -691,102 +691,214 @@
     }
 
     /* =========================================
-       9. CHAPTER 06: THE GHOST PROBLEM 👻😂
+       9. CHAPTER 06: THE LITTLE GHOST INCIDENT 👻 (TANVIR & MISHI)
        ========================================= */
     .ghost-haunted-card {
-      transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-      position: relative;
-    }
-    .ghost-haunted-card.spooky-mode {
-      background: #F5EDF8 !important;
-      border-color: #7B2CBF !important;
-      box-shadow: 0 8px 24px rgba(123, 44, 191, 0.16), var(--shadow-md) !important;
-    }
-    .ghost-stage-box {
-      width: 100%;
-      max-width: 380px;
-      min-height: 140px;
-      background: #FFFFFF;
-      border: 2px dashed var(--border-soft);
-      border-radius: var(--radius-md);
-      margin: 12px auto 14px;
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      transition: background-color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
       position: relative;
       overflow: hidden;
-      transition: all 0.3s ease;
     }
-    .ghost-haunted-card.spooky-mode .ghost-stage-box {
-      background: #FAF5FF;
-      border-color: #7B2CBF;
-      border-style: solid;
+    .ghost-haunted-card.prank-dim {
+      background: #FAF3FB !important;
+      border-color: #A78BFA !important;
+      box-shadow: 0 8px 24px rgba(167, 139, 250, 0.18), var(--shadow-md) !important;
     }
-    .ghost-calm-scene {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      transition: opacity 0.3s ease;
+    .ghost-haunted-card.happy-pink {
+      background: #FFF5F7 !important;
+      border-color: var(--pink-deep) !important;
+      box-shadow: 0 8px 24px rgba(255, 117, 151, 0.22), var(--shadow-md) !important;
     }
-    .ghost-calm-scene.hidden {
-      display: none;
-    }
-    .ghost-summon-reveal {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-    }
-    .ghost-summon-reveal.active {
-      display: flex;
-      animation: ghost-sudden-jump 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.35) forwards;
-    }
-    @keyframes ghost-sudden-jump {
-      0% { transform: scale(0) rotate(-15deg); opacity: 0; }
-      60% { transform: scale(1.3) rotate(8deg); opacity: 1; }
-      80% { transform: scale(0.92) rotate(-4deg); }
-      100% { transform: scale(1) rotate(0deg); opacity: 1; }
-    }
-    .ghost-kawaii-avatar {
-      font-size: 58px;
-      line-height: 1;
-      height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      filter: drop-shadow(0 4px 8px rgba(123, 44, 191, 0.25));
-      animation: ghost-bob-float 2s infinite ease-in-out;
-    }
-    @keyframes ghost-bob-float {
-      0%, 100% { transform: translateY(0) rotate(-2deg); }
-      50% { transform: translateY(-8px) rotate(3deg); }
-    }
-    .ghost-dialogue-box {
-      background: #FFFFFF;
-      border: 2px solid var(--border-soft);
-      border-radius: var(--radius-sm);
-      padding: 12px 18px;
-      font-size: 15px;
-      font-weight: 700;
-      box-shadow: 2px 2px 0px var(--border-soft);
-      margin: 10px 0;
-      min-height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+
+    /* Scene Container */
+    .ghost-mini-theater {
       width: 100%;
       max-width: 420px;
+      margin: 10px auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .ghost-stage-screen {
+      width: 100%;
+      min-height: 220px;
+      background: #FFFFFF;
+      border: 2px solid var(--border-soft);
+      border-radius: var(--radius-md);
+      padding: 16px 14px;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: var(--shadow-sm);
+      animation: theater-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .ghost-stage-screen.active {
+      display: flex;
+    }
+    @keyframes theater-fade-in {
+      0% { opacity: 0; transform: translateY(8px) scale(0.98); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* Character Display Layouts */
+    .scene-actors-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 16px;
+      margin: 10px 0 14px;
+      min-height: 85px;
+      position: relative;
+      width: 100%;
+    }
+
+    .actor-figure {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
       transition: all 0.3s ease;
     }
-    .ghost-haunted-card.spooky-mode .ghost-dialogue-box {
-      border-color: #7B2CBF;
-      background: #FFFFFF;
-      color: #581C87;
+    .actor-avatar {
+      font-size: 46px;
+      line-height: 1;
+      filter: drop-shadow(0 4px 6px rgba(92, 64, 51, 0.12));
     }
+    .actor-tag {
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: var(--radius-pill);
+      background: var(--pink-soft);
+      border: 1px solid var(--border-soft);
+      color: var(--text-deep);
+    }
+    .actor-tag.tanvir {
+      background: #E8F0FE;
+      color: #1A73E8;
+    }
+    .actor-tag.ghost {
+      background: #F3E8FF;
+      color: #7E22CE;
+    }
+
+    /* Cute Kawaii Ghost Visual */
+    .kawaii-ghost-chibi {
+      position: relative;
+      display: inline-block;
+      animation: ghost-float-chibi 2.2s infinite ease-in-out;
+    }
+    @keyframes ghost-float-chibi {
+      0%, 100% { transform: translateY(0) rotate(-3deg); }
+      50% { transform: translateY(-7px) rotate(3deg); }
+    }
+
+    /* Dialogue & Story Narrative Text */
+    .ghost-narration-box {
+      font-size: clamp(0.95rem, 3.2vw, 1.1rem);
+      line-height: 1.55;
+      color: var(--text-deep);
+      text-align: center;
+      margin: 8px 0;
+      width: 100%;
+    }
+    .ghost-narration-box p {
+      margin: 3px 0;
+    }
+
+    .ghost-speech-bubble {
+      background: #FFFDF8;
+      border: 1.5px solid var(--border-soft);
+      border-radius: 14px;
+      padding: 8px 14px;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text-deep);
+      box-shadow: 2px 2px 0px var(--border-soft);
+      margin: 6px 0;
+      position: relative;
+      max-width: 90%;
+      text-align: center;
+    }
+
+    /* Chase Animation for Scene 5 */
+    .chase-track-area {
+      width: 100%;
+      height: 70px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      margin: 6px 0;
+      background: #FAF5FF;
+      border-radius: var(--radius-sm);
+      border: 1px dashed #D8B4FE;
+    }
+    .chasing-tanvir {
+      position: absolute;
+      left: 10%;
+      font-size: 34px;
+      animation: tanvir-chase-run 1.8s infinite ease-in-out;
+    }
+    .running-ghost {
+      position: absolute;
+      left: 55%;
+      font-size: 34px;
+      animation: ghost-flee-run 1.8s infinite ease-in-out;
+    }
+    @keyframes tanvir-chase-run {
+      0%, 100% { transform: translateX(0) scaleX(1); }
+      50% { transform: translateX(18px) scaleX(1) rotate(6deg); }
+    }
+    @keyframes ghost-flee-run {
+      0%, 100% { transform: translateX(0) rotate(-6deg); }
+      50% { transform: translateX(25px) rotate(8deg); }
+    }
+
+    .ghost-defeated-stamp {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #DCFCE7;
+      border: 2px solid #16A34A;
+      color: #15803D;
+      padding: 6px 16px;
+      border-radius: var(--radius-pill);
+      font-weight: 800;
+      font-size: 14px;
+      box-shadow: 2px 2px 0px #16A34A;
+      margin: 8px 0;
+      animation: stamp-pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.35);
+    }
+    @keyframes stamp-pop {
+      0% { transform: scale(0.4) rotate(-8deg); opacity: 0; }
+      80% { transform: scale(1.15) rotate(3deg); }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+
+    /* Screen Progress Dots */
+    .scene-progress-dots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin: 10px 0 6px;
+    }
+    .scene-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--border-light);
+      transition: all 0.3s ease;
+    }
+    .scene-dot.active {
+      width: 18px;
+      border-radius: var(--radius-pill);
+      background: var(--pink-deep);
+    }
+
+    /* Spooky Screen Shake */
     .card-spooky-shake {
       animation: spooky-shake-anim 0.45s ease-in-out;
     }
@@ -1420,74 +1532,275 @@
         </div>
 
         <a href="#ch6-ghost" class="btn-storybook">
-          <span>Chapter 06: The Ghost Problem 👻 →</span>
+          <span>Chapter 06: The Little Ghost Incident 👻 →</span>
         </a>
 
       </div>
     </section>
 
     <!-- =========================================
-         CHAPTER 06: THE GHOST PROBLEM 👻😂
+         CHAPTER 06: THE LITTLE GHOST INCIDENT 👻 (TANVIR & MISHI)
          ========================================= -->
     <section class="chapter-section" id="ch6-ghost">
       <div class="chapter-card ghost-haunted-card" id="ghostCard">
         
         <div class="chapter-pill" style="background: var(--lavender-soft);">
           <span>👻</span>
-          <span>Chapter 06</span>
+          <span>Chapter 06 — A True Mini Story</span>
         </div>
 
-        <h2>The Ghost Problem 👻😂</h2>
+        <h2 style="font-size: clamp(1.8rem, 6vw, 2.5rem);">The Little Ghost Incident 👻</h2>
 
-        <div style="font-size: clamp(0.98rem, 3.2vw, 1.15rem); color: var(--text-muted); margin: 6px 0 10px;">
-          <p>She's brave. She's smart.</p>
-          <p>She can handle books. She can handle a kitchen.</p>
-          <p>She can handle unlimited ice cream.</p>
-        </div>
-
-        <p style="font-size: clamp(1.2rem, 4vw, 1.5rem); font-weight: 800; color: #7B2CBF; margin: 4px 0 10px;">
-          BUT SHE CANNOT HANDLE GHOSTS. 👻😭
+        <p style="font-family: var(--font-display); font-size: clamp(1.05rem, 3.4vw, 1.25rem); font-style: italic; color: var(--pink-deep); margin-bottom: 8px;">
+          A real-life dynamic between Tanvir & Mishi...
         </p>
 
-        <!-- Dynamic Ghost Stage: Calm at the start, Sudden Spooky Jump on summon -->
-        <div class="ghost-stage-box" id="ghostStageBox">
-          
-          <!-- Initial Calm Scene (No Ghost visible at start!) -->
-          <div class="ghost-calm-scene" id="ghostCalmScene">
-            <div style="font-size: 46px; line-height: 1;" class="float-gentle" id="catCuriousAvatar">
-              🐱 🕯️
+        <!-- Scene Progress Indicator Dots -->
+        <div class="scene-progress-dots" id="ghostSceneDots">
+          <span class="scene-dot active" data-step="1"></span>
+          <span class="scene-dot" data-step="2"></span>
+          <span class="scene-dot" data-step="3"></span>
+          <span class="scene-dot" data-step="4"></span>
+          <span class="scene-dot" data-step="5"></span>
+          <span class="scene-dot" data-step="6"></span>
+          <span class="scene-dot" data-step="7"></span>
+          <span class="scene-dot" data-step="8"></span>
+        </div>
+
+        <!-- Mini Interactive Storybook Theater -->
+        <div class="ghost-mini-theater">
+
+          <!-- SCENE 1: I have a little secret... 👀 -->
+          <div class="ghost-stage-screen active" id="gScene1">
+            <div class="scene-actors-row">
+              <div class="actor-figure">
+                <span class="actor-avatar float-gentle">🐱 🎀</span>
+                <span class="actor-tag">Mishi</span>
+              </div>
+              <div class="actor-figure" style="opacity: 0.9;">
+                <span class="actor-avatar" style="font-size: 38px;">😏 👀</span>
+                <span class="actor-tag tanvir">Tanvir</span>
+              </div>
             </div>
-            <p style="font-size: 13.5px; font-weight: 700; color: var(--text-muted); margin: 4px 0 0;">
-              "Everything looks peaceful in the dark room... or is it? 👀"
-            </p>
+
+            <div class="ghost-narration-box">
+              <p>There's one thing about Mishi...</p>
+              <p style="font-weight: 700; color: #7B2CBF;">She really, REALLY doesn't like ghosts. 👻</p>
+              <p style="font-style: italic; font-size: 0.95em; color: var(--text-muted); margin-top: 4px;">
+                And sometimes... someone likes to tease her about it. 👀
+              </p>
+              <p style="font-weight: 800; color: var(--text-deep);">Someone named Tanvir. 😌</p>
+            </div>
+
+            <button class="btn-storybook secondary breathe-pulse" id="btnGhostNext1" style="margin-top: 8px;">
+              <span>Should I tell you what happens? 👀</span>
+            </button>
           </div>
 
-          <!-- Sudden Ghost Jump-Scare Reveal (Initially Hidden) -->
-          <div class="ghost-summon-reveal" id="ghostSummonReveal">
-            <div class="ghost-kawaii-avatar" id="ghostKawaiiAvatar">👻</div>
+          <!-- SCENE 2: Tanvir's terrible idea 😂 -->
+          <div class="ghost-stage-screen" id="gScene2">
+            <div class="scene-actors-row">
+              <div class="actor-figure">
+                <span class="actor-avatar float-gentle">🐱 📖</span>
+                <span class="actor-tag">Mishi (Reading)</span>
+              </div>
+              <div class="actor-figure">
+                <span class="actor-avatar" style="animation: ghost-bob-float 1.8s infinite ease-in-out;">🤫 🎭 👻</span>
+                <span class="actor-tag tanvir">Tanvir (Prankster)</span>
+              </div>
+            </div>
+
+            <div class="ghost-speech-bubble" style="background: #FFF8E1; border-color: #E0A96D;">
+              "Hehe... she's so focused on reading... 😈"
+            </div>
+
+            <div class="ghost-narration-box">
+              <p>One day...</p>
+              <p>Tanvir had a terrible idea.</p>
+              <p style="font-weight: 800; font-size: 1.15em; color: #7B2CBF; margin-top: 4px;">
+                "Let's scare Mishi. 👻"
+              </p>
+            </div>
+
+            <button class="btn-storybook secondary" id="btnGhostNext2" style="margin-top: 8px;">
+              <span>Do it... 👻</span>
+            </button>
+          </div>
+
+          <!-- SCENE 3: The Ghost Appears! 👻 -->
+          <div class="ghost-stage-screen" id="gScene3">
+            <div class="scene-actors-row">
+              <div class="actor-figure">
+                <span class="actor-avatar" style="font-size: 52px; animation: bounce-fun 0.4s infinite alternate;">🙀 ⚡</span>
+                <span class="actor-tag">Mishi (Shocked)</span>
+              </div>
+              <div class="actor-figure">
+                <span class="actor-avatar kawaii-ghost-chibi" style="font-size: 48px;">👻 ✨</span>
+                <span class="actor-tag ghost">Tiny Ghost</span>
+              </div>
+            </div>
+
+            <div class="ghost-speech-bubble" style="background: #F3E8FF; border-color: #A855F7; color: #6B21A8; font-weight: 800;">
+              "BOO!! 👻"
+            </div>
+
+            <div class="ghost-narration-box">
+              <p style="font-size: 1.2em; font-weight: 800; color: #DC2626;">"AHHHHHH!! 😭"</p>
+              <p style="font-weight: 700; color: var(--text-deep);">"WHY WOULD YOU DO THAT?! 😭👻"</p>
+            </div>
+
+            <button class="btn-storybook secondary" id="btnGhostNext3" style="margin-top: 8px;">
+              <span>Oh no... 🥺</span>
+            </button>
+          </div>
+
+          <!-- SCENE 4: Mishi gets sad 🥺 -->
+          <div class="ghost-stage-screen" id="gScene4">
+            <div class="scene-actors-row">
+              <div class="actor-figure">
+                <span class="actor-avatar" style="font-size: 44px;">😿 🛋️ 💧</span>
+                <span class="actor-tag">Mishi (Tears)</span>
+              </div>
+              <div class="actor-figure">
+                <span class="actor-avatar" style="font-size: 40px;">😰 💔</span>
+                <span class="actor-tag tanvir">Tanvir (Guilty)</span>
+              </div>
+            </div>
+
+            <div class="ghost-narration-box">
+              <p>Okay...</p>
+              <p>Maybe that wasn't such a good idea. 🥺</p>
+              <p style="font-weight: 700; color: var(--pink-deep); margin-top: 4px;">
+                Someone got a little too scared... and now she's crying... 🥺
+              </p>
+              <p style="font-style: italic; color: var(--text-muted); font-size: 0.92em;">
+                Uh oh. Tanvir has made a mistake. 😭
+              </p>
+            </div>
+
+            <button class="btn-storybook" id="btnGhostNext4" style="margin-top: 8px; background: #FFD6E0;">
+              <span>Tanvir, fix this! 🥺</span>
+            </button>
+          </div>
+
+          <!-- SCENE 5: Tanvir to the rescue 💪 -->
+          <div class="ghost-stage-screen" id="gScene5">
+            <div class="chase-track-area">
+              <span class="chasing-tanvir">🏃‍♂️ 🫡 🧹</span>
+              <span class="running-ghost">💨 👻 😭</span>
+            </div>
+
+            <div class="ghost-speech-bubble" style="font-size: 13px;">
+              Tanvir: <strong>"HEY! GO AWAY!"</strong><br>
+              Ghost: <em>"WAIT! I WAS JUST JOKING! 😭👻"</em>
+            </div>
+
+            <div class="ghost-narration-box">
+              <p style="font-weight: 800; color: var(--text-deep);">"Okay. That's enough."</p>
+              <p style="font-weight: 700; color: #15803D;">"No more ghosts around Mishi."</p>
+            </div>
+
+            <button class="btn-storybook butter" id="btnGhostNext5" style="margin-top: 8px;">
+              <span>CHASE THE GHOST AWAY! 🫡</span>
+            </button>
+          </div>
+
+          <!-- SCENE 6: Ghost: Defeated 🎉 -->
+          <div class="ghost-stage-screen" id="gScene6">
+            <div class="ghost-defeated-stamp">
+              <span>✨</span>
+              <span>👻 GHOST: DEFEATED</span>
+              <span>✅</span>
+            </div>
+
+            <div class="scene-actors-row" style="margin: 6px 0;">
+              <div class="actor-figure">
+                <span class="actor-avatar float-gentle">🐱 🥺👉👈</span>
+                <span class="actor-tag">Mishi</span>
+              </div>
+              <div class="actor-figure">
+                <span class="actor-avatar">🤝 😌 ✨</span>
+                <span class="actor-tag tanvir">Tanvir</span>
+              </div>
+            </div>
+
+            <div class="ghost-speech-bubble" style="font-size: 13px; line-height: 1.45;">
+              Mishi: <em>"Is it gone? 🥺"</em><br>
+              Tanvir: <strong>"Yep. Really gone."</strong><br>
+              Mishi: <em>"Promise?"</em><br>
+              Tanvir: <strong>"Promise. 🤝💗"</strong>
+            </div>
+
+            <button class="btn-storybook secondary" id="btnGhostNext6" style="margin-top: 8px;">
+              <span>Check on Mishi 🌸</span>
+            </button>
+          </div>
+
+          <!-- SCENE 7: Happy Mishi Again 💗 -->
+          <div class="ghost-stage-screen" id="gScene7">
+            <div class="scene-actors-row">
+              <div class="actor-figure">
+                <span class="actor-avatar float-gentle" style="font-size: 52px;">🐱 🌷 🍨 ✨</span>
+                <span class="actor-tag" style="background: #FFD6E0; color: #D6336C;">Happy Mishi</span>
+              </div>
+            </div>
+
+            <div class="ghost-narration-box">
+              <p>And just like that...</p>
+              <p style="font-weight: 700; color: var(--pink-deep); font-size: 1.1em;">the tears disappeared.</p>
+              <p style="font-weight: 800; color: var(--text-deep);">And Mishi was happy again. 🌷</p>
+              <p style="font-style: italic; font-size: 0.95em; color: var(--text-muted); margin-top: 4px;">
+                Because apparently... all she needed was for the ghost to go away. 😂💗
+              </p>
+            </div>
+
+            <button class="btn-storybook secondary" id="btnGhostNext7" style="margin-top: 8px;">
+              <span>Wait, what's that in the corner? 👀</span>
+            </button>
+          </div>
+
+          <!-- SCENE 8: The Cute Twist & Ending 😂💗 -->
+          <div class="ghost-stage-screen" id="gScene8">
+            <div class="scene-actors-row" style="justify-content: space-between; padding: 0 12px;">
+              <div class="actor-figure">
+                <span class="actor-avatar float-gentle" style="font-size: 42px;">🐱 🍨 📚</span>
+                <span class="actor-tag">Mishi (Happy)</span>
+              </div>
+              <div class="actor-figure">
+                <span class="actor-avatar" style="font-size: 38px;">😏 👉</span>
+                <span class="actor-tag tanvir">Tanvir</span>
+              </div>
+              <div class="actor-figure" style="opacity: 0.75;">
+                <span class="actor-avatar" style="font-size: 26px;">🤫 👻</span>
+                <span class="actor-tag ghost" style="font-size: 9.5px;">Tiny Ghost</span>
+              </div>
+            </div>
+
+            <div class="ghost-speech-bubble" style="font-size: 13px; line-height: 1.45;">
+              Tanvir: <strong>"Don't worry, Mishi. I've got you. 🛡️💗"</strong><br>
+              <em>"...but maybe I should stop scaring you. 😭"</em><br>
+              Tanvir: <strong>"...MAYBE. 😂"</strong><br>
+              Mishi: <em>"Tanvir... 😑👀"</em>
+            </div>
+
+            <div class="ghost-narration-box" style="font-size: 0.95em; color: var(--text-muted);">
+              <p>Some things are better left unseen. 🤫👻</p>
+            </div>
+
+            <button class="btn-storybook butter" id="btnGhostReplay" style="margin-top: 6px; font-size: 13px; padding: 8px 16px;">
+              <span>🔄 Replay The Story</span>
+            </button>
           </div>
 
         </div>
 
-        <div class="ghost-dialogue-box" id="ghostDialogue">
-          "Tap below to summon... if you dare! 🥺"
-        </div>
-
-        <button class="btn-storybook secondary breathe-pulse" id="summonGhostBtn" style="margin: 6px 0 14px;">
-          <span id="summonGhostBtnText">Summon Tiny Ghost 👻</span>
-        </button>
-
-        <p style="font-size: 13px; font-weight: 700; color: var(--text-muted); font-style: italic;">
-          Don't worry, Mishi... we'll make sure it's 100% harmless! 🤍👻
-        </p>
-
-        <!-- Smooth Emotional Transition Bridge -->
-        <div style="margin-top: 22px; padding-top: 16px; border-top: 1.5px dashed var(--border-light); width: 100%;">
+        <!-- Smooth Emotional Transition Bridge into Birthday Chapter -->
+        <div style="margin-top: 22px; padding-top: 18px; border-top: 1.5px dashed var(--border-light); width: 100%;">
           <p style="font-family: var(--font-display); font-size: 1.25rem; font-style: italic; color: var(--text-muted);">
-            Okay... enough teasing Mishi. 🥺
+            Okay... Ghost problem solved. 👻✅
           </p>
-          <p style="font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; color: var(--text-deep); margin: 6px 0 16px;">
-            Because today is about YOU, <span style="color: var(--pink-deep);">Mishi 🌷</span>
+          <p style="font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--text-deep); margin: 6px 0 14px;">
+            Now let's celebrate: <span style="color: var(--pink-deep);">Today is Mishi's Day 🎂💗</span>
           </p>
           <a href="#ch7-birthday" class="btn-storybook butter">
             <span>Chapter 07: Today Is Her Day 🎂 →</span>
@@ -2340,69 +2653,140 @@
       });
     }
 
-    // Chapter 06: The Ghost Problem (Sudden Jump-Scare & Harmless Humor)
-    const summonGhostBtn = document.getElementById('summonGhostBtn');
-    const summonGhostBtnText = document.getElementById('summonGhostBtnText');
-    const ghostDialogue = document.getElementById('ghostDialogue');
+    // Chapter 06: The Little Ghost Incident 👻 (Tanvir & Mishi 8-Scene Story)
     const ghostCard = document.getElementById('ghostCard');
-    const ghostCalmScene = document.getElementById('ghostCalmScene');
-    const ghostSummonReveal = document.getElementById('ghostSummonReveal');
-    const ghostKawaiiAvatar = document.getElementById('ghostKawaiiAvatar');
-    let ghostStep = 0;
+    const ghostSceneDots = document.querySelectorAll('#ghostSceneDots .scene-dot');
 
-    if (summonGhostBtn && ghostDialogue) {
-      summonGhostBtn.addEventListener('click', () => {
-        ghostStep++;
+    const ghostScreens = [
+      document.getElementById('gScene1'),
+      document.getElementById('gScene2'),
+      document.getElementById('gScene3'),
+      document.getElementById('gScene4'),
+      document.getElementById('gScene5'),
+      document.getElementById('gScene6'),
+      document.getElementById('gScene7'),
+      document.getElementById('gScene8')
+    ];
 
-        // Trigger spooky visual shake on card
-        if (ghostCard) {
-          ghostCard.classList.remove('card-spooky-shake');
-          void ghostCard.offsetWidth; // Trigger reflow
-          ghostCard.classList.add('card-spooky-shake');
-          ghostCard.classList.add('spooky-mode');
-        }
-
-        if (ghostStep === 1) {
-          // SUDDEN JUMP-SCARE REVEAL!
-          playSpookyWobbleTone();
-          if (ghostCalmScene) ghostCalmScene.classList.add('hidden');
-          if (ghostSummonReveal) {
-            ghostSummonReveal.classList.add('active');
-            if (ghostKawaiiAvatar) ghostKawaiiAvatar.textContent = '👻 ⚡';
+    function setGhostScene(sceneIndex) {
+      // 0-indexed (0 to 7)
+      ghostScreens.forEach((scr, idx) => {
+        if (scr) {
+          if (idx === sceneIndex) {
+            scr.classList.add('active');
+          } else {
+            scr.classList.remove('active');
           }
-          ghostDialogue.textContent = "BOO! 👻 Mishi: 'AAAAAH! I KNEW IT!' 😭😂";
-          if (summonGhostBtnText) summonGhostBtnText.textContent = "Calm the Ghost 🌸";
-          showToast("BOO! 👻 Don't scream Mishi! 😂");
-
-        } else if (ghostStep === 2) {
-          // Ghost turns friendly
-          playSweetChime();
-          if (ghostKawaiiAvatar) ghostKawaiiAvatar.textContent = '👻 🌷 🍰';
-          ghostDialogue.textContent = "Ghost: 'Wait wait! I brought flowers and cake for your birthday!' 🥺🤍";
-          if (summonGhostBtnText) summonGhostBtnText.textContent = "Forgive the Ghost 🥺";
-          showToast("The ghost is harmless! 🌷👻");
-
-        } else if (ghostStep === 3) {
-          // Mishi's reaction
-          playTone(480, 0.3, 'sine', 0.08);
-          if (ghostKawaiiAvatar) ghostKawaiiAvatar.textContent = '👻 🎀 ✨';
-          ghostDialogue.textContent = "Mishi: 'STILL SCARY BUT OKAY... I'll take the cake!' 😭😋";
-          if (summonGhostBtnText) summonGhostBtnText.textContent = "Banish Ghost to Sleep 💤";
-
-        } else {
-          // Final cute resolution
-          playSweetChime();
-          if (ghostKawaiiAvatar) ghostKawaiiAvatar.textContent = '🤍 🕊️ ✨';
-          ghostDialogue.textContent = "Ghost banished! Mishi is 100% safe forever. 🛡️💗";
-          if (summonGhostBtnText) summonGhostBtnText.textContent = "Summon Again? 👻";
-          ghostStep = 0;
-          setTimeout(() => {
-            if (ghostCard) ghostCard.classList.remove('spooky-mode');
-            if (ghostCalmScene) ghostCalmScene.classList.remove('hidden');
-            if (ghostSummonReveal) ghostSummonReveal.classList.remove('active');
-          }, 3200);
-          showToast("Ghost banished! Safe with Mishi! 🌷");
         }
+      });
+
+      // Update progress dots
+      ghostSceneDots.forEach((dot, idx) => {
+        if (idx === sceneIndex) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+
+      // Apply ambient atmospheric themes
+      if (ghostCard) {
+        ghostCard.classList.remove('prank-dim', 'happy-pink', 'card-spooky-shake');
+        
+        if (sceneIndex === 1 || sceneIndex === 2 || sceneIndex === 3 || sceneIndex === 4) {
+          ghostCard.classList.add('prank-dim');
+        } else if (sceneIndex >= 5) {
+          ghostCard.classList.add('happy-pink');
+        }
+
+        // Scene 3: Screen shake on BOO
+        if (sceneIndex === 2) {
+          void ghostCard.offsetWidth; // force reflow
+          ghostCard.classList.add('card-spooky-shake');
+        }
+      }
+    }
+
+    // Step 1 -> Step 2
+    const btnGhostNext1 = document.getElementById('btnGhostNext1');
+    if (btnGhostNext1) {
+      btnGhostNext1.addEventListener('click', () => {
+        playSweetChime();
+        setGhostScene(1);
+        showToast("Tanvir is plotting... 😈👀");
+      });
+    }
+
+    // Step 2 -> Step 3 (Ghost appears!)
+    const btnGhostNext2 = document.getElementById('btnGhostNext2');
+    if (btnGhostNext2) {
+      btnGhostNext2.addEventListener('click', (e) => {
+        playSpookyWobbleTone();
+        setGhostScene(2);
+        triggerConfettiBurst(e.clientX, e.clientY, ['👻', '⚡', '🙀', '💨'], 12);
+        showToast("BOO! 👻 Mishi: AHHHH! 😭");
+      });
+    }
+
+    // Step 3 -> Step 4 (Mishi gets sad)
+    const btnGhostNext3 = document.getElementById('btnGhostNext3');
+    if (btnGhostNext3) {
+      btnGhostNext3.addEventListener('click', () => {
+        playTone(360, 0.4, 'sine', 0.08);
+        setGhostScene(3);
+        showToast("Uh oh... Mishi is crying 🥺");
+      });
+    }
+
+    // Step 4 -> Step 5 (Tanvir rescues)
+    const btnGhostNext4 = document.getElementById('btnGhostNext4');
+    if (btnGhostNext4) {
+      btnGhostNext4.addEventListener('click', () => {
+        playTone(520, 0.35, 'triangle', 0.1);
+        setGhostScene(4);
+        showToast("Tanvir to the rescue! 🏃‍♂️💨");
+      });
+    }
+
+    // Step 5 -> Step 6 (Ghost Defeated)
+    const btnGhostNext5 = document.getElementById('btnGhostNext5');
+    if (btnGhostNext5) {
+      btnGhostNext5.addEventListener('click', (e) => {
+        playSweetChime();
+        setGhostScene(5);
+        triggerConfettiBurst(e.clientX, e.clientY, ['✨', '✅', '🌸', '🤝'], 16);
+        showToast("Ghost banished! Mission accomplished. 😌");
+      });
+    }
+
+    // Step 6 -> Step 7 (Happy Mishi)
+    const btnGhostNext6 = document.getElementById('btnGhostNext6');
+    if (btnGhostNext6) {
+      btnGhostNext6.addEventListener('click', (e) => {
+        playSweetChime();
+        setGhostScene(6);
+        triggerConfettiBurst(e.clientX, e.clientY, ['🌷', '💗', '🍨', '✨', '🎀'], 24);
+        showToast("Mishi is happy again! 🌷💗");
+      });
+    }
+
+    // Step 7 -> Step 8 (Cute Twist)
+    const btnGhostNext7 = document.getElementById('btnGhostNext7');
+    if (btnGhostNext7) {
+      btnGhostNext7.addEventListener('click', () => {
+        playTone(620, 0.25, 'sine', 0.08);
+        setGhostScene(7);
+        showToast("Tanvir... 👀😂");
+      });
+    }
+
+    // Replay Story
+    const btnGhostReplay = document.getElementById('btnGhostReplay');
+    if (btnGhostReplay) {
+      btnGhostReplay.addEventListener('click', () => {
+        playSweetChime();
+        setGhostScene(0);
+        showToast("Replaying chapter... 📖✨");
       });
     }
 
