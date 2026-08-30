@@ -616,7 +616,8 @@
       animation: theater-fade-in 0.4s forwards;
       text-align: center;
     }
-    .recipe-book-box.show {
+    .recipe-book-box.show,
+    .recipe-book-box.open {
       display: block;
     }
     .recipe-page-item {
@@ -717,6 +718,13 @@
       padding: 10px;
       font-size: 16px;
     }
+    .art-layer-bg.visible,
+    .art-layer-colors.visible,
+    .art-layer-scenery.visible,
+    .art-layer-details.visible,
+    .art-layer-sparkles.visible {
+      opacity: 1;
+    }
     .art-layer-hidden-secret {
       position: absolute;
       bottom: 8px;
@@ -726,7 +734,8 @@
       transform: scale(0.3);
       transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
-    .art-layer-hidden-secret.revealed {
+    .art-layer-hidden-secret.revealed,
+    .art-layer-hidden-secret.visible {
       opacity: 1;
       transform: scale(1);
     }
@@ -2569,6 +2578,7 @@
     const btnTasteTest = document.getElementById('btnTasteTest');
     const chefStatusTag = document.getElementById('chefStatusTag');
     const kitchenPan = document.getElementById('kitchenPan');
+    const kitchenScene = document.getElementById('kitchenScene');
     const recipeBookBox = document.getElementById('recipeBookBox');
     let currentRecipePage = 1;
 
@@ -2576,8 +2586,12 @@
       btnEnterChefMode.addEventListener('click', () => {
         playSweetChime();
         kitchenPan.classList.add('cooking');
+        if (kitchenScene) kitchenScene.classList.add('active-chef');
         chefStatusTag.innerHTML = "<strong style='color: var(--pink-deep);'>Chef Mode Active! 👩‍🍳</strong><br><em>Warning:</em> Entering Mishi's kitchen may cause sudden hunger and high happiness! ✨";
-        setTimeout(() => kitchenPan.classList.remove('cooking'), 1800);
+        setTimeout(() => {
+          kitchenPan.classList.remove('cooking');
+          if (kitchenScene) kitchenScene.classList.remove('active-chef');
+        }, 1800);
         showToast("Chef Mishi in her kingdom! 👩‍🍳✨");
       });
     }
