@@ -636,7 +636,7 @@
       background: radial-gradient(circle at 50% 30%, #FFF5F8 0%, #FAF2F9 60%, #F5ECF9 100%);
       border: 2.5px solid var(--border-soft);
       border-radius: var(--radius-md);
-      padding: 18px 14px;
+      padding: 20px 16px;
       margin: 14px auto;
       box-shadow: var(--shadow-md);
       display: flex;
@@ -646,38 +646,58 @@
     }
     .artist-mishi-easel-row {
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       justify-content: center;
       gap: 16px;
       margin-bottom: 12px;
       width: 100%;
+      flex-wrap: wrap;
     }
-    .art-canvas-frame {
-      width: 200px;
-      height: 150px;
+    .painting-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 18px 16px;
+      min-height: 190px;
+      width: 100%;
+      max-width: 220px;
       background: #FFFFFF;
       border: 3px solid #8D6E63;
-      border-radius: 6px;
-      box-shadow: 0 4px 10px rgba(92, 64, 51, 0.15);
+      border-radius: 14px;
+      box-shadow: 0 6px 16px rgba(92, 64, 51, 0.12);
+      box-sizing: border-box;
       position: relative;
-      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .painting-art {
+      width: 100%;
+      max-width: 150px;
+      min-height: 70px;
+      height: 72px;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.4s ease;
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #FAF6F0;
+      border: 1.5px solid rgba(141, 110, 99, 0.2);
+      box-shadow: inset 0 1px 4px rgba(0,0,0,0.04);
     }
     .art-layer-bg {
       position: absolute;
       inset: 0;
       opacity: 0;
-      transition: opacity 1s ease-in-out;
+      transition: opacity 0.8s ease-in-out;
       background: linear-gradient(135deg, #FFE4EC 0%, #FFF3E8 50%, #E8F0FE 100%);
     }
     .art-layer-colors {
       position: absolute;
       inset: 0;
       opacity: 0;
-      transition: opacity 1s ease-in-out;
+      transition: opacity 0.8s ease-in-out;
       background: radial-gradient(circle at 30% 70%, rgba(255, 182, 193, 0.7), transparent 60%),
                   radial-gradient(circle at 70% 30%, rgba(230, 230, 250, 0.8), transparent 60%);
     }
@@ -685,26 +705,12 @@
       position: absolute;
       inset: 0;
       opacity: 0;
-      transition: opacity 1s ease-in-out;
+      transition: opacity 0.8s ease-in-out;
       display: flex;
       align-items: center;
       justify-content: space-around;
-      font-size: 26px;
+      font-size: 22px;
       padding: 0 8px;
-    }
-    .art-layer-details {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      transition: opacity 0.8s ease-in-out;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-      font-weight: 700;
-      color: #5C4033;
-      background: rgba(255, 255, 255, 0.15);
     }
     .art-layer-sparkles {
       position: absolute;
@@ -715,29 +721,68 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 10px;
-      font-size: 16px;
+      padding: 6px;
+      font-size: 14px;
     }
     .art-layer-bg.visible,
     .art-layer-colors.visible,
     .art-layer-scenery.visible,
-    .art-layer-details.visible,
     .art-layer-sparkles.visible {
       opacity: 1;
     }
-    .art-layer-hidden-secret {
+    .canvas-empty-state {
       position: absolute;
-      bottom: 8px;
-      right: 8px;
-      font-size: 18px;
-      opacity: 0;
-      transform: scale(0.3);
-      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #8D6E63;
+      opacity: 0.75;
+      text-align: center;
     }
-    .art-layer-hidden-secret.revealed,
-    .art-layer-hidden-secret.visible {
+    .painting-title {
+      position: static;
+      margin: 0;
+      text-align: center;
+      line-height: 1.2;
+      opacity: 0;
+      transition: opacity 0.6s ease-in-out;
+      font-family: var(--font-hand);
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--pink-deep);
+      min-height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .painting-title.visible {
       opacity: 1;
-      transform: scale(1);
+    }
+    .painting-footer {
+      position: static;
+      margin: 0;
+      margin-top: 4px;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+      font-family: var(--font-hand);
+      font-size: 1.25rem;
+      color: #B45309;
+      font-weight: 700;
+      line-height: 1.2;
+      min-height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .painting-footer.visible,
+    .painting-footer.revealed {
+      opacity: 1;
     }
     .palette-swatches-row {
       display: flex;
@@ -1550,30 +1595,37 @@
               <span class="actor-tag" style="background: #E8F0FE; color: #1E40AF;">Artist Mishi</span>
             </div>
             
-            <div class="art-canvas-frame" id="artCanvasFrame" title="Mishi's Watercolor Canvas">
-              <!-- Progressive Painting Layers -->
-              <div class="art-layer-bg" id="artLayerBg"></div>
-              <div class="art-layer-colors" id="artLayerColors"></div>
-              <div class="art-layer-scenery" id="artLayerScenery">
-                <span>🌷</span>
-                <span>🌸</span>
-                <span>☁️</span>
-                <span>🌿</span>
-                <span>✨</span>
+            <div class="painting-card art-canvas-frame" id="artCanvasFrame" title="Mishi's Watercolor Canvas">
+              <!-- 1. Dedicated Illustration Area (Decorations / Paintings Stay Inside) -->
+              <div class="painting-art painting-art-stage">
+                <div class="art-layer-bg" id="artLayerBg"></div>
+                <div class="art-layer-colors" id="artLayerColors"></div>
+                <div class="art-layer-scenery" id="artLayerScenery">
+                  <span>🌷</span>
+                  <span>🌸</span>
+                  <span>☁️</span>
+                  <span>🌿</span>
+                  <span>✨</span>
+                </div>
+                <div class="art-layer-sparkles" id="artLayerSparkles">
+                  <span>✨</span>
+                  <span>💫</span>
+                  <span>🌸</span>
+                </div>
+                <div id="canvasEmptyPrompt" class="canvas-empty-state">
+                  <span style="font-size: 20px;">🎨</span>
+                  <span>Blank Canvas</span>
+                </div>
               </div>
-              <div class="art-layer-details" id="artLayerDetails">
-                <span>✨ Masterpiece by Mishi 🎨</span>
+
+              <!-- 2. Title Below the Illustration Area -->
+              <div class="painting-title painting-title-box" id="artLayerDetails">
+                <span>Masterpiece Mishi</span>
               </div>
-              <div class="art-layer-sparkles" id="artLayerSparkles">
-                <span>✨</span>
-                <span>💫</span>
-                <span>🌸</span>
-              </div>
-              <div class="art-layer-hidden-secret" id="artHiddenSecret" title="A little secret detail">
-                <span>🌸 For Mishi 🤍</span>
-              </div>
-              <div id="canvasEmptyPrompt" style="font-size: 13px; font-weight: 700; color: var(--text-muted); text-align: center; padding: 10px;">
-                A blank canvas waiting for colour... 🎨
+
+              <!-- 3. Footer Line at Bottom with Clean Breathing Room -->
+              <div class="painting-footer painting-footer-box" id="artHiddenSecret">
+                <span>For Mishi ♡</span>
               </div>
             </div>
           </div>
