@@ -532,6 +532,39 @@
     /* =========================================
        9. CHAPTER 05: CHEF MISHI
        ========================================= */
+    .kitchen-scene-stage {
+      width: 100%;
+      max-width: 420px;
+      background: #FFFDF8;
+      border: 2px solid var(--border-soft);
+      border-radius: var(--radius-md);
+      padding: 16px 12px;
+      margin: 12px auto;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+    .kitchen-items-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 8px 0;
+      flex-wrap: wrap;
+    }
+    .kitchen-item-icon {
+      font-size: 26px;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .kitchen-scene-stage.active-chef .kitchen-item-icon {
+      animation: ingredient-bounce 0.6s infinite alternate ease-in-out;
+    }
+    @keyframes ingredient-bounce {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(-8px) rotate(6deg); }
+    }
     .kitchen-pan-display {
       width: 110px;
       height: 110px;
@@ -543,7 +576,7 @@
       justify-content: center;
       font-size: 48px;
       box-shadow: var(--shadow-sm);
-      margin: 12px auto 14px;
+      margin: 8px auto;
       position: relative;
       transition: all 0.3s ease;
     }
@@ -556,9 +589,163 @@
       25% { transform: translate(-3px, 2px) rotate(-4deg); }
       75% { transform: translate(3px, -2px) rotate(4deg); }
     }
+    .steam-bubble-puff {
+      position: absolute;
+      top: -12px;
+      font-size: 18px;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .kitchen-pan-display.cooking .steam-bubble-puff {
+      animation: steam-rise 1s infinite ease-out;
+    }
+    @keyframes steam-rise {
+      0% { opacity: 0; transform: translateY(0) scale(0.6); }
+      50% { opacity: 0.9; }
+      100% { opacity: 0; transform: translateY(-24px) scale(1.2); }
+    }
+    .recipe-book-box {
+      width: 100%;
+      max-width: 360px;
+      background: #FFFDF8;
+      border: 2px dashed var(--border-soft);
+      border-radius: var(--radius-sm);
+      padding: 14px 12px;
+      margin: 12px auto 6px;
+      display: none;
+      animation: theater-fade-in 0.4s forwards;
+      text-align: center;
+    }
+    .recipe-book-box.show {
+      display: block;
+    }
+    .recipe-page-item {
+      display: none;
+    }
+    .recipe-page-item.active {
+      display: block;
+    }
 
     /* =========================================
-       10. CHAPTER 06: THE LITTLE GHOST INCIDENT
+       10. CHAPTER 06: THE GIRL WHO PAINTS HER WORLD 🎨
+       ========================================= */
+    .artist-easel-container {
+      width: 100%;
+      max-width: 420px;
+      background: radial-gradient(circle at 50% 30%, #FFF5F8 0%, #FAF2F9 60%, #F5ECF9 100%);
+      border: 2.5px solid var(--border-soft);
+      border-radius: var(--radius-md);
+      padding: 18px 14px;
+      margin: 14px auto;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+    .artist-mishi-easel-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 12px;
+      width: 100%;
+    }
+    .art-canvas-frame {
+      width: 200px;
+      height: 150px;
+      background: #FFFFFF;
+      border: 3px solid #8D6E63;
+      border-radius: 6px;
+      box-shadow: 0 4px 10px rgba(92, 64, 51, 0.15);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.4s ease;
+    }
+    .art-layer-bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      background: linear-gradient(135deg, #FFE4EC 0%, #FFF3E8 50%, #E8F0FE 100%);
+    }
+    .art-layer-colors {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      background: radial-gradient(circle at 30% 70%, rgba(255, 182, 193, 0.7), transparent 60%),
+                  radial-gradient(circle at 70% 30%, rgba(230, 230, 250, 0.8), transparent 60%);
+    }
+    .art-layer-scenery {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      font-size: 26px;
+      padding: 0 8px;
+    }
+    .art-layer-details {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: #5C4033;
+      background: rgba(255, 255, 255, 0.15);
+    }
+    .art-layer-sparkles {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px;
+      font-size: 16px;
+    }
+    .art-layer-hidden-secret {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      font-size: 18px;
+      opacity: 0;
+      transform: scale(0.3);
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .art-layer-hidden-secret.revealed {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .palette-swatches-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin: 10px 0 6px;
+    }
+    .palette-swatch-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border-soft);
+    }
+
+    /* =========================================
+       11. CHAPTER 07: THE LITTLE GHOST INCIDENT
        ========================================= */
     .ghost-mini-theater {
       width: 100%;
@@ -1006,9 +1193,13 @@
   <div class="mobile-floating-nav">
     <button class="nav-pill-btn" onclick="scrollToChapter('ch1-start')">📖 Start</button>
     <span>•</span>
-    <button class="nav-pill-btn" onclick="scrollToChapter('ch6-ghost')">👻 Ghost</button>
+    <button class="nav-pill-btn" onclick="scrollToChapter('ch5-chef')">👩‍🍳 Chef</button>
     <span>•</span>
-    <button class="nav-pill-btn" onclick="scrollToChapter('ch8-birthday')">🎂 Cake</button>
+    <button class="nav-pill-btn" onclick="scrollToChapter('ch6-artist')">🎨 Artist</button>
+    <span>•</span>
+    <button class="nav-pill-btn" onclick="scrollToChapter('ch7-ghost')">👻 Ghost</button>
+    <span>•</span>
+    <button class="nav-pill-btn" onclick="scrollToChapter('ch9-birthday')">🎂 Cake</button>
     <span>•</span>
     <button class="nav-pill-btn" onclick="scrollToChapter('ch10-letter')">💌 Letter</button>
   </div>
@@ -1095,6 +1286,10 @@
             <span>She can turn any kitchen into her kingdom.</span>
           </div>
           <div class="trait-reveal-item" id="traitItem4">
+            <span class="trait-icon">🎨</span>
+            <span>She can turn a blank canvas into something beautiful.</span>
+          </div>
+          <div class="trait-reveal-item" id="traitItem5">
             <span class="trait-icon">👻</span>
             <span>And she has one tiny weakness... ghosts. 😂</span>
           </div>
@@ -1243,46 +1438,183 @@
       <div class="chapter-card">
         <div class="chapter-pill" style="background: var(--pink-soft);">
           <span>👩‍🍳</span>
-          <span>Chapter 05</span>
+          <span>Chapter 05 — Kitchen Magic</span>
         </div>
 
         <h2>Chef Mishi 👩‍🍳✨</h2>
-        <p style="color: var(--text-muted); font-size: 15px; margin: 4px 0 10px;">
-          She doesn't just cook...<br>
-          <strong style="color: var(--text-deep);">She performs kitchen magic. ✨</strong>
+        <p style="color: var(--text-muted); font-size: 15px; margin: 4px 0 12px; line-height: 1.6;">
+          Some people know how to cook.<br>
+          <strong style="color: var(--pink-deep);">Mishi? She knows how to make something special. 🤍</strong><br>
+          <span style="font-size: 13.5px; color: var(--text-muted);">She's not just good at cooking... she's REALLY good at it.</span>
         </p>
 
-        <div class="kitchen-pan-display" id="kitchenPan">
-          <span>🍳</span>
+        <!-- Kitchen Scene Visual Stage -->
+        <div class="kitchen-scene-stage" id="kitchenScene">
+          <div class="kitchen-items-row">
+            <span class="kitchen-item-icon" title="Chef Hat">👩‍🍳</span>
+            <span class="kitchen-item-icon" title="Wooden Spoon">🥄</span>
+            <span class="kitchen-item-icon" title="Cupcake">🧁</span>
+            <span class="kitchen-item-icon" title="Fresh Cookies">🍪</span>
+            <span class="kitchen-item-icon" title="Cooking Pot">🍲</span>
+            <span class="kitchen-item-icon" title="Fresh Herbs">🌸</span>
+          </div>
+
+          <div class="kitchen-pan-display" id="kitchenPan">
+            <span>🍳</span>
+            <span class="steam-bubble-puff">♨️</span>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: var(--text-deep); margin-top: 4px;">
+            <span class="actor-avatar" style="font-size: 26px;">🐱 👩‍🍳</span>
+            <span>Chef's Assistant Mascot</span>
+          </div>
         </div>
 
-        <div id="chefStatusTag" style="min-height: 48px; font-weight: 700; color: var(--text-deep); font-size: 14px; margin-bottom: 8px;">
-          Tap below to step into Chef Mishi's kitchen!
+        <!-- Recipe Book Interactive Box -->
+        <div class="recipe-book-box" id="recipeBookBox">
+          <div class="recipe-page-item active" id="recipePage1">
+            <p style="font-size: 12px; font-weight: 800; color: var(--pink-deep); text-transform: uppercase;">📖 Secret Recipe Book • Page 1</p>
+            <p style="font-weight: 800; font-size: 1.1rem; color: var(--text-deep); margin: 6px 0;">First Secret Ingredient:</p>
+            <p style="font-size: 1.25rem; font-family: var(--font-hand); color: #B45309;">"Patience." ⏳</p>
+          </div>
+          <div class="recipe-page-item" id="recipePage2">
+            <p style="font-size: 12px; font-weight: 800; color: var(--pink-deep); text-transform: uppercase;">📖 Secret Recipe Book • Page 2</p>
+            <p style="font-weight: 800; font-size: 1.1rem; color: var(--text-deep); margin: 6px 0;">Second Secret Ingredient:</p>
+            <p style="font-size: 1.25rem; font-family: var(--font-hand); color: #B45309;">"Practice." 🥄</p>
+          </div>
+          <div class="recipe-page-item" id="recipePage3">
+            <p style="font-size: 12px; font-weight: 800; color: var(--pink-deep); text-transform: uppercase;">📖 Secret Recipe Book • Page 3</p>
+            <p style="font-weight: 800; font-size: 1.1rem; color: var(--text-deep); margin: 6px 0;">Most Important Ingredient:</p>
+            <p style="font-size: 1.35rem; font-family: var(--font-hand); color: var(--pink-deep);">"A little bit of Mishi magic. ✨"</p>
+          </div>
+          <button class="btn-storybook secondary" id="btnNextRecipePage" style="font-size: 12px; padding: 6px 14px; margin-top: 8px;">
+            <span id="btnRecipePageText">Next Page 📖 →</span>
+          </button>
+        </div>
+
+        <div id="chefStatusTag" style="min-height: 44px; font-weight: 700; color: var(--text-deep); font-size: 14px; margin: 8px 0;">
+          Step into Chef Mishi's kitchen below! ✨
         </div>
 
         <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 320px;">
           <button class="btn-storybook secondary" id="btnEnterChefMode">
             <span>Enter Chef Mode 👩‍🍳</span>
           </button>
+          <button class="btn-storybook secondary" id="btnOpenRecipeBook" style="font-size: 13.5px;">
+            <span>Open Her Recipe Book 📖</span>
+          </button>
           <button class="btn-storybook secondary" id="btnTasteTest" style="font-size: 13.5px;">
             <span>Taste Test 👀</span>
           </button>
         </div>
 
-        <a href="#ch6-ghost" class="btn-storybook" style="margin-top: 20px;">
-          <span>Chapter 06: The Little Ghost Incident 👻 →</span>
+        <a href="#ch6-artist" class="btn-storybook" style="margin-top: 20px;">
+          <span>Chapter 06: The Girl Who Paints Her World 🎨 →</span>
         </a>
       </div>
     </section>
 
     <!-- =========================================
-         CHAPTER 06: THE LITTLE GHOST INCIDENT 👻 (TANVIR & MISHI)
+         CHAPTER 06: THE GIRL WHO PAINTS HER WORLD 🎨
          ========================================= -->
-    <section class="chapter-section" id="ch6-ghost">
+    <section class="chapter-section" id="ch6-artist">
+      <div class="chapter-card">
+        <div class="chapter-pill" style="background: var(--lavender-soft);">
+          <span>🎨</span>
+          <span>Chapter 06 — Pure Artistry</span>
+        </div>
+
+        <h2>The Girl Who Paints Her World 🎨</h2>
+        <p style="color: var(--text-muted); font-size: 15px; margin: 4px 0 12px; line-height: 1.6;">
+          There's another thing Mishi is really good at...<br>
+          <strong style="color: var(--text-deep);">She paints. 🎨</strong><br>
+          <span style="font-size: 13.5px; color: var(--text-muted);">
+            Calling it just "painting" doesn't explain it. She can turn a blank canvas into something that actually feels alive. 🌷
+          </span>
+        </p>
+
+        <!-- Interactive Watercolor Easel & Canvas -->
+        <div class="artist-easel-container">
+          <div class="artist-mishi-easel-row">
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+              <span class="actor-avatar float-gentle" style="font-size: 42px;">🐱 🎨</span>
+              <span class="actor-tag" style="background: #E8F0FE; color: #1E40AF;">Artist Mishi</span>
+            </div>
+            
+            <div class="art-canvas-frame" id="artCanvasFrame" title="Mishi's Watercolor Canvas">
+              <!-- Progressive Painting Layers -->
+              <div class="art-layer-bg" id="artLayerBg"></div>
+              <div class="art-layer-colors" id="artLayerColors"></div>
+              <div class="art-layer-scenery" id="artLayerScenery">
+                <span>🌷</span>
+                <span>🌸</span>
+                <span>☁️</span>
+                <span>🌿</span>
+                <span>✨</span>
+              </div>
+              <div class="art-layer-details" id="artLayerDetails">
+                <span>✨ Masterpiece by Mishi 🎨</span>
+              </div>
+              <div class="art-layer-sparkles" id="artLayerSparkles">
+                <span>✨</span>
+                <span>💫</span>
+                <span>🌸</span>
+              </div>
+              <div class="art-layer-hidden-secret" id="artHiddenSecret" title="A little secret detail">
+                <span>🌸 For Mishi 🤍</span>
+              </div>
+              <div id="canvasEmptyPrompt" style="font-size: 13px; font-weight: 700; color: var(--text-muted); text-align: center; padding: 10px;">
+                A blank canvas waiting for colour... 🎨
+              </div>
+            </div>
+          </div>
+
+          <!-- Color Palette Swatches -->
+          <div class="palette-swatches-row">
+            <span class="palette-swatch-dot" style="background: #FFB3C6;" title="Rose Pink"></span>
+            <span class="palette-swatch-dot" style="background: #FFD166;" title="Soft Butter"></span>
+            <span class="palette-swatch-dot" style="background: #BDE0FE;" title="Sky Blue"></span>
+            <span class="palette-swatch-dot" style="background: #E2CAFF;" title="Lavender"></span>
+            <span class="palette-swatch-dot" style="background: #C7F9CC;" title="Mint Leaf"></span>
+          </div>
+
+          <p id="artistStatusText" style="font-size: 13.5px; font-weight: 700; color: var(--pink-deep); min-height: 24px; margin-top: 6px; text-align: center;">
+            Tap below to watch her artwork come alive! 🎨
+          </p>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 320px; margin-top: 4px;">
+          <button class="btn-storybook secondary breathe-pulse" id="btnPaintCanvas">
+            <span>Let Mishi Paint 🎨✨</span>
+          </button>
+          <button class="btn-storybook secondary" id="btnSecretStroke" style="display: none; font-size: 13.5px;">
+            <span>One More Brush Stroke 🖌️</span>
+          </button>
+        </div>
+
+        <div style="background: #FFFDF8; border: 1.5px dashed var(--border-soft); border-radius: var(--radius-md); padding: 12px 14px; margin-top: 16px; width: 100%; line-height: 1.55;">
+          <p style="font-size: 13.5px; color: var(--text-muted);">
+            Books tell stories with words. 📚<br>
+            Cooking tells stories with flavours. 👩‍🍳<br>
+            Painting tells stories with colours. 🎨<br>
+            <strong style="color: var(--text-deep);">And Mishi somehow knows how to do all three. 🤍</strong>
+          </p>
+        </div>
+
+        <a href="#ch7-ghost" class="btn-storybook" style="margin-top: 20px;">
+          <span>Chapter 07: The Little Ghost Incident 👻 →</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- =========================================
+         CHAPTER 07: THE LITTLE GHOST INCIDENT 👻 (TANVIR & MISHI)
+         ========================================= -->
+    <section class="chapter-section" id="ch7-ghost">
       <div class="chapter-card" id="ghostCard">
         <div class="chapter-pill" style="background: var(--lavender-soft);">
           <span>👻</span>
-          <span>Chapter 06 — A True Mini Story</span>
+          <span>Chapter 07 — A True Mini Story</span>
         </div>
 
         <h2 style="font-size: clamp(1.8rem, 6vw, 2.4rem);">The Little Ghost Incident 👻</h2>
@@ -1520,20 +1852,20 @@
 
         </div>
 
-        <a href="#ch7-things" class="btn-storybook" style="margin-top: 20px;">
-          <span>Chapter 07: The Little Things 🎀 →</span>
+        <a href="#ch8-things" class="btn-storybook" style="margin-top: 20px;">
+          <span>Chapter 08: The Little Things 🎀 →</span>
         </a>
       </div>
     </section>
 
     <!-- =========================================
-         CHAPTER 07: THE LITTLE THINGS ABOUT MISHI 🎀
+         CHAPTER 08: THE LITTLE THINGS ABOUT MISHI 🎀
          ========================================= -->
-    <section class="chapter-section" id="ch7-things">
+    <section class="chapter-section" id="ch8-things">
       <div class="chapter-card">
         <div class="chapter-pill">
           <span>🎀</span>
-          <span>Chapter 07</span>
+          <span>Chapter 08</span>
         </div>
 
         <h2>The Little Things About Mishi 🎀</h2>
@@ -1542,21 +1874,25 @@
         </p>
 
         <div class="little-things-grid">
-          <div class="little-thing-card" data-title="She can get lost in a story." data-emoji="📚">
-            <span style="font-size: 32px;">📖</span>
-            <strong style="font-size: 13px;">Bookish</strong>
+          <div class="little-thing-card" data-title="She can disappear into a story." data-emoji="📚">
+            <span style="font-size: 30px;">📖</span>
+            <strong style="font-size: 12.5px;">Bookish</strong>
           </div>
           <div class="little-thing-card" data-title="Every flavour is apparently the right flavour." data-emoji="🍦">
-            <span style="font-size: 32px;">🍦</span>
-            <strong style="font-size: 13px;">Sweet</strong>
+            <span style="font-size: 30px;">🍦</span>
+            <strong style="font-size: 12.5px;">Sweet</strong>
           </div>
           <div class="little-thing-card" data-title="Kitchen = her kingdom territory." data-emoji="👩‍🍳">
-            <span style="font-size: 32px;">👩‍🍳</span>
-            <strong style="font-size: 13px;">Chef Magic</strong>
+            <span style="font-size: 30px;">👩‍🍳</span>
+            <strong style="font-size: 12.5px;">Chef Magic</strong>
           </div>
-          <div class="little-thing-card" data-title="Ghosts? Absolutely not. 😭" data-emoji="👻">
-            <span style="font-size: 32px;">👻</span>
-            <strong style="font-size: 13px;">Scaredy Cat</strong>
+          <div class="little-thing-card" data-title="Give her a blank canvas and watch what happens. 🎨" data-emoji="🎨">
+            <span style="font-size: 30px;">🎨</span>
+            <strong style="font-size: 12.5px;">Artist</strong>
+          </div>
+          <div class="little-thing-card" style="grid-column: span 2; max-width: 220px; margin: 0 auto; width: 100%;" data-title="Ghosts? Absolutely not. 😭" data-emoji="👻">
+            <span style="font-size: 30px;">👻</span>
+            <strong style="font-size: 12.5px;">Scaredy Cat</strong>
           </div>
         </div>
 
@@ -1566,26 +1902,27 @@
 
         <div style="background: #FFFDF8; border: 1.5px dashed var(--border-soft); border-radius: var(--radius-md); padding: 14px; margin-top: 12px; width: 100%;">
           <p style="font-weight: 800; font-size: 1.15rem; color: var(--text-deep);">And that's Mishi.</p>
-          <p style="font-size: 13.5px; color: var(--text-muted);">
-            A little bookish. A little sweet. A little chef.<br>
-            <strong style="color: #7B2CBF;">A LOT scared of ghosts. 😂💗</strong>
+          <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.6;">
+            A little bookish. A little sweet. A talented chef. A pretty amazing artist.<br>
+            <strong style="color: #7B2CBF;">And A LOT scared of ghosts. 😂</strong><br>
+            <span style="color: var(--pink-deep); font-weight: 700;">That's the Mishi I wanted to celebrate today. 🎀</span>
           </p>
         </div>
 
-        <a href="#ch8-birthday" class="btn-storybook butter" style="margin-top: 20px;">
-          <span>Chapter 08: Today Is Her Day 🎂 →</span>
+        <a href="#ch9-birthday" class="btn-storybook butter" style="margin-top: 20px;">
+          <span>Chapter 09: Today Is Her Day 🎂 →</span>
         </a>
       </div>
     </section>
 
     <!-- =========================================
-         CHAPTER 08: TODAY IS HER DAY 🎂
+         CHAPTER 09: TODAY IS HER DAY 🎂
          ========================================= -->
-    <section class="chapter-section" id="ch8-birthday">
+    <section class="chapter-section" id="ch9-birthday">
       <div class="chapter-card">
         <div class="chapter-pill" style="background: var(--butter-yellow);">
           <span>🎂</span>
-          <span>Chapter 08 — A New Beginning</span>
+          <span>Chapter 09 — A New Beginning</span>
         </div>
 
         <h2 style="font-size: clamp(1.8rem, 6vw, 2.4rem);">Happy Birthday, Mishi! 🎂🎀</h2>
@@ -1629,55 +1966,7 @@
           <span>Blow Out Candles 💨🕯️</span>
         </button>
 
-        <a href="#ch9-like" class="btn-storybook" style="margin-top: 20px;">
-          <span>Chapter 09: What I Like About You 💗 →</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- =========================================
-         CHAPTER 09: DO YOU KNOW WHAT I LIKE ABOUT YOU? 💗
-         ========================================= -->
-    <section class="chapter-section" id="ch9-like">
-      <div class="chapter-card">
-        <div class="chapter-pill">
-          <span>💗</span>
-          <span>Chapter 09</span>
-        </div>
-
-        <h2>Before you open the letter... 🌸</h2>
-        <p style="color: var(--text-muted); font-size: 15px; margin: 4px 0 14px;">
-          I want to tell you a few little truths.
-        </p>
-
-        <div class="reasons-reveal-list" id="reasonsList">
-          <div class="reason-item-box show" id="reason1">
-            <span>📚</span>
-            <span>I like that you're a book lover and get lost in stories.</span>
-          </div>
-          <div class="reason-item-box" id="reason2">
-            <span>🍦</span>
-            <span>I like that simple ice cream can make your entire day.</span>
-          </div>
-          <div class="reason-item-box" id="reason3">
-            <span>🌷</span>
-            <span>I like watching you get genuinely excited about things you love.</span>
-          </div>
-          <div class="reason-item-box" id="reason4">
-            <span>👻</span>
-            <span>I even like your silly little fear of ghosts. 😂</span>
-          </div>
-          <div class="reason-item-box" id="reason5" style="background: var(--pink-soft); border-color: var(--pink-deep);">
-            <span>💗</span>
-            <span>Actually... I think I just like <strong>you</strong>.</span>
-          </div>
-        </div>
-
-        <button class="btn-storybook" id="btnRevealReasons" style="margin: 10px 0;">
-          <span id="btnRevealReasonsText">Tell Me More 💗</span>
-        </button>
-
-        <a href="#ch10-letter" class="btn-storybook butter" id="btnGoToLetter" style="display: none; margin-top: 10px;">
+        <a href="#ch10-letter" class="btn-storybook" style="margin-top: 20px;">
           <span>Chapter 10: A Little Letter For You 💌 →</span>
         </a>
       </div>
@@ -1734,15 +2023,20 @@
             📚 A girl who can disappear into a book and forget about the rest of the world.<br>
             🍦 A girl who believes ice cream can make almost any day better.<br>
             👩‍🍳 A girl who can turn a kitchen into her own little kingdom.<br>
+            🎨 A girl who can take an empty canvas and turn it into something beautiful.<br>
             👻 And, of course... a girl who can be completely defeated by the existence of a ghost. 😂
           </p>
 
           <p>
-            Honestly... I think those little things are what make you, you. Your interests. Your little habits. Your funny fears. Your smile. Your way of being yourself.
+            Honestly... I think those little things are what make you, you. Your interests. Your little habits. Your painting. Your funny fears. Your smile. Your way of being yourself.
           </p>
 
           <p>
-            I hope you never lose those little things. Keep reading the stories you love. Keep creating beautiful things. Keep finding happiness in the simplest moments.
+            And then there's your painting... you can take a blank canvas and somehow turn it into something that feels alive. I think that's a pretty amazing thing to be able to do. Books, cooking, painting... you have this funny little habit of turning ordinary things into something special.
+          </p>
+
+          <p>
+            I hope you never lose those little things. Keep reading the stories you love. Keep painting your world. Keep creating delicious things. Keep finding happiness in the simplest moments.
           </p>
 
           <p style="font-style: italic; color: var(--text-deep);">
@@ -1750,7 +2044,7 @@
           </p>
 
           <p>
-            I hope the chapters ahead are filled with: more laughter, more adventures, more books, more ice cream, more delicious creations, more beautiful memories... and absolutely ZERO ghosts. 👻😭
+            I hope the chapters ahead are filled with: more laughter, more adventures, more books, more ice cream, more beautiful paintings, more delicious creations, more happy memories... and absolutely ZERO ghosts. 👻😭
           </p>
 
           <p>
@@ -1767,7 +2061,7 @@
 
           <div style="margin-top: 18px; border-top: 1px dashed var(--border-light); padding-top: 12px; font-family: var(--font-note); font-size: 1.3rem;">
             With lots of warmth & care,<br>
-            Someone who wanted to make your birthday a little more special. 💗
+            Someone who wanted to make your birthday a little more special. ✨
           </div>
         </div>
 
@@ -1778,7 +2072,7 @@
     </section>
 
     <!-- =========================================
-         CHAPTER 11 & FINAL CELEBRATION 🎉
+         CHAPTER 11 & FINAL CELEBRATION 🎉 (CHAPTER 11, 12, 13)
          ========================================= -->
     <section class="chapter-section" id="ch11-reveal">
       <div class="chapter-card">
@@ -1797,29 +2091,36 @@
           <div class="quiz-options-grid">
             <button class="quiz-btn" onclick="handleQuizAnswer('fairy')">A. A birthday fairy 🧚</button>
             <button class="quiz-btn" onclick="handleQuizAnswer('dev')">B. A very talented developer 😌</button>
-            <button class="quiz-btn" onclick="handleQuizAnswer('tanvir')">C. Someone named Tanvir who really likes you 💗</button>
+            <button class="quiz-btn" onclick="handleQuizAnswer('tanvir')">C. Someone named Tanvir who wanted to make today special ✨</button>
           </div>
         </div>
 
-        <!-- The Emotional Big Reveal Box -->
+        <!-- The Emotional Big Reveal Box (CHAPTER 12: Tanvir Reveal & CHAPTER 13: Final Celebration) -->
         <div id="finalTanvirRevealBox" style="display: none; width: 100%; animation: theater-fade-in 0.5s forwards;">
-          <div style="background: #FFF5F7; border: 2.5px solid var(--pink-deep); border-radius: var(--radius-md); padding: 20px 16px; margin-bottom: 16px;">
+          <div style="background: #FFF5F7; border: 2.5px solid var(--pink-deep); border-radius: var(--radius-md); padding: 22px 16px; margin-bottom: 16px;">
             <div class="mascot-avatar-frame float-gentle" style="background: #FFD6E0;">
               <span>🐱</span>
               <div class="badge">🎀</div>
             </div>
 
-            <p style="font-size: 15px; color: var(--text-deep); margin-bottom: 6px;">
-              You love books. You love ice cream. You're amazing in the kitchen. You're terrified of ghosts.
+            <p style="font-size: 15px; color: var(--text-deep); margin-bottom: 8px; line-height: 1.6;">
+              You love books. 📚<br>
+              You love ice cream. 🍦<br>
+              You're amazing in the kitchen. 👩‍🍳<br>
+              You're an amazing painter. 🎨<br>
+              You're terrified of ghosts. 👻😂
             </p>
-            <p style="font-family: var(--font-hand); font-size: 2.8rem; color: var(--pink-deep); line-height: 1; margin: 8px 0;">
-              And I really like you. 🌷
+            <p style="font-style: italic; color: var(--text-muted); font-size: 14px; margin: 6px 0;">
+              And somehow...
             </p>
-            <p style="font-size: 13.5px; color: var(--text-muted); font-style: italic;">
-              I just thought you should know today. 🥺💗
+            <p style="font-family: var(--font-hand); font-size: clamp(2.4rem, 8vw, 3.2rem); color: var(--pink-deep); line-height: 1.1; margin: 12px 0 6px;">
+              I really like you. 🌷
+            </p>
+            <p style="font-size: 14.5px; color: var(--text-deep); font-weight: 700; margin-bottom: 12px;">
+              I just thought you should know. 🥺
             </p>
 
-            <div style="margin-top: 14px; font-weight: 800; font-size: 1.15rem; color: var(--text-deep);">
+            <div style="margin-top: 14px; font-weight: 800; font-size: 1.25rem; color: var(--text-deep);">
               — Tanvir 💗
             </div>
           </div>
@@ -1846,18 +2147,27 @@
               <div class="status-mini-bar"><div class="status-mini-fill" style="width: 100%;"></div></div>
             </div>
 
+            <div class="status-row">
+              <div class="status-header"><span>🎨 Artist Mode</span><span>100%</span></div>
+              <div class="status-mini-bar"><div class="status-mini-fill" style="width: 100%;"></div></div>
+            </div>
+
             <div class="status-row" id="ghostStatusRow" style="cursor: pointer;">
               <div class="status-header"><span>👻 Ghost Resistance (Tap)</span><span>2%</span></div>
               <div class="status-mini-bar"><div class="status-mini-fill" style="width: 2%; background: #A855F7;"></div></div>
             </div>
           </div>
 
-          <!-- Grand Final Celebration Button -->
+          <!-- Grand Final Celebration Button (CHAPTER 13) -->
           <button class="btn-storybook butter breathe-pulse" id="btnGrandCelebration" style="font-size: 16px; padding: 14px 28px;">
             <span>🎉 Launch Birthday Confetti! 🎂💗</span>
           </button>
 
-          <p style="font-size: 13px; color: var(--text-muted); margin-top: 14px;">
+          <p style="font-size: 13.5px; color: var(--text-muted); margin-top: 14px; line-height: 1.5;">
+            May your next chapter be even more beautiful than the last. 📖✨<br>
+            <strong style="color: var(--text-deep);">Keep smiling, Mishi. 🎀</strong>
+          </p>
+        </div>
             May your next chapter be even more beautiful than the last. 📖✨<br>
             <strong>Keep smiling, Mishi. 🎀</strong>
           </p>
@@ -2172,6 +2482,10 @@
         } else if (currentTraitStep === 4) {
           const item = document.getElementById('traitItem4');
           if (item) item.classList.add('visible');
+          showToast("A blank canvas comes alive! 🎨");
+        } else if (currentTraitStep === 5) {
+          const item = document.getElementById('traitItem5');
+          if (item) item.classList.add('visible');
           btnRevealNextTrait.style.display = 'none';
           if (btnGoToCh3) btnGoToCh3.style.display = 'inline-flex';
           showToast("And yes... ghosts. 👻😂");
@@ -2247,33 +2561,115 @@
     });
 
     /* =========================================
-       CHAPTER 05: CHEF MISHI
+       CHAPTER 05: CHEF MISHI 👩‍🍳
        ========================================= */
     const btnEnterChefMode = document.getElementById('btnEnterChefMode');
+    const btnOpenRecipeBook = document.getElementById('btnOpenRecipeBook');
+    const btnNextRecipePage = document.getElementById('btnNextRecipePage');
     const btnTasteTest = document.getElementById('btnTasteTest');
     const chefStatusTag = document.getElementById('chefStatusTag');
     const kitchenPan = document.getElementById('kitchenPan');
+    const recipeBookBox = document.getElementById('recipeBookBox');
+    let currentRecipePage = 1;
 
     if (btnEnterChefMode && chefStatusTag && kitchenPan) {
       btnEnterChefMode.addEventListener('click', () => {
         playSweetChime();
         kitchenPan.classList.add('cooking');
-        chefStatusTag.innerHTML = "<strong>Warning:</strong> Entering Chef Mishi's kitchen may cause hunger, happiness, and an unhealthy desire for seconds! 😂💗";
+        chefStatusTag.innerHTML = "<strong style='color: var(--pink-deep);'>Chef Mode Active! 👩‍🍳</strong><br><em>Warning:</em> Entering Mishi's kitchen may cause sudden hunger and high happiness! ✨";
         setTimeout(() => kitchenPan.classList.remove('cooking'), 1800);
-        showToast("Chef Mode Activated! 👩‍🍳✨");
+        showToast("Chef Mishi in her kingdom! 👩‍🍳✨");
+      });
+    }
+
+    if (btnOpenRecipeBook && recipeBookBox) {
+      btnOpenRecipeBook.addEventListener('click', () => {
+        playSweetChime();
+        recipeBookBox.classList.toggle('open');
+        const isOpen = recipeBookBox.classList.contains('open');
+        btnOpenRecipeBook.textContent = isOpen ? 'Close Recipe Book 📖' : 'Open Her Recipe Book 📖';
+        showToast(isOpen ? "Flipping through secret recipes... 📖" : "Recipe book tucked away ✨");
+      });
+    }
+
+    if (btnNextRecipePage) {
+      btnNextRecipePage.addEventListener('click', () => {
+        playSweetChime();
+        document.getElementById(`recipePage${currentRecipePage}`)?.classList.remove('active');
+        currentRecipePage = (currentRecipePage % 3) + 1;
+        document.getElementById(`recipePage${currentRecipePage}`)?.classList.add('active');
+        if (currentRecipePage === 3) {
+          document.getElementById('btnRecipePageText').textContent = 'Back to Page 1 📖';
+          showToast("A little bit of Mishi magic ✨");
+        } else {
+          document.getElementById('btnRecipePageText').textContent = `Next Page (Page ${currentRecipePage === 1 ? 2 : 3}) 📖 →`;
+        }
       });
     }
 
     if (btnTasteTest && chefStatusTag) {
       btnTasteTest.addEventListener('click', () => {
         playSweetChime();
-        chefStatusTag.innerHTML = "<strong>Hmm... Taste Test: 10/10! 🏆</strong><br><span style='font-size: 13px; color: var(--text-muted);'>Definitely not because I'm scared of Chef Mishi. 😭💗</span>";
-        showToast("10/10 Delicious! 😋");
+        chefStatusTag.innerHTML = "<strong style='color: #059669;'>Official Taste Test Result: 10/10! 🏆</strong><br><span style='font-size: 13px; color: var(--text-muted);'>Delicious every single time. 🤍</span>";
+        showToast("10/10 Chef Mishi masterpiece! 😋✨");
       });
     }
 
     /* =========================================
-       CHAPTER 06: THE LITTLE GHOST INCIDENT (8 SCENES)
+       CHAPTER 06: THE GIRL WHO PAINTS HER WORLD 🎨
+       ========================================= */
+    const btnPaintCanvas = document.getElementById('btnPaintCanvas');
+    const btnSecretStroke = document.getElementById('btnSecretStroke');
+    const artistStatusText = document.getElementById('artistStatusText');
+    const artCanvasFrame = document.getElementById('artCanvasFrame');
+    const canvasEmptyPrompt = document.getElementById('canvasEmptyPrompt');
+    let paintStep = 0;
+
+    const paintSteps = [
+      { id: 'artLayerBg', msg: "Soft pastel background washes over the canvas... 🌸" },
+      { id: 'artLayerColors', msg: "Rich colors blending together seamlessly... 🎨" },
+      { id: 'artLayerScenery', msg: "Flowers and delicate skies appearing... 🌷☁️" },
+      { id: 'artLayerDetails', msg: "Fine brushstrokes and finishing touches... ✨" },
+      { id: 'artLayerSparkles', msg: "A complete painting created by Mishi. 🤍" }
+    ];
+
+    if (btnPaintCanvas) {
+      btnPaintCanvas.addEventListener('click', () => {
+        playSweetChime();
+        if (canvasEmptyPrompt) canvasEmptyPrompt.style.display = 'none';
+
+        if (paintStep < paintSteps.length) {
+          const stepData = paintSteps[paintStep];
+          const el = document.getElementById(stepData.id);
+          if (el) el.classList.add('visible');
+          if (artistStatusText) artistStatusText.textContent = stepData.msg;
+          showToast(stepData.msg);
+          paintStep++;
+
+          if (paintStep === paintSteps.length) {
+            btnPaintCanvas.style.display = 'none';
+            if (btnSecretStroke) btnSecretStroke.style.display = 'inline-flex';
+            triggerConfettiBurst(window.innerWidth / 2, window.innerHeight / 2, ['🎨', '🌸', '✨', '🌷', '🤍'], 20);
+          }
+        }
+      });
+    }
+
+    if (btnSecretStroke) {
+      btnSecretStroke.addEventListener('click', () => {
+        playSweetChime();
+        const secret = document.getElementById('artHiddenSecret');
+        if (secret) secret.classList.add('visible');
+        if (artistStatusText) {
+          artistStatusText.innerHTML = "<em>Every brush stroke she paints has a little warmth in it.</em> 🌷🤍";
+        }
+        btnSecretStroke.style.display = 'none';
+        showToast("Secret detail unlocked: For Mishi 🤍");
+      });
+    }
+
+    /* =========================================
+       CHAPTER 07: THE LITTLE GHOST INCIDENT 👻 (8 SCENES)
        ========================================= */
     const ghostCard = document.getElementById('ghostCard');
     const ghostSceneDots = document.querySelectorAll('#ghostSceneDots .scene-dot');
@@ -2358,7 +2754,7 @@
     });
 
     /* =========================================
-       CHAPTER 07: THE LITTLE THINGS ABOUT MISHI
+       CHAPTER 08: THE LITTLE THINGS ABOUT MISHI 🎀
        ========================================= */
     const littleThingCards = document.querySelectorAll('.little-thing-card');
     const littleThingDetail = document.getElementById('littleThingDetail');
@@ -2375,7 +2771,7 @@
     });
 
     /* =========================================
-       CHAPTER 08: BIRTHDAY CAKE & CANDLES
+       CHAPTER 09: BIRTHDAY CAKE & CANDLES 🎂
        ========================================= */
     const btnBlowCandles = document.getElementById('btnBlowCandles');
     const candleWishStatus = document.getElementById('candleWishStatus');
@@ -2404,30 +2800,7 @@
     });
 
     /* =========================================
-       CHAPTER 09: DO YOU KNOW WHAT I LIKE ABOUT YOU?
-       ========================================= */
-    let reasonStep = 1;
-    const btnRevealReasons = document.getElementById('btnRevealReasons');
-    const btnRevealReasonsText = document.getElementById('btnRevealReasonsText');
-    const btnGoToLetter = document.getElementById('btnGoToLetter');
-
-    if (btnRevealReasons) {
-      btnRevealReasons.addEventListener('click', () => {
-        reasonStep++;
-        playSweetChime();
-        const nextReason = document.getElementById(`reason${reasonStep}`);
-        if (nextReason) nextReason.classList.add('show');
-
-        if (reasonStep === 5) {
-          btnRevealReasons.style.display = 'none';
-          if (btnGoToLetter) btnGoToLetter.style.display = 'inline-flex';
-          showToast("That's why I made all this... 💗");
-        }
-      });
-    }
-
-    /* =========================================
-       CHAPTER 10: WAX-SEALED ENVELOPE & LETTER
+       CHAPTER 10: WAX-SEALED ENVELOPE & LETTER 💌
        ======================================== */
     const waxEnvelopeBtn = document.getElementById('waxEnvelopeBtn');
     const letterPaperSheet = document.getElementById('letterPaperSheet');
@@ -2443,7 +2816,7 @@
     }
 
     /* =========================================
-       CHAPTER 11: QUIZ & FINAL REVEAL
+       CHAPTER 11, 12, 13: QUIZ & FINAL REVEAL 🎉
        ========================================= */
     window.handleQuizAnswer = function(choice) {
       playSweetChime();
