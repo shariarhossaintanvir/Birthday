@@ -1,66 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>The Little Story of Mishi 📖🎀 | Happy Birthday Maisha</title>
-  <meta name="description" content="A magical, handcrafted birthday storybook crafted especially for Mishi." />
-  <meta property="og:title" content="The Little Story of Mishi 📖🎀" />
-  <meta property="og:description" content="An interactive birthday storybook, heartfelt letter, and sweet celebration." />
-  <meta property="og:type" content="website" />
+  <meta name="description" content="A magical, personalized interactive storybook birthday celebration made with love for Maisha (Mishi) by Tanvir.">
+  <meta property="og:title" content="The Little Story of Mishi 📖🎀 | Happy Birthday Maisha">
+  <meta property="og:description" content="A magical, personalized interactive storybook birthday celebration made with love for Maisha (Mishi) by Tanvir.">
 
-  <!-- Google Fonts: Cormorant Garamond (Editorial Serif), Quicksand (Warm Body), Caveat & Dancing Script (Handwritten Coquette) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Google Fonts: Elegant Display + Warm Handwritten + Clean Body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sacramento&display=swap" rel="stylesheet">
 
   <style>
     /* =========================================
-       1. COQUETTE PASTEL DESIGN TOKENS
+       1. ROOT DESIGN SYSTEM & VARIABLES
        ========================================= */
     :root {
-      --bg-cream: #FDFBF7;
-      --bg-blush: #FFF5F7;
-      --bg-gradient: linear-gradient(145deg, #FDFBF7 0%, #FFF2F5 35%, #FBF6EF 70%, #FFF8FA 100%);
-      --text-main: #5C4033;
-      --text-muted: #8C6D62;
-      --text-deep: #4A2E2B;
-      --border-soft: #5C4033;
-      --border-light: rgba(92, 64, 51, 0.25);
-      
-      /* Coquette Pastel Palette */
-      --pink-soft: #FFD6E0;
-      --pink-blush: #FFC0CB;
+      /* Soft Coquette & Warm Pastel Color Palette */
+      --pink-soft: #FFE4EC;
+      --pink-blush: #FFD6E0;
+      --pink-mid: #FFB3C6;
       --pink-deep: #FF7597;
-      --pink-light: #FFF0F5;
-      --peach-soft: #FFE5D9;
-      --lavender-soft: #E8E0F8;
-      --butter-yellow: #FFF2D6;
-      --mint-soft: #D8F3DC;
-      --baby-blue: #D8EAFD;
-      --paper-cream: #FFFCF5;
+      --pink-accent: #E84A75;
+      
+      --cream-warm: #FFFDF8;
+      --cream-light: #FAF6EE;
+      --peach-soft: #FFE8D6;
+      --lavender-soft: #F3E8FF;
+      --butter-yellow: #FEF3C7;
+      
+      --text-deep: #4A3528;
+      --text-muted: #786255;
+      --text-light: #9C8577;
+      
+      --border-soft: #5C4033;
+      --border-light: rgba(92, 64, 51, 0.16);
+      --border-dash: rgba(92, 64, 51, 0.28);
+      
+      --shadow-sm: 2px 2px 0px var(--border-soft);
+      --shadow-md: 4px 4px 0px var(--border-soft);
+      --shadow-lg: 6px 6px 0px var(--border-soft);
+      --shadow-float: 0 10px 24px rgba(92, 64, 51, 0.12);
 
-      /* Dimensional Handcrafted Shadows */
-      --shadow-sm: 3px 3px 0px #5C4033;
-      --shadow-md: 5px 5px 0px #5C4033;
-      --shadow-lg: 7px 7px 0px #5C4033;
-      --shadow-soft: 4px 4px 0px rgba(92, 64, 51, 0.1);
-
-      --radius-sm: 14px;
+      --radius-sm: 12px;
       --radius-md: 20px;
       --radius-lg: 28px;
       --radius-pill: 9999px;
 
-      --font-body: 'Quicksand', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-display: 'Cormorant Garamond', Georgia, serif;
-      --font-hand: 'Caveat', 'Dancing Script', cursive;
-
-      --safe-padding-x: clamp(16px, 4.5vw, 24px);
-      --nav-height: 62px;
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-hand: 'Sacramento', cursive;
+      --font-note: 'Caveat', cursive;
+      --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
 
     /* =========================================
-       2. MOBILE-FIRST RESET & BASE STYLES
+       2. GLOBAL RESET & BASE STYLES
        ========================================= */
     *, *::before, *::after {
       box-sizing: border-box;
@@ -72,244 +68,69 @@
     html {
       scroll-behavior: smooth;
       font-size: 16px;
-      background-color: var(--bg-cream);
-      overflow-x: hidden;
-      width: 100%;
+      background-color: var(--cream-warm);
+      color: var(--text-deep);
+      font-family: var(--font-body);
+      line-height: 1.6;
     }
 
     body {
-      background-color: var(--bg-cream);
-      background-image: var(--bg-gradient);
-      background-attachment: fixed;
-      color: var(--text-main);
-      font-family: var(--font-body);
-      line-height: 1.6;
-      overflow-x: hidden;
-      width: 100%;
       min-height: 100svh;
+      width: 100%;
+      overflow-x: hidden;
       position: relative;
-      padding-bottom: calc(var(--nav-height) + 30px);
+      background: radial-gradient(circle at 10% 10%, #FFF5F7 0%, #FFFDF8 45%, #FAF2EB 100%);
     }
 
-    /* Responsive Typography */
-    h1, h2, h3, h4 {
-      font-family: var(--font-display);
-      color: var(--text-deep);
-      line-height: 1.15;
-      text-align: center;
-      font-weight: 700;
-    }
-
-    .serif { font-family: var(--font-display); }
-    .handwritten { font-family: var(--font-hand); }
-
-    p { line-height: 1.65; }
-
-    /* Particles & Hearts Background Canvas */
-    #particle-canvas {
+    /* Ambient Canvas for Floating Sparkles */
+    #sparkleCanvas {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
       pointer-events: none;
       z-index: 1;
     }
 
-    /* Toast Notification */
-    #easterToast {
-      position: fixed;
-      top: 24px;
-      left: 50%;
-      transform: translateX(-50%) translateY(-50px);
-      background: #FFFDF8;
-      border: 2px solid var(--border-soft);
-      padding: 10px 22px;
-      border-radius: var(--radius-pill);
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text-deep);
-      box-shadow: var(--shadow-sm);
-      z-index: 9999;
-      opacity: 0;
-      pointer-events: none;
-      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      white-space: nowrap;
-      max-width: 90vw;
-      text-overflow: ellipsis;
-      overflow: hidden;
-    }
-    #easterToast.show {
-      transform: translateX(-50%) translateY(0);
-      opacity: 1;
+    /* Main Storybook Container (Mobile-First Layout) */
+    .storybook-container {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 480px; /* Optimal mobile reading width */
+      margin: 0 auto;
+      padding: 0 16px 100px;
     }
 
-    /* Tap Heart Floating Effect */
-    .tap-heart-fx {
-      position: fixed;
-      pointer-events: none;
-      font-size: 22px;
-      z-index: 9999;
-      animation: float-up-fade 1.1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    @media (min-width: 768px) {
+      .storybook-container {
+        max-width: 680px;
+        padding: 0 24px 120px;
+      }
     }
-    @keyframes float-up-fade {
-      0% { transform: translate(-50%, -50%) scale(0.6); opacity: 1; }
-      100% { transform: translate(-50%, -100px) scale(1.3) rotate(12deg); opacity: 0; }
+
+    /* Typography Utility Classes */
+    h1, h2, h3, .heading-serif {
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--text-deep);
+      line-height: 1.25;
+    }
+
+    .handwriting {
+      font-family: var(--font-hand);
+      font-weight: 400;
+    }
+
+    .cute-note {
+      font-family: var(--font-note);
+      font-size: 1.25rem;
     }
 
     /* =========================================
-       3. MOBILE-FIRST STORYBOOK CONTAINERS
+       3. FLOATING MUSIC TOGGLE & CONTROLS
        ========================================= */
-    .storybook-viewport {
-      width: 100%;
-      max-width: 760px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .chapter-section {
-      width: 100%;
-      min-height: calc(100svh - var(--nav-height));
-      padding: clamp(24px, 5vw, 42px) var(--safe-padding-x);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-
-    .chapter-card {
-      width: 100%;
-      background: var(--paper-cream);
-      border: 2px solid var(--border-soft);
-      border-radius: var(--radius-lg);
-      padding: clamp(22px, 5vw, 36px) clamp(16px, 4vw, 28px);
-      box-shadow: var(--shadow-md);
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    /* Ribbon / Chapter Badge */
-    .chapter-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      min-height: 34px;
-      padding: 4px clamp(14px, 3vw, 18px);
-      background: #FFFFFF;
-      border: 1.5px solid var(--border-soft);
-      border-radius: var(--radius-pill);
-      font-size: clamp(12px, 3vw, 13px);
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      color: var(--text-deep);
-      box-shadow: 2px 2px 0px var(--border-soft);
-      margin-bottom: 14px;
-      cursor: pointer;
-      user-select: none;
-      transition: all 0.2s ease;
-    }
-    .chapter-pill:hover {
-      transform: translate(-1px, -1px);
-      box-shadow: var(--shadow-sm);
-      background: var(--pink-soft);
-    }
-
-    /* Buttons with >= 48px Touch Height */
-    .btn-storybook {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      min-height: 48px;
-      padding: 12px clamp(20px, 5vw, 32px);
-      background: var(--pink-soft);
-      border: 2px solid var(--border-soft);
-      color: var(--text-deep);
-      font-family: var(--font-body);
-      font-size: clamp(15px, 3.8vw, 16px);
-      font-weight: 700;
-      border-radius: var(--radius-pill);
-      cursor: pointer;
-      box-shadow: var(--shadow-sm);
-      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      text-decoration: none;
-      user-select: none;
-      width: auto;
-      max-width: 100%;
-    }
-    .btn-storybook:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: var(--shadow-md);
-      background: var(--pink-blush);
-    }
-    .btn-storybook:active {
-      transform: translate(2px, 2px);
-      box-shadow: 1px 1px 0px var(--border-soft);
-    }
-
-    .btn-storybook.butter { background: var(--butter-yellow); }
-    .btn-storybook.butter:hover { background: #FFE4A0; }
-
-    .btn-storybook.secondary { background: #FFFFFF; }
-    .btn-storybook.secondary:hover { background: var(--pink-light); }
-
-    /* Breathing Button Animation */
-    .breathe-pulse {
-      animation: button-breathe 2.4s infinite ease-in-out;
-    }
-    @keyframes button-breathe {
-      0%, 100% { transform: scale(1); box-shadow: var(--shadow-sm); }
-      50% { transform: scale(1.03); box-shadow: var(--shadow-md); }
-    }
-
-    /* Floating & Wiggle Animations */
-    .float-gentle {
-      animation: gentle-float 3.2s infinite ease-in-out;
-    }
-    @keyframes gentle-float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-7px); }
-    }
-
-    .wiggle-anim {
-      animation: gentle-wiggle 0.6s infinite alternate ease-in-out;
-    }
-    @keyframes gentle-wiggle {
-      0% { transform: rotate(-3deg); }
-      100% { transform: rotate(3deg); }
-    }
-
-    /* Mascot Avatar Wrappers */
-    .cat-mascot-box {
-      width: clamp(130px, 34vw, 175px);
-      height: clamp(130px, 34vw, 175px);
-      margin: 10px auto 14px;
-      cursor: pointer;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-    .cat-mascot-box:hover {
-      transform: scale(1.07) rotate(2deg);
-    }
-    .cat-mascot-svg {
-      width: 100%;
-      height: 100%;
-      overflow: visible;
-    }
-
-    /* Floating Music Toggle Button */
     .floating-music-btn {
       position: fixed;
       top: 14px;
@@ -328,9 +149,8 @@
       font-size: 20px;
       transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       user-select: none;
-      -webkit-tap-highlight-color: transparent;
     }
-    .floating-music-btn:hover {
+    .floating-music-btn:hover, .floating-music-btn:active {
       transform: scale(1.08) translate(-1px, -1px);
       box-shadow: var(--shadow-md);
       background: var(--pink-soft);
@@ -354,228 +174,302 @@
     }
     @keyframes float-music-note {
       0% { transform: translate(0, 0) scale(0.6); opacity: 1; }
-      100% { transform: translate(calc(var(--rand-x, 1) * 28px), -48px) scale(1.2) rotate(15deg); opacity: 0; }
+      100% { transform: translate(calc(var(--rand-x, 1) * 32px), -50px) scale(1.2) rotate(15deg); opacity: 0; }
     }
 
-    /* Floating Mobile Navigation Bar */
-    .bottom-nav {
+    /* Floating Navigation Pills */
+    .mobile-floating-nav {
       position: fixed;
-      bottom: 12px;
+      bottom: 16px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 999;
-      width: calc(100% - 24px);
-      max-width: 480px;
-      height: var(--nav-height);
-      background: rgba(255, 252, 245, 0.98);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      background: rgba(255, 253, 248, 0.94);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       border: 2px solid var(--border-soft);
+      padding: 6px 14px;
       border-radius: var(--radius-pill);
-      box-shadow: var(--shadow-md);
       display: flex;
       align-items: center;
-      justify-content: space-around;
-      padding: 4px 6px;
+      gap: 12px;
+      box-shadow: var(--shadow-md);
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text-deep);
     }
-    .nav-btn {
+    .nav-pill-btn {
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: inherit;
+      font-weight: 700;
+      color: var(--text-deep);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 8px;
+      border-radius: var(--radius-pill);
+      transition: background 0.2s ease;
+    }
+    .nav-pill-btn:active {
+      background: var(--pink-soft);
+    }
+
+    /* =========================================
+       4. STORYBOOK CHAPTER SECTIONS & CARDS
+       ========================================= */
+    .chapter-section {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 0 20px;
+      position: relative;
+    }
+
+    .chapter-card {
+      width: 100%;
+      background: #FFFFFF;
+      border: 2.5px solid var(--border-soft);
+      border-radius: var(--radius-lg);
+      padding: 26px 20px;
+      box-shadow: var(--shadow-md);
+      position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      gap: 2px;
-      text-decoration: none;
-      color: var(--text-muted);
-      font-size: 10.5px;
-      font-weight: 700;
-      padding: 5px 8px;
-      border-radius: 18px;
-      min-width: 52px;
-      min-height: 46px;
-      transition: all 0.2s ease;
-      cursor: pointer;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .nav-btn.active {
-      color: var(--text-deep);
-      background: var(--pink-soft);
-      border: 1.5px solid var(--border-soft);
-      box-shadow: 2px 2px 0px var(--border-soft);
-    }
-    .nav-btn span.icon { font-size: 16px; line-height: 1; }
 
-    /* =========================================
-       4. CHAPTER 01: THE STORY BEGINS
-       ========================================= */
-    .hero-pretitle {
-      font-size: clamp(1.3rem, 4.2vw, 1.8rem);
-      font-style: italic;
-      color: var(--text-muted);
-      margin-bottom: 4px;
+    @media (min-width: 480px) {
+      .chapter-card {
+        padding: 34px 28px;
+      }
     }
-    .hero-date-tag {
+
+    .chapter-pill {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: var(--butter-yellow);
+      background: var(--pink-soft);
       border: 1.5px solid var(--border-soft);
-      padding: 6px clamp(14px, 3.5vw, 20px);
       border-radius: var(--radius-pill);
-      font-family: var(--font-display);
-      font-size: clamp(1.15rem, 3.8vw, 1.35rem);
-      font-weight: 700;
-      margin: 8px 0 12px;
+      padding: 4px 14px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--text-deep);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 14px;
+    }
+
+    /* Standard Interactive Button */
+    .btn-storybook {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--pink-soft);
+      border: 2px solid var(--border-soft);
+      color: var(--text-deep);
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 800;
+      padding: 12px 24px;
+      min-height: 48px;
+      border-radius: var(--radius-pill);
       box-shadow: var(--shadow-sm);
       cursor: pointer;
-      transition: all 0.2s ease;
+      text-decoration: none;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      user-select: none;
     }
-    .hero-date-tag:hover {
-      transform: translate(-1px, -1px);
+    .btn-storybook:hover, .btn-storybook:active {
+      transform: scale(1.03) translate(-1px, -1px);
       box-shadow: var(--shadow-md);
+      background: var(--pink-blush);
+    }
+    .btn-storybook.secondary {
+      background: #FFFFFF;
+    }
+    .btn-storybook.butter {
+      background: var(--butter-yellow);
+    }
+
+    /* Cute Mascot Avatar Frame */
+    .mascot-avatar-frame {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
       background: var(--pink-soft);
-    }
-    .hero-name-big {
-      font-size: clamp(2.6rem, 9vw, 4.2rem);
-      color: var(--text-deep);
-      letter-spacing: -0.5px;
-      margin: 4px 0 6px;
-    }
-    .hero-name-highlight {
-      color: var(--pink-deep);
+      border: 2.5px solid var(--border-soft);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      margin: 12px auto 16px;
       position: relative;
-      display: inline-block;
+      user-select: none;
+      transition: transform 0.3s ease;
     }
-    .hero-name-highlight::after {
-      content: '';
+    .mascot-avatar-frame:hover, .mascot-avatar-frame:active {
+      transform: scale(1.08) rotate(4deg);
+    }
+    .mascot-avatar-frame .badge {
       position: absolute;
-      bottom: 4px;
-      left: 0;
-      width: 100%;
-      height: 8px;
-      background: var(--pink-soft);
-      border-radius: 4px;
-      z-index: -1;
-    }
-    .hero-narrative {
-      font-size: clamp(1.05rem, 3.2vw, 1.25rem);
-      font-style: italic;
-      color: var(--text-muted);
-      max-width: 520px;
-      margin: 6px auto 22px;
+      bottom: -4px;
+      right: -4px;
+      background: #FFFFFF;
+      border: 1.5px solid var(--border-soft);
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      box-shadow: 1px 1px 0px var(--border-soft);
     }
 
     /* =========================================
-       5. CHAPTER 02: MEET MISHI (STORYBOOK OPENING)
+       5. CHAPTER 01: THE STORY BEGINS
        ========================================= */
-    .discovery-flow {
+    .hero-title-group {
+      margin: 10px 0 16px;
+    }
+    .hero-date-badge {
+      display: inline-block;
+      background: #FFFDF8;
+      border: 1.5px dashed var(--border-soft);
+      padding: 4px 16px;
+      border-radius: var(--radius-pill);
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--pink-accent);
+      margin-bottom: 8px;
+    }
+    .hero-mishi-name {
+      font-family: var(--font-hand);
+      font-size: clamp(3.2rem, 11vw, 4.8rem);
+      color: var(--pink-deep);
+      line-height: 0.95;
+      text-shadow: 2px 2px 0px var(--pink-soft);
+      margin: 4px 0 8px;
+    }
+
+    /* =========================================
+       6. CHAPTER 02: MEET MISHI
+       ========================================= */
+    .trait-reveal-list {
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      margin: 16px 0 24px;
-      text-align: left;
+      gap: 10px;
+      margin: 16px 0;
     }
-    .discovery-line {
-      background: #FFFFFF;
-      border: 1.5px solid var(--border-soft);
-      border-radius: var(--radius-sm);
+    .trait-reveal-item {
+      background: #FFFDF8;
+      border: 2px solid var(--border-soft);
+      border-radius: var(--radius-md);
       padding: 12px 16px;
-      font-size: clamp(1rem, 3.4vw, 1.15rem);
-      font-weight: 600;
-      color: var(--text-deep);
-      box-shadow: 2px 2px 0px var(--border-soft);
       display: flex;
       align-items: center;
       gap: 12px;
+      text-align: left;
+      font-weight: 700;
+      font-size: 14.5px;
+      box-shadow: var(--shadow-sm);
       opacity: 0;
       transform: translateY(12px);
-      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .discovery-line.revealed {
+    .trait-reveal-item.visible {
       opacity: 1;
       transform: translateY(0);
     }
-    .discovery-line .icon {
-      font-size: 24px;
+    .trait-icon {
+      font-size: 26px;
       flex-shrink: 0;
     }
 
     /* =========================================
-       6. CHAPTER 03: THE GIRL WHO LOVES STORIES 📚
+       7. CHAPTER 03: THE GIRL WHO LOVES STORIES
        ========================================= */
-    .book-interactive-area {
+    .book-interactive-wrapper {
       width: 100%;
-      max-width: 500px;
-      margin: 16px 0 20px;
+      max-width: 380px;
+      margin: 14px auto;
+      perspective: 1000px;
     }
-    .book-cover-mock {
+    .storybook-3d-card {
       background: #FFFDF8;
-      border: 2px solid var(--border-soft);
+      border: 2.5px solid var(--border-soft);
       border-radius: var(--radius-md);
-      padding: 24px 20px;
+      padding: 20px 16px;
       box-shadow: var(--shadow-md);
       position: relative;
       transition: all 0.4s ease;
     }
-    .book-page-reveal {
-      display: none;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-      background: var(--butter-yellow);
-      border: 2px dashed var(--border-soft);
-      border-radius: var(--radius-sm);
-      padding: 18px 16px;
-      margin-top: 14px;
-    }
-    .book-page-reveal.opened {
-      display: block;
-      opacity: 1;
-      transform: translateY(0);
+    .book-page-content {
+      min-height: 110px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-style: italic;
+      color: var(--text-deep);
+      font-size: 15px;
+      line-height: 1.5;
     }
 
     /* =========================================
-       7. CHAPTER 04: THE ICE CREAM THEORY 🍦
+       8. CHAPTER 04: THE ICE CREAM THEORY
        ========================================= */
-    .flavours-grid {
+    .ice-flavours-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 10px;
       width: 100%;
       max-width: 440px;
-      margin: 14px 0 12px;
+      margin: 14px 0 10px;
     }
     .flavour-btn {
       background: #FFFFFF;
-      border: 1.5px solid var(--border-soft);
+      border: 2px solid var(--border-soft);
       border-radius: var(--radius-sm);
-      padding: 10px 6px;
-      font-size: 13px;
+      padding: 10px 4px;
+      font-family: var(--font-body);
+      font-size: 12.5px;
       font-weight: 700;
       color: var(--text-deep);
-      box-shadow: 2px 2px 0px var(--border-soft);
       cursor: pointer;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 4px;
-      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      user-select: none;
-    }
-    .flavour-btn:active, .flavour-btn:hover {
-      transform: scale(1.05) translate(-1px, -1px);
       box-shadow: var(--shadow-sm);
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .flavour-btn:active {
+      transform: scale(1.06) translate(-1px, -1px);
       background: var(--pink-soft);
     }
-    /* Interactive Ice Cream Cone Parlor */
-    .ice-cream-cone-area {
+    .cone-parlor-box {
       width: 100%;
-      max-width: 380px;
-      margin: 6px auto 12px;
+      max-width: 360px;
+      margin: 8px auto 12px;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
-    .ice-cone-stack-box {
+    .stacked-scoops-wrapper {
       position: relative;
       width: 130px;
       min-height: 110px;
@@ -603,40 +497,19 @@
       align-items: center;
       justify-content: center;
       font-size: 16px;
-      animation: scoop-land 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      transition: all 0.2s ease;
+      animation: scoop-land 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
     @keyframes scoop-land {
       0% { transform: translateY(-24px) scale(0.5); opacity: 0; }
       70% { transform: translateY(4px) scale(1.15); }
       100% { transform: translateY(0) scale(1); opacity: 1; }
     }
-    .happiness-meter-container {
+    .happiness-meter-box {
       width: 100%;
       max-width: 380px;
-      margin: 10px auto 4px;
+      margin: 8px auto 4px;
     }
-    .meter-header-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--text-deep);
-      margin-bottom: 6px;
-      padding: 0 4px;
-    }
-    .meter-percent-tag {
-      background: var(--pink-soft);
-      border: 1px solid var(--border-soft);
-      padding: 2px 10px;
-      border-radius: var(--radius-pill);
-      font-weight: 800;
-      color: var(--pink-deep);
-      font-size: 13px;
-      box-shadow: 1px 1px 0px var(--border-soft);
-    }
-    .happiness-meter-wrap {
+    .meter-bar-wrap {
       width: 100%;
       background: #FFFFFF;
       border: 2px solid var(--border-soft);
@@ -646,8 +519,8 @@
       position: relative;
       overflow: hidden;
     }
-    .happiness-meter-bar {
-      width: 30%;
+    .meter-bar-fill {
+      width: 35%;
       height: 18px;
       background: linear-gradient(90deg, #FFD6E0 0%, #FF8FA3 50%, #FF7597 100%);
       border-radius: var(--radius-pill);
@@ -655,61 +528,38 @@
       position: relative;
       overflow: hidden;
     }
-    .happiness-meter-bar.maxed {
-      background: linear-gradient(90deg, #FFB3C6 0%, #FF7597 45%, #FFB703 100%);
-    }
-    .meter-shimmer-fx {
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
-      animation: bar-shimmer 2.2s infinite;
-    }
-    @keyframes bar-shimmer {
-      0% { left: -100%; }
-      100% { left: 200%; }
-    }
 
     /* =========================================
-       8. CHAPTER 05: CHEF MISHI 👩‍🍳
+       9. CHAPTER 05: CHEF MISHI
        ========================================= */
-    .kitchen-pan-zone {
-      width: 100%;
-      max-width: 420px;
-      background: var(--butter-yellow);
-      border: 2px dashed var(--border-soft);
-      border-radius: var(--radius-md);
-      padding: 18px 16px;
-      margin: 14px 0 18px;
-      text-align: center;
-    }
-    .pan-steam-fx {
-      font-size: 32px;
-      transition: transform 0.3s ease;
-    }
-
-    /* =========================================
-       9. CHAPTER 06: THE LITTLE GHOST INCIDENT 👻 (TANVIR & MISHI)
-       ========================================= */
-    .ghost-haunted-card {
-      transition: background-color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+    .kitchen-pan-display {
+      width: 110px;
+      height: 110px;
+      background: #FFFDF8;
+      border: 2.5px solid var(--border-soft);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      box-shadow: var(--shadow-sm);
+      margin: 12px auto 14px;
       position: relative;
-      overflow: hidden;
+      transition: all 0.3s ease;
     }
-    .ghost-haunted-card.prank-dim {
-      background: #FAF3FB !important;
-      border-color: #A78BFA !important;
-      box-shadow: 0 8px 24px rgba(167, 139, 250, 0.18), var(--shadow-md) !important;
+    .kitchen-pan-display.cooking {
+      animation: pan-sizzle 0.5s infinite;
+      background: #FFF8E1;
     }
-    .ghost-haunted-card.happy-pink {
-      background: #FFF5F7 !important;
-      border-color: var(--pink-deep) !important;
-      box-shadow: 0 8px 24px rgba(255, 117, 151, 0.22), var(--shadow-md) !important;
+    @keyframes pan-sizzle {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      25% { transform: translate(-3px, 2px) rotate(-4deg); }
+      75% { transform: translate(3px, -2px) rotate(4deg); }
     }
 
-    /* Scene Container */
+    /* =========================================
+       10. CHAPTER 06: THE LITTLE GHOST INCIDENT
+       ========================================= */
     .ghost-mini-theater {
       width: 100%;
       max-width: 420px;
@@ -718,7 +568,6 @@
       flex-direction: column;
       align-items: center;
     }
-
     .ghost-stage-screen {
       width: 100%;
       min-height: 220px;
@@ -741,8 +590,6 @@
       0% { opacity: 0; transform: translateY(8px) scale(0.98); }
       100% { opacity: 1; transform: translateY(0) scale(1); }
     }
-
-    /* Character Display Layouts */
     .scene-actors-row {
       display: flex;
       align-items: flex-end;
@@ -753,7 +600,6 @@
       position: relative;
       width: 100%;
     }
-
     .actor-figure {
       display: flex;
       flex-direction: column;
@@ -783,47 +629,6 @@
       background: #F3E8FF;
       color: #7E22CE;
     }
-
-    /* Cute Kawaii Ghost Visual */
-    .kawaii-ghost-chibi {
-      position: relative;
-      display: inline-block;
-      animation: ghost-float-chibi 2.2s infinite ease-in-out;
-    }
-    @keyframes ghost-float-chibi {
-      0%, 100% { transform: translateY(0) rotate(-3deg); }
-      50% { transform: translateY(-7px) rotate(3deg); }
-    }
-
-    /* Dialogue & Story Narrative Text */
-    .ghost-narration-box {
-      font-size: clamp(0.95rem, 3.2vw, 1.1rem);
-      line-height: 1.55;
-      color: var(--text-deep);
-      text-align: center;
-      margin: 8px 0;
-      width: 100%;
-    }
-    .ghost-narration-box p {
-      margin: 3px 0;
-    }
-
-    .ghost-speech-bubble {
-      background: #FFFDF8;
-      border: 1.5px solid var(--border-soft);
-      border-radius: 14px;
-      padding: 8px 14px;
-      font-size: 13.5px;
-      font-weight: 700;
-      color: var(--text-deep);
-      box-shadow: 2px 2px 0px var(--border-soft);
-      margin: 6px 0;
-      position: relative;
-      max-width: 90%;
-      text-align: center;
-    }
-
-    /* Chase Animation for Scene 5 */
     .chase-track-area {
       width: 100%;
       height: 70px;
@@ -856,7 +661,6 @@
       0%, 100% { transform: translateX(0) rotate(-6deg); }
       50% { transform: translateX(25px) rotate(8deg); }
     }
-
     .ghost-defeated-stamp {
       display: inline-flex;
       align-items: center;
@@ -870,15 +674,20 @@
       font-size: 14px;
       box-shadow: 2px 2px 0px #16A34A;
       margin: 8px 0;
-      animation: stamp-pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.35);
     }
-    @keyframes stamp-pop {
-      0% { transform: scale(0.4) rotate(-8deg); opacity: 0; }
-      80% { transform: scale(1.15) rotate(3deg); }
-      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    .ghost-speech-bubble {
+      background: #FFFDF8;
+      border: 1.5px solid var(--border-soft);
+      border-radius: 14px;
+      padding: 8px 14px;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text-deep);
+      box-shadow: 2px 2px 0px var(--border-soft);
+      margin: 6px 0;
+      text-align: center;
+      max-width: 90%;
     }
-
-    /* Screen Progress Dots */
     .scene-progress-dots {
       display: flex;
       justify-content: center;
@@ -898,493 +707,450 @@
       background: var(--pink-deep);
     }
 
-    /* Spooky Screen Shake */
-    .card-spooky-shake {
-      animation: spooky-shake-anim 0.45s ease-in-out;
+    /* =========================================
+       11. CHAPTER 07: THE LITTLE THINGS ABOUT MISHI
+       ========================================= */
+    .little-things-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      width: 100%;
+      margin: 16px 0;
     }
-    @keyframes spooky-shake-anim {
-      0%, 100% { transform: translate(0, 0) rotate(0deg); }
-      20% { transform: translate(-6px, -3px) rotate(-1.5deg); }
-      40% { transform: translate(6px, 3px) rotate(1.5deg); }
-      60% { transform: translate(-4px, 4px) rotate(-1deg); }
-      80% { transform: translate(4px, -2px) rotate(1deg); }
+    .little-thing-card {
+      background: #FFFDF8;
+      border: 2px solid var(--border-soft);
+      border-radius: var(--radius-md);
+      padding: 14px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .little-thing-card:active {
+      transform: scale(1.05) translate(-1px, -1px);
+      background: var(--pink-soft);
     }
 
     /* =========================================
-       10. CHAPTER 07: TODAY IS HER DAY 🎂
+       12. CHAPTER 08: TODAY IS HER DAY (CAKE & CANDLES)
        ========================================= */
-    .cake-tap-zone {
+    .birthday-cake-container {
       width: 100%;
       max-width: 320px;
-      margin: 8px auto 16px;
+      margin: 16px auto 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+    .cake-base-svg {
+      width: 180px;
+      height: 140px;
+      filter: drop-shadow(0 6px 12px rgba(92, 64, 51, 0.15));
+    }
+    .candle-flame {
       cursor: pointer;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      transform-origin: center bottom;
+      animation: flame-flicker 1.2s infinite alternate ease-in-out;
+    }
+    @keyframes flame-flicker {
+      0% { transform: scale(1) rotate(-3deg); }
+      100% { transform: scale(1.15) rotate(3deg); }
+    }
+    .candle-flame.blown-out {
+      opacity: 0 !important;
+      transform: scale(0.2) !important;
+      pointer-events: none;
+    }
+
+    /* =========================================
+       13. CHAPTER 09: DO YOU KNOW WHAT I LIKE ABOUT YOU?
+       ========================================= */
+    .reasons-reveal-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+      margin: 14px 0;
+    }
+    .reason-item-box {
+      background: #FFFDF8;
+      border: 1.5px solid var(--border-soft);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      font-size: 14px;
+      font-weight: 700;
+      text-align: left;
+      box-shadow: 2px 2px 0px var(--border-soft);
+      display: none;
+      animation: theater-fade-in 0.4s forwards;
+    }
+    .reason-item-box.show {
+      display: block;
+    }
+
+    /* =========================================
+       14. CHAPTER 10: A LITTLE LETTER FOR YOU (ENVELOPE)
+       ========================================= */
+    .envelope-interactive-box {
+      width: 100%;
+      max-width: 360px;
+      margin: 16px auto;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
-    .cake-svg {
-      width: 100%;
-      height: auto;
-      max-height: 220px;
-    }
-    .cake-flame {
-      transform-origin: center bottom;
-      animation: candle-flicker 0.6s infinite alternate ease-in-out;
-      cursor: pointer;
-      transition: opacity 0.3s ease;
-    }
-    .cake-flame.blown {
-      opacity: 0;
-      transform: scale(0);
-    }
-    @keyframes candle-flicker {
-      0% { transform: scale(1) rotate(-2deg); }
-      100% { transform: scale(1.15) rotate(3deg); }
-    }
-
-    /* =========================================
-       11. CHAPTER 08: THE SPECIAL LETTER 💌
-       ========================================= */
-    .envelope-box {
-      width: 100%;
-      max-width: 480px;
-      background: #FFFDF8;
-      border: 2px solid var(--border-soft);
-      border-radius: var(--radius-lg);
-      padding: clamp(24px, 5vw, 36px) clamp(16px, 4vw, 26px);
-      box-shadow: var(--shadow-md);
-      text-align: center;
-      position: relative;
-      transition: all 0.4s ease;
-    }
-    .envelope-interactive-trigger {
-      width: clamp(130px, 32vw, 160px);
-      height: clamp(90px, 24vw, 115px);
-      margin: 0 auto 16px;
-      position: relative;
-      cursor: pointer;
-    }
-    .envelope-flap-part {
-      transform-origin: top center;
-      transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-    .envelope-box.opened .envelope-flap-part {
-      transform: rotateX(180deg);
-    }
-    .wax-seal {
-      width: 42px;
-      height: 42px;
-      background: var(--pink-soft);
-      border: 2px solid var(--border-soft);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 20px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      box-shadow: 2px 2px 0px var(--border-soft);
-      cursor: pointer;
-    }
-
-    /* THE WRITTEN LETTER PARCHMENT */
-    .letter-paper {
-      width: 100%;
-      max-width: 660px;
-      background: #FFFDF8;
-      border: 2px solid var(--border-soft);
-      border-radius: var(--radius-md);
-      padding: clamp(24px, 5.5vw, 42px) clamp(18px, 4.5vw, 34px);
-      box-shadow: var(--shadow-lg);
-      position: relative;
-      margin-top: 18px;
-      display: none;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      background-image: radial-gradient(#FFF0F5 1.5px, transparent 1.5px);
-      background-size: 22px 22px;
-      text-align: left;
-    }
-    .letter-paper.visible {
-      display: block;
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .letter-salutation {
-      font-family: var(--font-display);
-      font-size: clamp(1.8rem, 5.5vw, 2.5rem);
-      font-weight: 700;
-      color: var(--text-deep);
-      margin-bottom: 18px;
-    }
-    .letter-paragraph {
-      font-family: var(--font-display);
-      font-size: clamp(1.15rem, 3.8vw, 1.4rem);
-      line-height: 1.85;
-      color: var(--text-main);
-      margin-bottom: 18px;
-    }
-    .letter-trait-box {
-      background: #FFF9F0;
-      border: 1.5px solid var(--border-soft);
+    .wax-sealed-envelope {
+      width: 240px;
+      height: 150px;
+      background: #FFF3E8;
+      border: 2.5px solid var(--border-soft);
       border-radius: var(--radius-sm);
-      padding: 10px 14px;
-      margin: 12px 0;
+      position: relative;
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-family: var(--font-body);
-      font-size: clamp(0.98rem, 3.2vw, 1.12rem);
-      font-weight: 600;
+      justify-content: center;
+      box-shadow: var(--shadow-md);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .wax-sealed-envelope:hover, .wax-sealed-envelope:active {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: var(--shadow-lg);
+    }
+    .wax-seal-stamp {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--pink-deep);
+      border: 2px solid var(--border-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
       box-shadow: 2px 2px 0px var(--border-soft);
+      color: #FFFFFF;
+      transition: transform 0.3s ease;
     }
-    .letter-divider-flourish {
-      text-align: center;
-      letter-spacing: 4px;
-      color: var(--text-muted);
-      margin: 22px 0;
-      font-size: 14px;
+    .wax-sealed-envelope:active .wax-seal-stamp {
+      transform: scale(1.2);
     }
-    .letter-signoff-wrap {
-      text-align: right;
-      margin-top: 24px;
-      font-family: var(--font-display);
-      font-size: clamp(1.2rem, 3.8vw, 1.45rem);
-      font-style: italic;
+
+    /* Full Readable Letter Paper */
+    .letter-paper-sheet {
+      display: none;
+      width: 100%;
+      background: #FFFDF8;
+      border: 2.5px solid var(--border-soft);
+      border-radius: var(--radius-md);
+      padding: 26px 20px;
+      box-shadow: var(--shadow-lg);
+      margin-top: 18px;
+      text-align: left;
+      line-height: 1.8;
+      font-size: 15px;
+      color: var(--text-deep);
+      animation: letter-unfold 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
-    .letter-sign-hand {
-      font-family: var(--font-hand);
-      font-size: clamp(1.4rem, 4.5vw, 1.8rem);
-      color: var(--pink-deep);
-      font-weight: 700;
-      margin-top: 4px;
+    .letter-paper-sheet.revealed {
+      display: block;
+    }
+    @keyframes letter-unfold {
+      0% { opacity: 0; transform: translateY(20px) scale(0.95); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .letter-paper-sheet p {
+      margin-bottom: 14px;
     }
 
     /* =========================================
-       12. CHAPTER 09: ONE LAST THING & TANVIR REVEAL
+       15. CHAPTER 11 & FINAL CELEBRATION
        ========================================= */
-    #reveal-screen {
-      display: none;
-      opacity: 0;
-      transition: opacity 0.8s ease;
-    }
-    #reveal-screen.active {
+    .quiz-options-grid {
       display: flex;
-      opacity: 1;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+      margin: 14px 0;
     }
-    .romantic-reveal-card {
+    .quiz-btn {
       background: #FFFDF8;
       border: 2px solid var(--border-soft);
-      border-radius: var(--radius-lg);
-      padding: clamp(28px, 6vw, 44px) clamp(18px, 4.5vw, 32px);
-      box-shadow: var(--shadow-lg);
-      text-align: center;
-      width: 100%;
-    }
-    .reveal-line-slow {
-      font-family: var(--font-display);
-      font-size: clamp(1.25rem, 4vw, 1.6rem);
-      color: var(--text-deep);
-      margin: 12px 0;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: all 0.6s ease;
-    }
-    .reveal-line-slow.shown {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal-confession-title {
-      font-size: clamp(2rem, 6.5vw, 3.2rem);
-      color: var(--pink-deep);
-      font-weight: 700;
-      margin: 18px 0;
-    }
-    .tanvir-signature-badge {
-      display: inline-block;
-      background: var(--pink-soft);
-      border: 2px solid var(--border-soft);
-      padding: 10px 28px;
-      border-radius: var(--radius-pill);
-      font-family: var(--font-display);
-      font-size: clamp(1.5rem, 5vw, 2.2rem);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      font-family: var(--font-body);
+      font-size: 14px;
       font-weight: 700;
       color: var(--text-deep);
+      cursor: pointer;
+      text-align: left;
       box-shadow: var(--shadow-sm);
-      margin: 14px 0 10px;
+      transition: all 0.2s ease;
+    }
+    .quiz-btn:active {
+      transform: scale(1.02);
+      background: var(--pink-soft);
     }
 
-    /* =========================================
-       13. FINAL CELEBRATION
-       ========================================= */
-    #final-grand-screen {
-      display: none;
-      opacity: 0;
-      transition: opacity 0.8s ease;
+    /* Mishi Status Easter Egg Block */
+    .mishi-status-card {
+      width: 100%;
+      background: #FFFDF8;
+      border: 2px dashed var(--border-soft);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      margin: 18px 0;
+      text-align: left;
+      font-size: 13px;
     }
-    #final-grand-screen.active {
+    .status-row {
+      margin-bottom: 8px;
+    }
+    .status-header {
       display: flex;
-      opacity: 1;
+      justify-content: space-between;
+      font-weight: 700;
+      margin-bottom: 2px;
     }
-    .grand-birthday-title {
-      font-size: clamp(2.4rem, 8vw, 4rem);
-      line-height: 1.1;
-      color: var(--text-deep);
-      margin: 8px 0 12px;
+    .status-mini-bar {
+      width: 100%;
+      height: 8px;
+      background: #EFE8DE;
+      border-radius: var(--radius-pill);
+      overflow: hidden;
+      border: 1px solid var(--border-light);
     }
-    .easter-stickers-cluster {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px;
-      margin: 14px 0 20px;
+    .status-mini-fill {
+      height: 100%;
+      background: var(--pink-deep);
+      border-radius: var(--radius-pill);
     }
-    .easter-sticker-btn {
-      background: #FFFFFF;
-      border: 1.5px solid var(--border-soft);
-      padding: 6px 12px;
+
+    /* Interactive Easter Egg Toast */
+    .easter-toast {
+      position: fixed;
+      bottom: 74px;
+      left: 50%;
+      transform: translateX(-50%) translateY(30px);
+      background: #2D241E;
+      color: #FFFDF8;
+      padding: 10px 20px;
       border-radius: var(--radius-pill);
       font-size: 13px;
       font-weight: 700;
-      color: var(--text-deep);
-      box-shadow: 2px 2px 0px var(--border-soft);
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.2s ease;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      z-index: 10001;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      white-space: nowrap;
     }
-    .easter-sticker-btn:hover, .easter-sticker-btn:active {
-      transform: scale(1.05) rotate(2deg);
-      background: var(--pink-soft);
+    .easter-toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
     }
 
-    /* =========================================
-       14. ACCESSIBILITY & PREFERS-REDUCED-MOTION
-       ========================================= */
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
+    /* Tap Heart Floating Effect */
+    .tap-heart-fx {
+      position: fixed;
+      pointer-events: none;
+      font-size: 20px;
+      z-index: 9999;
+      animation: float-tap-heart 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes float-tap-heart {
+      0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
+      100% { transform: translate(calc(-50% + var(--tx, 0px)), calc(-50% - 70px)) scale(1.3); opacity: 0; }
+    }
+
+    /* Confetti Particle Canvas Element */
+    .confetti-particle {
+      position: fixed;
+      pointer-events: none;
+      z-index: 10000;
+    }
+
+    /* Animations */
+    .float-gentle {
+      animation: float-g 3s infinite ease-in-out;
+    }
+    @keyframes float-g {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    .breathe-pulse {
+      animation: breathe-btn 2.2s infinite ease-in-out;
+    }
+    @keyframes breathe-btn {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
     }
   </style>
 </head>
 <body>
 
-  <!-- Background Sparkling Particle Canvas -->
-  <canvas id="particle-canvas"></canvas>
+  <!-- Ambient Floating Background Sparkles Canvas -->
+  <canvas id="sparkleCanvas"></canvas>
 
-  <!-- Interactive Easter Egg Toast Notification -->
-  <div id="easterToast">Meow! ✨</div>
-
-  <!-- Top Right Floating Ambient Music Synth Toggle -->
-  <button class="floating-music-btn" id="musicToggleBtn" aria-label="Toggle Cozy Music" title="Play Sweet Birthday Melody">
+  <!-- Floating Audio Melody Player Button -->
+  <button class="floating-music-btn" id="musicToggleBtn" title="Play Sweet Birthday Melody" aria-label="Play Sweet Birthday Melody">
     <span id="musicIcon">🎵</span>
   </button>
 
-  <!-- MAIN STORYBOOK VIEWPORT (MOBILE-FIRST SAFE CONTAINER) -->
-  <div class="storybook-viewport">
+  <!-- Floating Mobile Navigation -->
+  <div class="mobile-floating-nav">
+    <button class="nav-pill-btn" onclick="scrollToChapter('ch1-start')">📖 Start</button>
+    <span>•</span>
+    <button class="nav-pill-btn" onclick="scrollToChapter('ch6-ghost')">👻 Ghost</button>
+    <span>•</span>
+    <button class="nav-pill-btn" onclick="scrollToChapter('ch8-birthday')">🎂 Cake</button>
+    <span>•</span>
+    <button class="nav-pill-btn" onclick="scrollToChapter('ch10-letter')">💌 Letter</button>
+  </div>
+
+  <!-- Interactive Easter Egg Toast Notification -->
+  <div class="easter-toast" id="easterToast">✨ Easter Egg Found!</div>
+
+  <!-- Main Storybook Container -->
+  <div class="storybook-container">
 
     <!-- =========================================
-         CHAPTER 01: THE STORY BEGINS... 🌷
+         CHAPTER 01: THE STORY BEGINS 🌷
          ========================================= -->
-    <section class="chapter-section" id="ch1-story-begins">
+    <section class="chapter-section" id="ch1-start">
       <div class="chapter-card">
-        
-        <div class="chapter-pill" id="easterEggDate">
-          <span>✨</span>
-          <span>Chapter 01 — A Storybook Beginning</span>
+        <div class="chapter-pill">
+          <span>🌷</span>
+          <span>Chapter 01</span>
         </div>
 
-        <p class="hero-pretitle">Once upon a time... ✨</p>
-
-        <div class="hero-date-tag" id="dateTagBtn" title="Tap for an easter egg!">
-          <span>📅</span>
-          <span>4 September 2008</span>
+        <div class="hero-title-group">
+          <p class="hero-date-badge" id="heroDateBadge" title="Tap to remember">4 September 2008</p>
+          <p style="font-size: clamp(1rem, 3.5vw, 1.25rem); color: var(--text-muted);">
+            Once upon a time... ✨
+          </p>
+          <p style="font-size: clamp(1.05rem, 3.6vw, 1.3rem); font-weight: 600; margin: 4px 0;">
+            Someone very special entered this world.
+          </p>
         </div>
 
-        <p style="font-size: clamp(1rem, 3.2vw, 1.15rem); color: var(--text-muted); margin-bottom: 2px;">
-          Someone very special entered this world...
-        </p>
-
-        <p style="font-size: clamp(1.1rem, 3.5vw, 1.25rem); font-style: italic; color: var(--text-deep); margin-bottom: 4px;">
-          Her name was Maisha,
-        </p>
-        <p style="font-size: clamp(0.95rem, 3vw, 1.1rem); color: var(--text-muted);">
-          but someone close to her might call her...
-        </p>
-
-        <h1 class="hero-name-big">
-          <span class="hero-name-highlight">Mishi 🎀</span>
-        </h1>
-
-        <!-- Cat Mascot Scene 1: Cat holding tiny gift 🎁 -->
-        <div class="cat-mascot-box float-gentle" id="catMascotHero" title="Tap Mishi's cute cat companion!">
-          <svg class="cat-mascot-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <!-- Ears -->
-            <polygon points="50,45 80,95 35,85" fill="#FFE0B2" stroke="#5C4033" stroke-width="4" stroke-linejoin="round"/>
-            <polygon points="55,55 75,90 45,82" fill="#FF8A80"/>
-            <polygon points="150,45 120,95 165,85" fill="#FFE0B2" stroke="#5C4033" stroke-width="4" stroke-linejoin="round"/>
-            <polygon points="145,55 125,90 155,82" fill="#FF8A80"/>
-            <!-- Head -->
-            <ellipse cx="100" cy="115" rx="65" ry="55" fill="#FFF8E1" stroke="#5C4033" stroke-width="4"/>
-            <!-- Cute Fur Marking -->
-            <path d="M90,62 L100,75 L110,62" fill="none" stroke="#5C4033" stroke-width="3" stroke-linecap="round"/>
-            <!-- Eyes (Happy Curvature) -->
-            <path d="M68,110 Q80,100 90,110" fill="none" stroke="#5C4033" stroke-width="4" stroke-linecap="round"/>
-            <path d="M110,110 Q120,100 132,110" fill="none" stroke="#5C4033" stroke-width="4" stroke-linecap="round"/>
-            <!-- Nose & Mouth -->
-            <polygon points="100,118 94,113 106,113" fill="#FF7597"/>
-            <path d="M100,118 Q94,128 88,124 M100,118 Q106,128 112,124" fill="none" stroke="#5C4033" stroke-width="3" stroke-linecap="round"/>
-            <!-- Rosy Cheeks -->
-            <ellipse cx="64" cy="122" rx="10" ry="6" fill="#FF8A80" opacity="0.6"/>
-            <ellipse cx="136" cy="122" rx="10" ry="6" fill="#FF8A80" opacity="0.6"/>
-            <!-- Whiskers -->
-            <line x1="45" y1="112" x2="22" y2="108" stroke="#5C4033" stroke-width="2.5" stroke-linecap="round"/>
-            <line x1="45" y1="120" x2="20" y2="122" stroke="#5C4033" stroke-width="2.5" stroke-linecap="round"/>
-            <line x1="155" y1="112" x2="178" y2="108" stroke="#5C4033" stroke-width="2.5" stroke-linecap="round"/>
-            <line x1="155" y1="120" x2="180" y2="122" stroke="#5C4033" stroke-width="2.5" stroke-linecap="round"/>
-            <!-- Coquette Pink Bow Ribbon on Ear -->
-            <circle cx="56" cy="68" r="8" fill="#FFD6E0" stroke="#5C4033" stroke-width="2"/>
-            <circle cx="56" cy="68" r="3" fill="#FFF2D6"/>
-            <!-- Cat Holding Tiny Gift 🎁 -->
-            <g transform="translate(75, 140)">
-              <rect x="0" y="5" width="50" height="38" rx="4" fill="#FFD6E0" stroke="#5C4033" stroke-width="3"/>
-              <rect x="0" y="0" width="50" height="8" rx="2" fill="#FFC0CB" stroke="#5C4033" stroke-width="2"/>
-              <line x1="25" y1="0" x2="25" y2="43" stroke="#FF7597" stroke-width="4"/>
-              <circle cx="25" cy="-2" r="6" fill="#FF7597" stroke="#5C4033" stroke-width="1.5"/>
-            </g>
-          </svg>
+        <!-- Mascot Avatar with Gift -->
+        <div class="mascot-avatar-frame float-gentle" id="mascotCatHero" title="Mishi's Birthday Mascot">
+          <span>🐱</span>
+          <div class="badge">🎁</div>
         </div>
 
-        <p class="hero-narrative">
-          "And this is a tiny story about her."
+        <p style="font-size: 15px; color: var(--text-muted); margin-bottom: 2px;">
+          Her name was Maisha, but someone close calls her...
+        </p>
+        <h1 class="hero-mishi-name">Mishi 🎀</h1>
+
+        <p style="font-style: italic; color: var(--text-muted); font-size: 14.5px; margin-bottom: 20px;">
+          And this is a tiny story about her.
         </p>
 
-        <a href="#ch2-meet-mishi" class="btn-storybook breathe-pulse" id="startStoryBtn">
+        <a href="#ch2-meet" class="btn-storybook breathe-pulse" id="btnStartStory">
           <span>Start Her Story ✨</span>
         </a>
-
       </div>
     </section>
 
     <!-- =========================================
          CHAPTER 02: MEET MISHI 🎀
          ========================================= -->
-    <section class="chapter-section" id="ch2-meet-mishi">
+    <section class="chapter-section" id="ch2-meet">
       <div class="chapter-card">
-        
         <div class="chapter-pill">
           <span>🎀</span>
           <span>Chapter 02</span>
         </div>
 
-        <h2>Okay... let's talk about Mishi. 🎀</h2>
-        <p style="font-style: italic; color: var(--text-muted); margin-top: 4px; font-size: clamp(1rem, 3.2vw, 1.15rem);">
-          Opening the pages of her little world...
+        <h2>Meet Mishi 🎀</h2>
+        <p style="font-style: italic; color: var(--text-muted); font-size: 14.5px; margin-bottom: 12px;">
+          Let's open the first page of her story...
         </p>
 
-        <!-- Progressive Discovery Lines -->
-        <div class="discovery-flow">
-          <div class="discovery-line" id="discLine1">
-            <span class="icon">📚</span>
-            <span>She loves stories.</span>
+        <div class="mascot-avatar-frame" id="mascotCatCh2">
+          <span>🐱</span>
+          <div class="badge">✨</div>
+        </div>
+
+        <!-- Step-by-step interactive trait reveals -->
+        <div class="trait-reveal-list" id="traitRevealList">
+          <div class="trait-reveal-item visible">
+            <span class="trait-icon">📚</span>
+            <span>She loves stories & getting lost in books.</span>
           </div>
-          <div class="discovery-line" id="discLine2">
-            <span class="icon">🍦</span>
-            <span>She loves ice cream.</span>
+          <div class="trait-reveal-item" id="traitItem2">
+            <span class="trait-icon">🍦</span>
+            <span>She loves ice cream — literally ALL flavours.</span>
           </div>
-          <div class="discovery-line" id="discLine3">
-            <span class="icon">👩‍🍳</span>
-            <span>She can turn a kitchen into her kingdom.</span>
+          <div class="trait-reveal-item" id="traitItem3">
+            <span class="trait-icon">👩‍🍳</span>
+            <span>She can turn any kitchen into her kingdom.</span>
           </div>
-          <div class="discovery-line" id="discLine4" style="background: #FFF5F7;">
-            <span class="icon">👻</span>
-            <span>And she has one tiny weakness... Ghosts. 😂</span>
+          <div class="trait-reveal-item" id="traitItem4">
+            <span class="trait-icon">👻</span>
+            <span>And she has one tiny weakness... ghosts. 😂</span>
           </div>
         </div>
 
-        <a href="#ch3-stories" class="btn-storybook">
-          <span>Chapter 03: Her Favorite Books 📚 →</span>
-        </a>
+        <button class="btn-storybook secondary" id="btnRevealNextTrait" style="margin-bottom: 12px;">
+          <span id="btnRevealTraitText">Reveal Next Trait ✨</span>
+        </button>
 
+        <a href="#ch3-books" class="btn-storybook" id="btnGoToCh3" style="display: none;">
+          <span>Chapter 03: The Book Lover 📚 →</span>
+        </a>
       </div>
     </section>
 
     <!-- =========================================
          CHAPTER 03: THE GIRL WHO LOVES STORIES 📚
          ========================================= -->
-    <section class="chapter-section" id="ch3-stories">
+    <section class="chapter-section" id="ch3-books">
       <div class="chapter-card">
-        
-        <div class="chapter-pill">
+        <div class="chapter-pill" style="background: var(--peach-soft);">
           <span>📚</span>
           <span>Chapter 03</span>
         </div>
 
         <h2>The Girl Who Loves Stories 📚</h2>
-        
-        <p style="font-size: clamp(1.1rem, 3.6vw, 1.3rem); font-style: italic; margin: 12px 0 6px; color: var(--text-deep);">
-          "Give Mishi a good book..."
-        </p>
-        <p style="font-size: clamp(1rem, 3.2vw, 1.15rem); color: var(--text-muted); margin-bottom: 16px;">
-          "...and suddenly the rest of the world can wait."
+        <p style="color: var(--text-muted); font-size: 15px; margin: 6px 0 14px;">
+          Give Mishi a good book... and suddenly the rest of the world can wait. ☕🌸
         </p>
 
-        <!-- Cat Reading Book SVG -->
-        <div class="cat-mascot-box float-gentle" style="width: 140px; height: 140px; margin: 6px auto;">
-          <svg class="cat-mascot-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="50,55 80,105 35,95" fill="#FFE0B2" stroke="#5C4033" stroke-width="4"/>
-            <polygon points="150,55 120,105 165,95" fill="#FFE0B2" stroke="#5C4033" stroke-width="4"/>
-            <ellipse cx="100" cy="120" rx="60" ry="50" fill="#FFF8E1" stroke="#5C4033" stroke-width="4"/>
-            <!-- Concentrated Bookworm Eyes -->
-            <path d="M72,118 Q82,126 90,118" fill="none" stroke="#5C4033" stroke-width="3.5" stroke-linecap="round"/>
-            <path d="M110,118 Q118,126 128,118" fill="none" stroke="#5C4033" stroke-width="3.5" stroke-linecap="round"/>
-            <polygon points="100,124 95,120 105,120" fill="#FF7597"/>
-            <!-- Open Book Held By Cat -->
-            <g transform="translate(50, 135)">
-              <polygon points="10,10 50,2 50,45 10,48" fill="#FFFDF8" stroke="#5C4033" stroke-width="2.5"/>
-              <polygon points="50,2 90,10 90,48 50,45" fill="#FFFDF8" stroke="#5C4033" stroke-width="2.5"/>
-              <line x1="18" y1="18" x2="44" y2="16" stroke="#8C6D62" stroke-width="1.5"/>
-              <line x1="18" y1="26" x2="44" y2="24" stroke="#8C6D62" stroke-width="1.5"/>
-              <line x1="56" y1="16" x2="82" y2="18" stroke="#8C6D62" stroke-width="1.5"/>
-              <line x1="56" y1="24" x2="82" y2="26" stroke="#8C6D62" stroke-width="1.5"/>
-            </g>
-          </svg>
+        <div class="mascot-avatar-frame float-gentle" id="mascotCatBook">
+          <span>🐱</span>
+          <div class="badge">📖</div>
         </div>
 
-        <!-- Interactive Book Component -->
-        <div class="book-interactive-area">
-          <div class="book-cover-mock" id="bookCardInteractive">
-            <button class="btn-storybook secondary" id="openBookBtn">
-              <span>Open the Book 📖</span>
-            </button>
-            <div class="book-page-reveal" id="bookPageContent">
-              <p style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: var(--text-deep);">
-                "Plot twist..." ✨
-              </p>
-              <p style="font-family: var(--font-display); font-size: 1.15rem; font-style: italic; margin: 8px 0;">
-                Mishi might already be living inside another story.
-              </p>
-              <div style="font-size: 13px; font-weight: 700; color: var(--text-muted); margin-top: 10px;">
-                🤫 Please don't disturb her. She's probably reading! 📖✨
-              </div>
+        <!-- Interactive 3D Storybook -->
+        <div class="book-interactive-wrapper">
+          <div class="storybook-3d-card" id="storybookCard">
+            <div class="book-page-content" id="bookPageText">
+              "Tap below to open Mishi's book... 📖"
             </div>
           </div>
         </div>
 
-        <a href="#ch4-icecream" class="btn-storybook">
+        <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 320px; margin-top: 10px;">
+          <button class="btn-storybook secondary" id="btnOpenBook">
+            <span>Open the Book 📖</span>
+          </button>
+          <button class="btn-storybook secondary" id="btnDisturbMishi" style="font-size: 13.5px;">
+            <span>Try to Get Her Attention 👀</span>
+          </button>
+        </div>
+
+        <a href="#ch4-icecream" class="btn-storybook" style="margin-top: 20px;">
           <span>Chapter 04: The Ice Cream Theory 🍦 →</span>
         </a>
-
       </div>
     </section>
 
@@ -1393,92 +1159,80 @@
          ========================================= -->
     <section class="chapter-section" id="ch4-icecream">
       <div class="chapter-card">
-        
-        <div class="chapter-pill">
+        <div class="chapter-pill" style="background: var(--butter-yellow);">
           <span>🍦</span>
           <span>Chapter 04</span>
         </div>
 
         <h2>The Ice Cream Theory 🍦</h2>
-        <p style="font-style: italic; color: var(--text-muted); margin: 6px 0;">
-          Some people have a favourite flavour...
-        </p>
-        <p style="font-size: clamp(1.1rem, 3.6vw, 1.3rem); font-weight: 700; color: var(--text-deep);">
-          Mishi has ALL of them. 😂💗
+        <p style="color: var(--text-muted); font-size: 15px; margin: 4px 0 10px;">
+          Some people have a favourite flavour.<br>
+          <strong style="color: var(--text-deep);">Mishi has ALL of them. 😂</strong>
         </p>
 
         <!-- Tap-able Scoop Grid -->
-        <div class="flavours-grid">
-          <button class="flavour-btn" data-msg="Approved by Mishi! 🍓🍦" data-flavour="Strawberry" data-emoji="🍓" data-color="#FFB3C6">
+        <div class="ice-flavours-grid">
+          <button class="flavour-btn" data-msg="Very Mishi. 🍓🎀" data-flavour="Strawberry" data-emoji="🍓" data-color="#FFB3C6">
             <span>🍓</span>
             <span>Strawberry</span>
           </button>
-          <button class="flavour-btn" data-msg="Chocolate bliss! 🍫✨" data-flavour="Chocolate" data-emoji="🍫" data-color="#A16E5B">
+          <button class="flavour-btn" data-msg="Classic choice! 🍫✨" data-flavour="Chocolate" data-emoji="🍫" data-color="#A16E5B">
             <span>🍫</span>
             <span>Chocolate</span>
           </button>
-          <button class="flavour-btn" data-msg="Classic & sweet! 🍦🤍" data-flavour="Vanilla" data-emoji="🍦" data-color="#FFFDF0">
+          <button class="flavour-btn" data-msg="Simple. Elegant. Cute. 🍦🤍" data-flavour="Vanilla" data-emoji="🍦" data-color="#FFFDF0">
             <span>🍦</span>
             <span>Vanilla</span>
           </button>
-          <button class="flavour-btn" data-msg="Tropical sunshine! 🥭😋" data-flavour="Mango" data-emoji="🥭" data-color="#FFCA3A">
+          <button class="flavour-btn" data-msg="Approved! 🥭💗" data-flavour="Mango" data-emoji="🥭" data-color="#FFCA3A">
             <span>🥭</span>
             <span>Mango</span>
           </button>
-          <button class="flavour-btn" data-msg="Oreo deliciousness! 🍪😭" data-flavour="Oreo" data-emoji="🍪" data-color="#5C4033">
+          <button class="flavour-btn" data-msg="Okayyy, someone has taste. 🍪👀" data-flavour="Oreo" data-emoji="🍪" data-color="#5C4033">
             <span>🍪</span>
             <span>Oreo</span>
           </button>
-          <button class="flavour-btn" data-msg="Pure golden warmth! 🍯💗" data-flavour="Butterscotch" data-emoji="🍯" data-color="#FFD166">
+          <button class="flavour-btn" data-msg="Interesting choice... I like it! 🍯👀" data-flavour="Butterscotch" data-emoji="🍯" data-color="#FFD166">
             <span>🍯</span>
             <span>Butterscotch</span>
           </button>
         </div>
 
         <!-- Interactive Ice Cream Cone Parlor -->
-        <div class="ice-cream-cone-area">
-          <div class="ice-cone-stack-box" id="iceConeStackBox">
-            <!-- Waffle Cone Base -->
-            <svg class="waffle-cone-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <div class="cone-parlor-box">
+          <div class="stacked-scoops-wrapper">
+            <svg viewBox="0 0 100 100" style="width: 70px; height: 70px;" xmlns="http://www.w3.org/2000/svg">
               <polygon points="15,10 85,10 50,95" fill="#E0A96D" stroke="#5C4033" stroke-width="4" stroke-linejoin="round"/>
-              <!-- Waffle Cross Grid lines -->
               <line x1="25" y1="25" x2="65" y2="80" stroke="#B87B44" stroke-width="2.5"/>
               <line x1="35" y1="12" x2="55" y2="90" stroke="#B87B44" stroke-width="2.5"/>
               <line x1="75" y1="25" x2="35" y2="80" stroke="#B87B44" stroke-width="2.5"/>
               <line x1="65" y1="12" x2="45" y2="90" stroke="#B87B44" stroke-width="2.5"/>
             </svg>
-            <!-- Dynamic Stacked Scoops List -->
             <div class="stacked-scoops-list" id="stackedScoops">
-              <div class="single-stacked-scoop" style="background: #FFB3C6; color: #5C4033;">🍓</div>
+              <div class="single-stacked-scoop" style="background: #FFB3C6;">🍓</div>
             </div>
           </div>
         </div>
 
         <!-- Ice Cream Feedback Tag -->
-        <div id="iceCreamStatusTag" style="min-height: 28px; font-weight: 700; color: var(--pink-deep); font-size: 14px;">
+        <div id="iceCreamStatusTag" style="min-height: 26px; font-weight: 800; color: var(--pink-deep); font-size: 14px;">
           Tap any flavour above to stack scoops! 🍨
         </div>
 
         <!-- Glitch-free Animated Happiness Meter -->
-        <div class="happiness-meter-container">
-          <div class="meter-header-row">
-            <span>Mishi's Happiness Level:</span>
-            <span class="meter-percent-tag" id="meterPercentText">35%</span>
+        <div class="happiness-meter-box">
+          <div style="display: flex; justify-content: space-between; font-size: 13px; font-weight: 700; margin-bottom: 4px;">
+            <span>Mishi's Ice Cream Happiness:</span>
+            <span style="color: var(--pink-deep);" id="meterPercentText">100%</span>
           </div>
-          <div class="happiness-meter-wrap">
-            <div class="happiness-meter-bar" id="meterBar" style="width: 35%;">
-              <div class="meter-shimmer-fx"></div>
-            </div>
-          </div>
-          <div id="meterMoodLabel" style="font-size: 12px; font-weight: 800; color: var(--text-deep); margin-top: 6px;">
-            Needs more scoops! 🍨
+          <div class="meter-bar-wrap">
+            <div class="meter-bar-fill" id="meterBar" style="width: 100%;"></div>
           </div>
         </div>
 
-        <a href="#ch5-chef" class="btn-storybook" style="margin-top: 16px;">
+        <a href="#ch5-chef" class="btn-storybook" style="margin-top: 18px;">
           <span>Chapter 05: Chef Mishi 👩‍🍳 →</span>
         </a>
-
       </div>
     </section>
 
@@ -1487,54 +1241,37 @@
          ========================================= -->
     <section class="chapter-section" id="ch5-chef">
       <div class="chapter-card">
-        
-        <div class="chapter-pill">
+        <div class="chapter-pill" style="background: var(--pink-soft);">
           <span>👩‍🍳</span>
           <span>Chapter 05</span>
         </div>
 
         <h2>Chef Mishi 👩‍🍳✨</h2>
-        <p style="font-style: italic; font-size: clamp(1.05rem, 3.4vw, 1.25rem); color: var(--text-deep); margin: 6px 0;">
-          "She doesn't just cook..."
-        </p>
-        <p style="font-weight: 700; font-size: clamp(1.15rem, 3.8vw, 1.35rem); color: var(--pink-deep); margin-bottom: 12px;">
-          "She performs kitchen magic."
+        <p style="color: var(--text-muted); font-size: 15px; margin: 4px 0 10px;">
+          She doesn't just cook...<br>
+          <strong style="color: var(--text-deep);">She performs kitchen magic. ✨</strong>
         </p>
 
-        <!-- Cat with Chef Hat SVG -->
-        <div class="cat-mascot-box float-gentle" style="width: 145px; height: 145px; margin: 4px auto;">
-          <svg class="cat-mascot-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="50,60 80,110 35,100" fill="#FFE0B2" stroke="#5C4033" stroke-width="4"/>
-            <polygon points="150,60 120,110 165,100" fill="#FFE0B2" stroke="#5C4033" stroke-width="4"/>
-            <!-- Chef Hat on Head -->
-            <path d="M70,70 Q60,35 80,30 Q100,15 120,30 Q140,35 130,70 Z" fill="#FFFFFF" stroke="#5C4033" stroke-width="3"/>
-            <rect x="70" y="65" width="60" height="12" rx="3" fill="#FFFFFF" stroke="#5C4033" stroke-width="2"/>
-            <!-- Head -->
-            <ellipse cx="100" cy="125" rx="60" ry="50" fill="#FFF8E1" stroke="#5C4033" stroke-width="4"/>
-            <!-- Eyes & Cheerful Chef Smile -->
-            <ellipse cx="78" cy="120" rx="6" ry="8" fill="#5C4033"/>
-            <circle cx="80" cy="117" r="2.5" fill="#FFFFFF"/>
-            <ellipse cx="122" cy="120" rx="6" ry="8" fill="#5C4033"/>
-            <circle cx="124" cy="117" r="2.5" fill="#FFFFFF"/>
-            <polygon points="100,126 95,122 105,122" fill="#FF7597"/>
-            <path d="M92,130 Q100,142 108,130 Z" fill="#FF8A80" stroke="#5C4033" stroke-width="2.5"/>
-          </svg>
+        <div class="kitchen-pan-display" id="kitchenPan">
+          <span>🍳</span>
         </div>
 
-        <div class="kitchen-pan-zone" id="kitchenPanBox">
-          <div class="pan-steam-fx" id="panSteam">🍳 ✨</div>
-          <button class="btn-storybook butter" id="enterChefModeBtn" style="margin: 10px 0;">
+        <div id="chefStatusTag" style="min-height: 48px; font-weight: 700; color: var(--text-deep); font-size: 14px; margin-bottom: 8px;">
+          Tap below to step into Chef Mishi's kitchen!
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 320px;">
+          <button class="btn-storybook secondary" id="btnEnterChefMode">
             <span>Enter Chef Mode 👩‍🍳</span>
           </button>
-          <div id="chefWarningBox" style="display: none; font-size: 14px; font-weight: 700; line-height: 1.5; color: var(--text-deep); margin-top: 8px;">
-            ⚠️ <strong>Warning:</strong> Entering Chef Mishi's kitchen may cause: intense hunger, sudden happiness, and an unhealthy desire for seconds! 😂💗
-          </div>
+          <button class="btn-storybook secondary" id="btnTasteTest" style="font-size: 13.5px;">
+            <span>Taste Test 👀</span>
+          </button>
         </div>
 
-        <a href="#ch6-ghost" class="btn-storybook">
+        <a href="#ch6-ghost" class="btn-storybook" style="margin-top: 20px;">
           <span>Chapter 06: The Little Ghost Incident 👻 →</span>
         </a>
-
       </div>
     </section>
 
@@ -1542,16 +1279,14 @@
          CHAPTER 06: THE LITTLE GHOST INCIDENT 👻 (TANVIR & MISHI)
          ========================================= -->
     <section class="chapter-section" id="ch6-ghost">
-      <div class="chapter-card ghost-haunted-card" id="ghostCard">
-        
+      <div class="chapter-card" id="ghostCard">
         <div class="chapter-pill" style="background: var(--lavender-soft);">
           <span>👻</span>
           <span>Chapter 06 — A True Mini Story</span>
         </div>
 
-        <h2 style="font-size: clamp(1.8rem, 6vw, 2.5rem);">The Little Ghost Incident 👻</h2>
-
-        <p style="font-family: var(--font-display); font-size: clamp(1.05rem, 3.4vw, 1.25rem); font-style: italic; color: var(--pink-deep); margin-bottom: 8px;">
+        <h2 style="font-size: clamp(1.8rem, 6vw, 2.4rem);">The Little Ghost Incident 👻</h2>
+        <p style="font-family: var(--font-display); font-size: 1.15rem; font-style: italic; color: var(--pink-deep); margin-bottom: 6px;">
           A real-life dynamic between Tanvir & Mishi...
         </p>
 
@@ -1583,16 +1318,21 @@
               </div>
             </div>
 
-            <div class="ghost-narration-box">
-              <p>There's one thing about Mishi...</p>
-              <p style="font-weight: 700; color: #7B2CBF;">She really, REALLY doesn't like ghosts. 👻</p>
-              <p style="font-style: italic; font-size: 0.95em; color: var(--text-muted); margin-top: 4px;">
-                And sometimes... someone likes to tease her about it. 👀
-              </p>
-              <p style="font-weight: 800; color: var(--text-deep);">Someone named Tanvir. 😌</p>
+            <div class="ghost-speech-bubble">
+              "There's one thing about Mishi..."
             </div>
 
-            <button class="btn-storybook secondary breathe-pulse" id="btnGhostNext1" style="margin-top: 8px;">
+            <p style="font-weight: 700; color: #7B2CBF; margin: 4px 0;">
+              She really, REALLY doesn't like ghosts. 👻
+            </p>
+            <p style="font-style: italic; font-size: 0.95em; color: var(--text-muted);">
+              And sometimes... someone likes to tease her about it. 👀
+            </p>
+            <p style="font-weight: 800; color: var(--text-deep); margin: 4px 0 10px;">
+              Someone named Tanvir. 😌
+            </p>
+
+            <button class="btn-storybook secondary breathe-pulse" id="btnGhostNext1">
               <span>Should I tell you what happens? 👀</span>
             </button>
           </div>
@@ -1605,24 +1345,21 @@
                 <span class="actor-tag">Mishi (Reading)</span>
               </div>
               <div class="actor-figure">
-                <span class="actor-avatar" style="animation: ghost-bob-float 1.8s infinite ease-in-out;">🤫 🎭 👻</span>
+                <span class="actor-avatar">🤫 🎭 👻</span>
                 <span class="actor-tag tanvir">Tanvir (Prankster)</span>
               </div>
             </div>
 
-            <div class="ghost-speech-bubble" style="background: #FFF8E1; border-color: #E0A96D;">
+            <div class="ghost-speech-bubble" style="background: #FFF8E1;">
               "Hehe... she's so focused on reading... 😈"
             </div>
 
-            <div class="ghost-narration-box">
-              <p>One day...</p>
-              <p>Tanvir had a terrible idea.</p>
-              <p style="font-weight: 800; font-size: 1.15em; color: #7B2CBF; margin-top: 4px;">
-                "Let's scare Mishi. 👻"
-              </p>
-            </div>
+            <p style="margin: 6px 0;">One day... Tanvir had a terrible idea.</p>
+            <p style="font-weight: 800; font-size: 1.15em; color: #7B2CBF; margin-bottom: 10px;">
+              "Let's scare Mishi. 👻"
+            </p>
 
-            <button class="btn-storybook secondary" id="btnGhostNext2" style="margin-top: 8px;">
+            <button class="btn-storybook secondary" id="btnGhostNext2">
               <span>Do it... 👻</span>
             </button>
           </div>
@@ -1631,25 +1368,23 @@
           <div class="ghost-stage-screen" id="gScene3">
             <div class="scene-actors-row">
               <div class="actor-figure">
-                <span class="actor-avatar" style="font-size: 52px; animation: bounce-fun 0.4s infinite alternate;">🙀 ⚡</span>
+                <span class="actor-avatar" style="font-size: 50px;">🙀 ⚡</span>
                 <span class="actor-tag">Mishi (Shocked)</span>
               </div>
               <div class="actor-figure">
-                <span class="actor-avatar kawaii-ghost-chibi" style="font-size: 48px;">👻 ✨</span>
+                <span class="actor-avatar float-gentle" style="font-size: 46px;">👻 ✨</span>
                 <span class="actor-tag ghost">Tiny Ghost</span>
               </div>
             </div>
 
-            <div class="ghost-speech-bubble" style="background: #F3E8FF; border-color: #A855F7; color: #6B21A8; font-weight: 800;">
+            <div class="ghost-speech-bubble" style="background: #F3E8FF; color: #6B21A8; font-weight: 800;">
               "BOO!! 👻"
             </div>
 
-            <div class="ghost-narration-box">
-              <p style="font-size: 1.2em; font-weight: 800; color: #DC2626;">"AHHHHHH!! 😭"</p>
-              <p style="font-weight: 700; color: var(--text-deep);">"WHY WOULD YOU DO THAT?! 😭👻"</p>
-            </div>
+            <p style="font-size: 1.2em; font-weight: 800; color: #DC2626; margin: 4px 0;">"AHHHHHH!! 😭"</p>
+            <p style="font-weight: 700; color: var(--text-deep); margin-bottom: 10px;">"WHY WOULD YOU DO THAT?! 😭👻"</p>
 
-            <button class="btn-storybook secondary" id="btnGhostNext3" style="margin-top: 8px;">
+            <button class="btn-storybook secondary" id="btnGhostNext3">
               <span>Oh no... 🥺</span>
             </button>
           </div>
@@ -1667,18 +1402,15 @@
               </div>
             </div>
 
-            <div class="ghost-narration-box">
-              <p>Okay...</p>
-              <p>Maybe that wasn't such a good idea. 🥺</p>
-              <p style="font-weight: 700; color: var(--pink-deep); margin-top: 4px;">
-                Someone got a little too scared... and now she's crying... 🥺
-              </p>
-              <p style="font-style: italic; color: var(--text-muted); font-size: 0.92em;">
-                Uh oh. Tanvir has made a mistake. 😭
-              </p>
-            </div>
+            <p>Okay... Maybe that wasn't such a good idea. 🥺</p>
+            <p style="font-weight: 700; color: var(--pink-deep); margin: 4px 0;">
+              Someone got a little too scared... and now she's crying... 🥺
+            </p>
+            <p style="font-style: italic; color: var(--text-muted); margin-bottom: 10px;">
+              Uh oh. Tanvir has made a mistake. 😭
+            </p>
 
-            <button class="btn-storybook" id="btnGhostNext4" style="margin-top: 8px; background: #FFD6E0;">
+            <button class="btn-storybook" id="btnGhostNext4" style="background: #FFD6E0;">
               <span>Tanvir, fix this! 🥺</span>
             </button>
           </div>
@@ -1695,12 +1427,11 @@
               Ghost: <em>"WAIT! I WAS JUST JOKING! 😭👻"</em>
             </div>
 
-            <div class="ghost-narration-box">
-              <p style="font-weight: 800; color: var(--text-deep);">"Okay. That's enough."</p>
-              <p style="font-weight: 700; color: #15803D;">"No more ghosts around Mishi."</p>
-            </div>
+            <p style="font-weight: 800; color: var(--text-deep); margin: 6px 0 10px;">
+              "Okay. That's enough. No more ghosts."
+            </p>
 
-            <button class="btn-storybook butter" id="btnGhostNext5" style="margin-top: 8px;">
+            <button class="btn-storybook butter" id="btnGhostNext5">
               <span>CHASE THE GHOST AWAY! 🫡</span>
             </button>
           </div>
@@ -1724,14 +1455,14 @@
               </div>
             </div>
 
-            <div class="ghost-speech-bubble" style="font-size: 13px; line-height: 1.45;">
+            <div class="ghost-speech-bubble" style="font-size: 13px; line-height: 1.45; margin-bottom: 10px;">
               Mishi: <em>"Is it gone? 🥺"</em><br>
               Tanvir: <strong>"Yep. Really gone."</strong><br>
               Mishi: <em>"Promise?"</em><br>
               Tanvir: <strong>"Promise. 🤝💗"</strong>
             </div>
 
-            <button class="btn-storybook secondary" id="btnGhostNext6" style="margin-top: 8px;">
+            <button class="btn-storybook secondary" id="btnGhostNext6">
               <span>Check on Mishi 🌸</span>
             </button>
           </div>
@@ -1740,34 +1471,33 @@
           <div class="ghost-stage-screen" id="gScene7">
             <div class="scene-actors-row">
               <div class="actor-figure">
-                <span class="actor-avatar float-gentle" style="font-size: 52px;">🐱 🌷 🍨 ✨</span>
+                <span class="actor-avatar float-gentle" style="font-size: 50px;">🐱 🌷 🍨 ✨</span>
                 <span class="actor-tag" style="background: #FFD6E0; color: #D6336C;">Happy Mishi</span>
               </div>
             </div>
 
-            <div class="ghost-narration-box">
-              <p>And just like that...</p>
-              <p style="font-weight: 700; color: var(--pink-deep); font-size: 1.1em;">the tears disappeared.</p>
-              <p style="font-weight: 800; color: var(--text-deep);">And Mishi was happy again. 🌷</p>
-              <p style="font-style: italic; font-size: 0.95em; color: var(--text-muted); margin-top: 4px;">
-                Because apparently... all she needed was for the ghost to go away. 😂💗
-              </p>
-            </div>
+            <p>And just like that... the tears disappeared.</p>
+            <p style="font-weight: 800; color: var(--pink-deep); font-size: 1.15em; margin: 4px 0;">
+              And Mishi was happy again. 🌷
+            </p>
+            <p style="font-style: italic; font-size: 0.95em; color: var(--text-muted); margin-bottom: 10px;">
+              Because apparently... all she needed was for the ghost to go away. 😂💗
+            </p>
 
-            <button class="btn-storybook secondary" id="btnGhostNext7" style="margin-top: 8px;">
+            <button class="btn-storybook secondary" id="btnGhostNext7">
               <span>Wait, what's that in the corner? 👀</span>
             </button>
           </div>
 
           <!-- SCENE 8: The Cute Twist & Ending 😂💗 -->
           <div class="ghost-stage-screen" id="gScene8">
-            <div class="scene-actors-row" style="justify-content: space-between; padding: 0 12px;">
+            <div class="scene-actors-row" style="justify-content: space-between; padding: 0 10px;">
               <div class="actor-figure">
-                <span class="actor-avatar float-gentle" style="font-size: 42px;">🐱 🍨 📚</span>
-                <span class="actor-tag">Mishi (Happy)</span>
+                <span class="actor-avatar float-gentle" style="font-size: 40px;">🐱 🍨 📚</span>
+                <span class="actor-tag">Mishi</span>
               </div>
               <div class="actor-figure">
-                <span class="actor-avatar" style="font-size: 38px;">😏 👉</span>
+                <span class="actor-avatar" style="font-size: 36px;">😏 👉</span>
                 <span class="actor-tag tanvir">Tanvir</span>
               </div>
               <div class="actor-figure" style="opacity: 0.75;">
@@ -1776,422 +1506,385 @@
               </div>
             </div>
 
-            <div class="ghost-speech-bubble" style="font-size: 13px; line-height: 1.45;">
+            <div class="ghost-speech-bubble" style="font-size: 13px; line-height: 1.45; margin-bottom: 8px;">
               Tanvir: <strong>"Don't worry, Mishi. I've got you. 🛡️💗"</strong><br>
               <em>"...but maybe I should stop scaring you. 😭"</em><br>
               Tanvir: <strong>"...MAYBE. 😂"</strong><br>
               Mishi: <em>"Tanvir... 😑👀"</em>
             </div>
 
-            <div class="ghost-narration-box" style="font-size: 0.95em; color: var(--text-muted);">
-              <p>Some things are better left unseen. 🤫👻</p>
-            </div>
-
-            <button class="btn-storybook butter" id="btnGhostReplay" style="margin-top: 6px; font-size: 13px; padding: 8px 16px;">
+            <button class="btn-storybook butter" id="btnGhostReplay" style="font-size: 13px; padding: 8px 16px;">
               <span>🔄 Replay The Story</span>
             </button>
           </div>
 
         </div>
 
-        <!-- Smooth Emotional Transition Bridge into Birthday Chapter -->
-        <div style="margin-top: 22px; padding-top: 18px; border-top: 1.5px dashed var(--border-light); width: 100%;">
-          <p style="font-family: var(--font-display); font-size: 1.25rem; font-style: italic; color: var(--text-muted);">
-            Okay... Ghost problem solved. 👻✅
-          </p>
-          <p style="font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--text-deep); margin: 6px 0 14px;">
-            Now let's celebrate: <span style="color: var(--pink-deep);">Today is Mishi's Day 🎂💗</span>
-          </p>
-          <a href="#ch7-birthday" class="btn-storybook butter">
-            <span>Chapter 07: Today Is Her Day 🎂 →</span>
-          </a>
-        </div>
-
+        <a href="#ch7-things" class="btn-storybook" style="margin-top: 20px;">
+          <span>Chapter 07: The Little Things 🎀 →</span>
+        </a>
       </div>
     </section>
 
     <!-- =========================================
-         CHAPTER 07: TODAY IS HER DAY 🎂
+         CHAPTER 07: THE LITTLE THINGS ABOUT MISHI 🎀
          ========================================= -->
-    <section class="chapter-section" id="ch7-birthday">
+    <section class="chapter-section" id="ch7-things">
       <div class="chapter-card">
-        
-        <div class="chapter-pill" style="background: var(--butter-yellow);">
-          <span>🎂</span>
-          <span>Chapter 07 — A New Beginning</span>
+        <div class="chapter-pill">
+          <span>🎀</span>
+          <span>Chapter 07</span>
         </div>
 
-        <h1 style="font-size: clamp(2.2rem, 7.5vw, 3.6rem); margin-bottom: 4px;">
-          Happy Birthday, Mishi! 🎂🎀
-        </h1>
-
-        <p style="font-family: var(--font-display); font-size: clamp(1.2rem, 4vw, 1.5rem); font-style: italic; color: var(--pink-deep); margin-bottom: 12px;">
-          4 September — A new chapter begins...
+        <h2>The Little Things About Mishi 🎀</h2>
+        <p style="color: var(--text-muted); font-size: 14.5px; margin: 4px 0 14px;">
+          Tap each piece of her little universe... ✨
         </p>
 
+        <div class="little-things-grid">
+          <div class="little-thing-card" data-title="She can get lost in a story." data-emoji="📚">
+            <span style="font-size: 32px;">📖</span>
+            <strong style="font-size: 13px;">Bookish</strong>
+          </div>
+          <div class="little-thing-card" data-title="Every flavour is apparently the right flavour." data-emoji="🍦">
+            <span style="font-size: 32px;">🍦</span>
+            <strong style="font-size: 13px;">Sweet</strong>
+          </div>
+          <div class="little-thing-card" data-title="Kitchen = her kingdom territory." data-emoji="👩‍🍳">
+            <span style="font-size: 32px;">👩‍🍳</span>
+            <strong style="font-size: 13px;">Chef Magic</strong>
+          </div>
+          <div class="little-thing-card" data-title="Ghosts? Absolutely not. 😭" data-emoji="👻">
+            <span style="font-size: 32px;">👻</span>
+            <strong style="font-size: 13px;">Scaredy Cat</strong>
+          </div>
+        </div>
+
+        <div id="littleThingDetail" style="min-height: 44px; font-weight: 700; color: var(--pink-deep); font-size: 14px; padding: 0 10px;">
+          Tap any card above! ✨
+        </div>
+
+        <div style="background: #FFFDF8; border: 1.5px dashed var(--border-soft); border-radius: var(--radius-md); padding: 14px; margin-top: 12px; width: 100%;">
+          <p style="font-weight: 800; font-size: 1.15rem; color: var(--text-deep);">And that's Mishi.</p>
+          <p style="font-size: 13.5px; color: var(--text-muted);">
+            A little bookish. A little sweet. A little chef.<br>
+            <strong style="color: #7B2CBF;">A LOT scared of ghosts. 😂💗</strong>
+          </p>
+        </div>
+
+        <a href="#ch8-birthday" class="btn-storybook butter" style="margin-top: 20px;">
+          <span>Chapter 08: Today Is Her Day 🎂 →</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- =========================================
+         CHAPTER 08: TODAY IS HER DAY 🎂
+         ========================================= -->
+    <section class="chapter-section" id="ch8-birthday">
+      <div class="chapter-card">
+        <div class="chapter-pill" style="background: var(--butter-yellow);">
+          <span>🎂</span>
+          <span>Chapter 08 — A New Beginning</span>
+        </div>
+
+        <h2 style="font-size: clamp(1.8rem, 6vw, 2.4rem);">Happy Birthday, Mishi! 🎂🎀</h2>
+        <p class="hero-date-badge" style="margin: 6px 0 12px;">4 September • A Brand New Chapter</p>
+
         <!-- Interactive Birthday Cake with Blowable Candles -->
-        <div class="cake-tap-zone" id="cakeInteractive" title="Tap candles to blow them out!">
-          <svg class="cake-svg" viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg">
+        <div class="birthday-cake-container">
+          <svg class="cake-base-svg" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
             <!-- Plate -->
-            <ellipse cx="120" cy="180" rx="105" ry="18" fill="#FFF2D6" stroke="#5C4033" stroke-width="4"/>
-            <ellipse cx="120" cy="178" rx="90" ry="12" fill="#FFFFFF"/>
-            <!-- Bottom Tier -->
-            <path d="M40,140 Q120,165 200,140 L200,168 Q120,192 40,168 Z" fill="#FFD6E0" stroke="#5C4033" stroke-width="4"/>
-            <path d="M40,140 Q55,152 70,140 Q85,152 100,140 Q115,152 130,140 Q145,152 160,140 Q175,152 190,140 Q195,145 200,140 L200,145 Q120,170 40,145 Z" fill="#FFF0F5"/>
-            <!-- Top Tier -->
-            <path d="M65,100 Q120,120 175,100 L175,135 Q120,155 65,135 Z" fill="#FFE5D9" stroke="#5C4033" stroke-width="4"/>
-            <path d="M65,100 Q80,112 95,100 Q110,112 125,100 Q140,112 155,100 Q165,108 175,100 L175,106 Q120,126 65,106 Z" fill="#FFFDF8"/>
-            <ellipse cx="120" cy="100" rx="55" ry="15" fill="#FFFDF8" stroke="#5C4033" stroke-width="4"/>
-            <!-- Cherries -->
-            <circle cx="95" cy="98" r="7" fill="#FF7597" stroke="#5C4033" stroke-width="2"/>
-            <circle cx="120" cy="102" r="8" fill="#FF5252" stroke="#5C4033" stroke-width="2"/>
-            <circle cx="145" cy="98" r="7" fill="#FF7597" stroke="#5C4033" stroke-width="2"/>
-            <!-- 3 Candles with Flames -->
-            <rect x="88" y="65" width="8" height="30" rx="3" fill="#D8EAFD" stroke="#5C4033" stroke-width="2"/>
-            <line x1="92" y1="65" x2="92" y2="58" stroke="#5C4033" stroke-width="2"/>
-            <g class="cake-flame" id="flame1"><ellipse cx="92" cy="50" rx="5" ry="9" fill="#FFEB3B"/><ellipse cx="92" cy="51" rx="2.5" ry="5" fill="#FF7043"/></g>
-
-            <rect x="116" y="60" width="8" height="34" rx="3" fill="#E8E0F8" stroke="#5C4033" stroke-width="2"/>
-            <line x1="120" y1="60" x2="120" y2="52" stroke="#5C4033" stroke-width="2"/>
-            <g class="cake-flame" id="flame2"><ellipse cx="120" cy="44" rx="6" ry="11" fill="#FFEB3B"/><ellipse cx="120" cy="45" rx="3" ry="6" fill="#FF7043"/></g>
-
-            <rect x="144" y="65" width="8" height="30" rx="3" fill="#D8F3DC" stroke="#5C4033" stroke-width="2"/>
-            <line x1="148" y1="65" x2="148" y2="58" stroke="#5C4033" stroke-width="2"/>
-            <g class="cake-flame" id="flame3"><ellipse cx="148" cy="50" rx="5" ry="9" fill="#FFEB3B"/><ellipse cx="148" cy="51" rx="2.5" ry="5" fill="#FF7043"/></g>
+            <ellipse cx="100" cy="148" rx="85" ry="10" fill="#EAE0D5" stroke="#5C4033" stroke-width="3"/>
+            <!-- Bottom Layer -->
+            <rect x="35" y="90" width="130" height="50" rx="8" fill="#FFF0F5" stroke="#5C4033" stroke-width="3"/>
+            <path d="M35,105 Q48,115 61,105 Q74,115 87,105 Q100,115 113,105 Q126,115 139,105 Q152,115 165,105" fill="none" stroke="#FF7597" stroke-width="4" stroke-linecap="round"/>
+            <!-- Top Layer -->
+            <rect x="55" y="55" width="90" height="40" rx="6" fill="#FFFDF8" stroke="#5C4033" stroke-width="3"/>
+            <path d="M55,68 Q70,76 85,68 Q100,76 115,68 Q130,76 145,68" fill="none" stroke="#FFB3C6" stroke-width="3.5" stroke-linecap="round"/>
+            <!-- Strawberries on Cake -->
+            <circle cx="75" cy="53" r="5" fill="#E84A75"/>
+            <circle cx="100" cy="51" r="6" fill="#E84A75"/>
+            <circle cx="125" cy="53" r="5" fill="#E84A75"/>
+            
+            <!-- Left Candle -->
+            <rect x="75" y="32" width="6" height="22" fill="#FFD166" stroke="#5C4033" stroke-width="1.5"/>
+            <ellipse class="candle-flame" id="flame1" cx="78" cy="24" rx="4.5" ry="7.5" fill="#FF9E00"/>
+            
+            <!-- Center Candle -->
+            <rect x="97" y="28" width="6" height="26" fill="#FF7597" stroke="#5C4033" stroke-width="1.5"/>
+            <ellipse class="candle-flame" id="flame2" cx="100" cy="19" rx="5" ry="8.5" fill="#FF9E00"/>
+            
+            <!-- Right Candle -->
+            <rect x="119" y="32" width="6" height="22" fill="#06D6A0" stroke="#5C4033" stroke-width="1.5"/>
+            <ellipse class="candle-flame" id="flame3" cx="122" cy="24" rx="4.5" ry="7.5" fill="#FF9E00"/>
           </svg>
         </div>
 
-        <p id="cakeWishStatus" style="font-size: 13px; font-weight: 700; color: var(--pink-deep); margin-bottom: 18px;">
-          ✨ Tap the glowing candles to blow them out! ✨
-        </p>
-
-        <a href="#ch8-letter" class="btn-storybook">
-          <span>Read The Birthday Letter 💌 →</span>
-        </a>
-
-      </div>
-    </section>
-
-    <!-- =========================================
-         CHAPTER 08: A LITTLE LETTER FOR YOU 💌
-         ========================================= -->
-    <section class="chapter-section" id="ch8-letter">
-      <div class="chapter-card" style="background: transparent; border: none; box-shadow: none; padding: 0;">
-        
-        <!-- Interactive Envelope Box -->
-        <div class="envelope-box" id="envelopeBox">
-          <div class="chapter-pill">
-            <span>💌</span>
-            <span>Chapter 08 — The Emotional Centerpiece</span>
-          </div>
-
-          <div class="envelope-interactive-trigger" id="envelopeTriggerBtn">
-            <svg viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
-              <rect x="10" y="20" width="140" height="90" rx="8" fill="#F5ECE1" stroke="#5C4033" stroke-width="3"/>
-              <polygon points="10,20 80,75 150,20" fill="#E8E0F8" opacity="0.3"/>
-              <!-- Letter Peeking -->
-              <rect x="25" y="15" width="110" height="40" rx="4" fill="#FFFDF8" stroke="#5C4033" stroke-width="1.5"/>
-              <line x1="38" y1="26" x2="90" y2="26" stroke="#8C6D62" stroke-width="2" stroke-linecap="round"/>
-              <line x1="38" y1="34" x2="120" y2="34" stroke="#8C6D62" stroke-width="1.5" stroke-linecap="round"/>
-              <!-- Envelope Folds -->
-              <polygon points="10,110 80,62 150,110" fill="#FFFDF8" stroke="#5C4033" stroke-width="3"/>
-              <polygon points="10,20 10,110 70,68" fill="#FFF9F0" stroke="#5C4033" stroke-width="3"/>
-              <polygon points="150,20 150,110 90,68" fill="#FFF9F0" stroke="#5C4033" stroke-width="3"/>
-              <!-- Animated Flap -->
-              <g class="envelope-flap-part" id="envFlap">
-                <polygon points="10,20 80,72 150,20" fill="#FFE5D9" stroke="#5C4033" stroke-width="3"/>
-              </g>
-            </svg>
-            <div class="wax-seal" title="Mishi's Seal">M</div>
-          </div>
-
-          <h2 style="font-size: clamp(1.8rem, 5.2vw, 2.5rem); margin-bottom: 4px;">For Mishi 💌</h2>
-          <p style="font-style: italic; color: var(--text-muted); font-size: clamp(1rem, 3.2vw, 1.15rem); margin-bottom: 18px;">
-            "I wrote something for you..."
-          </p>
-
-          <button class="btn-storybook breathe-pulse" id="openLetterMainBtn">
-            <span>Open the Letter 💌</span>
-          </button>
+        <div id="candleWishStatus" style="min-height: 28px; font-weight: 800; color: var(--pink-deep); font-size: 14.5px; margin-bottom: 10px;">
+          Make a wish & tap the candles to blow them out! ✨🕯️
         </div>
 
-        <!-- The Expanded Written Parchment Letter -->
-        <article class="letter-paper" id="letterPaper">
-          <div style="text-align: center; font-size: 20px; letter-spacing: 6px; color: var(--pink-deep); margin-bottom: 12px;">
-            🌷 ✨ 💗
-          </div>
+        <button class="btn-storybook butter breathe-pulse" id="btnBlowCandles">
+          <span>Blow Out Candles 💨🕯️</span>
+        </button>
 
-          <h3 class="letter-salutation">Dear Mishi, 💗</h3>
-
-          <p class="letter-paragraph">
-            I don't really know how to fit everything into a birthday message...
-          </p>
-
-          <p class="letter-paragraph">
-            because some people are simply too special to fit into a few lines.
-          </p>
-
-          <p class="letter-paragraph">
-            But today is your day, so I had to try.
-          </p>
-
-          <div class="letter-divider-flourish">────── ✦ ──────</div>
-
-          <p class="letter-paragraph">
-            <strong>4 September 2008...</strong><br>
-            The day a girl named <em>Maisha</em> entered this world.
-          </p>
-
-          <p class="letter-paragraph">
-            And somehow, she became this wonderfully random combination of things...
-          </p>
-
-          <div class="letter-trait-box">
-            <span>📚</span>
-            <span>A girl who can disappear into a book and forget about the rest of the world.</span>
-          </div>
-          <div class="letter-trait-box">
-            <span>🍦</span>
-            <span>A girl who believes ice cream can make almost any day better.</span>
-          </div>
-          <div class="letter-trait-box">
-            <span>👩‍🍳</span>
-            <span>A girl who can turn a kitchen into her own little kingdom.</span>
-          </div>
-          <div class="letter-trait-box">
-            <span>👻</span>
-            <span>And, of course... a girl who can be completely defeated by the existence of a ghost. 👻😂</span>
-          </div>
-
-          <div class="letter-divider-flourish">────── ✦ ──────</div>
-
-          <p class="letter-paragraph">
-            Honestly... I think those little things are what make you, <strong>YOU</strong>.
-          </p>
-
-          <p class="letter-paragraph">
-            Your interests. Your little habits. Your funny fears. Your smile. Your way of being yourself.
-          </p>
-
-          <p class="letter-paragraph">
-            I hope you never lose those little things.
-          </p>
-
-          <p class="letter-paragraph">
-            Keep reading the stories you love.<br>
-            Keep creating beautiful things.<br>
-            Keep finding happiness in the simplest moments.
-          </p>
-
-          <p class="letter-paragraph">
-            And whenever life gets difficult... remember that one difficult page doesn't mean the whole story is bad.
-          </p>
-
-          <p class="letter-paragraph">
-            There are still so many chapters waiting for you.
-          </p>
-
-          <p class="letter-paragraph">
-            I hope the chapters ahead are filled with: more laughter, more adventures, more books, more ice cream, more delicious creations, more beautiful memories... and absolutely <strong>ZERO ghosts</strong>. 👻😭
-          </p>
-
-          <p class="letter-paragraph" style="font-style: italic;">
-            And maybe... a few unexpected people who make your days a little brighter. 🌷
-          </p>
-
-          <div class="letter-divider-flourish">────── ✦ ──────</div>
-
-          <p class="letter-paragraph" style="font-size: 1.35em; font-weight: 700; color: var(--pink-deep); text-align: center;">
-            Happy Birthday, Mishi. 🎂💗
-          </p>
-
-          <p class="letter-paragraph">
-            I hope this new chapter becomes one of your most beautiful ones yet.
-          </p>
-
-          <p class="letter-paragraph" style="text-align: center; font-style: italic;">
-            Keep smiling.<br>
-            Keep being you.<br>
-            And never forget... you are worth celebrating.
-          </p>
-
-          <div class="letter-signoff-wrap">
-            With lots of love,
-            <div class="letter-sign-hand">
-              Someone who wanted to make your birthday a little more special. 💗
-            </div>
-          </div>
-
-          <!-- Bottom Action to Chapter 09 -->
-          <div style="text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1.5px dashed var(--border-light);">
-            <p style="font-size: 14px; font-weight: 700; color: var(--text-muted); margin-bottom: 8px;">
-              Wait... I almost forgot something. 👀
-            </p>
-            <button class="btn-storybook butter breathe-pulse" id="oneLastThingBtn">
-              <span>One Last Thing 💗 →</span>
-            </button>
-          </div>
-
-        </article>
-
+        <a href="#ch9-like" class="btn-storybook" style="margin-top: 20px;">
+          <span>Chapter 09: What I Like About You 💗 →</span>
+        </a>
       </div>
     </section>
 
     <!-- =========================================
-         CHAPTER 09 & TANVIR REVEAL (SUBTLE ROMANTIC)
+         CHAPTER 09: DO YOU KNOW WHAT I LIKE ABOUT YOU? 💗
          ========================================= -->
-    <section class="chapter-section" id="reveal-screen">
-      <div class="romantic-reveal-card">
-        
+    <section class="chapter-section" id="ch9-like">
+      <div class="chapter-card">
         <div class="chapter-pill">
-          <span>🌷</span>
+          <span>💗</span>
           <span>Chapter 09</span>
         </div>
 
-        <div id="revealLinesContainer">
-          <div class="reveal-line-slow" id="rLine1">You love books. 📚</div>
-          <div class="reveal-line-slow" id="rLine2">You love ice cream. 🍦</div>
-          <div class="reveal-line-slow" id="rLine3">You're amazing in the kitchen. 👩‍🍳</div>
-          <div class="reveal-line-slow" id="rLine4">You're terrified of ghosts. 👻😂</div>
-          <div class="reveal-line-slow" id="rLine5" style="font-style: italic; color: var(--text-muted);">And somehow...</div>
-          
-          <div class="reveal-confession-title reveal-line-slow" id="rLine6">
-            I really like you. 🌷
-          </div>
+        <h2>Before you open the letter... 🌸</h2>
+        <p style="color: var(--text-muted); font-size: 15px; margin: 4px 0 14px;">
+          I want to tell you a few little truths.
+        </p>
 
-          <div class="reveal-line-slow" id="rLine7" style="font-style: italic; font-size: 1.25rem;">
-            "I just thought you should know. 🥺"
+        <div class="reasons-reveal-list" id="reasonsList">
+          <div class="reason-item-box show" id="reason1">
+            <span>📚</span>
+            <span>I like that you're a book lover and get lost in stories.</span>
           </div>
-
-          <div class="reveal-line-slow" id="rLine8" style="margin-top: 24px; padding-top: 18px; border-top: 1.5px dashed var(--border-light);">
-            <p style="font-size: 1rem; color: var(--text-muted);">
-              And yes... the person who spent way too much time making this little world just for you...
-            </p>
-            <div class="tanvir-signature-badge">Tanvir 💗</div>
-            <p style="font-size: 13px; font-weight: 700; color: var(--text-muted); margin-top: 4px;">
-              Made this little world for Mishi.
-            </p>
+          <div class="reason-item-box" id="reason2">
+            <span>🍦</span>
+            <span>I like that simple ice cream can make your entire day.</span>
           </div>
-
-          <div class="reveal-line-slow" id="rLine9" style="margin-top: 20px;">
-            <button class="btn-storybook butter" id="proceedToGrandFinalBtn">
-              <span>Celebrate Mishi's Birthday! 🎉🎂</span>
-            </button>
+          <div class="reason-item-box" id="reason3">
+            <span>🌷</span>
+            <span>I like watching you get genuinely excited about things you love.</span>
+          </div>
+          <div class="reason-item-box" id="reason4">
+            <span>👻</span>
+            <span>I even like your silly little fear of ghosts. 😂</span>
+          </div>
+          <div class="reason-item-box" id="reason5" style="background: var(--pink-soft); border-color: var(--pink-deep);">
+            <span>💗</span>
+            <span>Actually... I think I just like <strong>you</strong>.</span>
           </div>
         </div>
 
+        <button class="btn-storybook" id="btnRevealReasons" style="margin: 10px 0;">
+          <span id="btnRevealReasonsText">Tell Me More 💗</span>
+        </button>
+
+        <a href="#ch10-letter" class="btn-storybook butter" id="btnGoToLetter" style="display: none; margin-top: 10px;">
+          <span>Chapter 10: A Little Letter For You 💌 →</span>
+        </a>
       </div>
     </section>
 
     <!-- =========================================
-         FINAL GRAND CELEBRATION
+         CHAPTER 10: A LITTLE LETTER FOR YOU 💌
          ========================================= -->
-    <section class="chapter-section" id="final-grand-screen">
-      <div class="chapter-card" style="border-width: 3px;">
-        
-        <div class="chapter-pill" style="background: var(--butter-yellow);">
-          <span>🎉</span>
-          <span>The Grand Finale</span>
+    <section class="chapter-section" id="ch10-letter">
+      <div class="chapter-card">
+        <div class="chapter-pill" style="background: var(--peach-soft);">
+          <span>💌</span>
+          <span>Chapter 10 — The Heart of the Story</span>
         </div>
 
-        <h1 class="grand-birthday-title">
-          HAPPY BIRTHDAY MISHI! 🎂💗
-        </h1>
-
-        <p style="font-family: var(--font-display); font-size: clamp(1.3rem, 4.5vw, 1.8rem); font-weight: 700; color: var(--pink-deep);">
-          4 September ✨
+        <h2>A Little Letter For You 💌</h2>
+        <p style="color: var(--text-muted); font-size: 14.5px; margin: 4px 0 14px;">
+          For Mishi — from someone who wanted to make today special.
         </p>
 
-        <!-- Cat with Birthday Party Hat Waving SVG -->
-        <div class="cat-mascot-box wiggle-anim" style="width: 175px; height: 175px; margin: 8px auto 14px;">
-          <svg class="cat-mascot-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="50,45 80,95 35,85" fill="#FFE0B2" stroke="#5C4033" stroke-width="4"/>
-            <polygon points="150,45 120,95 165,85" fill="#FFE0B2" stroke="#5C4033" stroke-width="4"/>
-            <!-- Party Hat with Pom Pom -->
-            <polygon points="100,10 75,70 125,70" fill="#FF7597" stroke="#5C4033" stroke-width="3"/>
-            <polygon points="100,10 85,70 100,70" fill="#FFF2D6"/>
-            <circle cx="100" cy="10" r="6" fill="#FFF2D6" stroke="#5C4033" stroke-width="2"/>
-            <path d="M75,70 Q100,78 125,70" fill="none" stroke="#5C4033" stroke-width="3"/>
-            <!-- Head -->
-            <ellipse cx="100" cy="115" rx="65" ry="55" fill="#FFF8E1" stroke="#5C4033" stroke-width="4"/>
-            <!-- Joyful Big Cheerful Eyes -->
-            <ellipse cx="76" cy="108" rx="7" ry="10" fill="#5C4033"/>
-            <circle cx="78" cy="105" r="3" fill="#FFFFFF"/>
-            <ellipse cx="124" cy="108" rx="7" ry="10" fill="#5C4033"/>
-            <circle cx="126" cy="105" r="3" fill="#FFFFFF"/>
-            <polygon points="100,118 94,113 106,113" fill="#FF7597"/>
-            <path d="M92,122 Q100,136 108,122 Z" fill="#FF8A80" stroke="#5C4033" stroke-width="3"/>
-            <!-- Rosy Blush -->
-            <ellipse cx="62" cy="122" rx="12" ry="7" fill="#FF8A80" opacity="0.7"/>
-            <ellipse cx="138" cy="122" rx="12" ry="7" fill="#FF8A80" opacity="0.7"/>
-            <!-- Waving Paw -->
-            <ellipse cx="150" cy="75" rx="14" ry="12" fill="#FFE0B2" stroke="#5C4033" stroke-width="3" transform="rotate(-20 150 75)"/>
-          </svg>
+        <!-- Interactive Wax-Sealed Envelope -->
+        <div class="envelope-interactive-box" id="envelopeBox">
+          <div class="wax-sealed-envelope" id="waxEnvelopeBtn">
+            <div class="wax-seal-stamp">🎀</div>
+          </div>
+          <p style="font-size: 13px; font-weight: 700; color: var(--pink-deep); margin-top: 8px;">
+            Tap the envelope to open your letter ✨
+          </p>
         </div>
 
-        <p style="font-family: var(--font-display); font-size: clamp(1.2rem, 4vw, 1.55rem); font-style: italic; max-width: 540px; margin: 0 auto 16px;">
-          "May your next chapter be even more beautiful than the last. 📖✨"
-        </p>
+        <!-- Full Readable Letter Paper Sheet -->
+        <div class="letter-paper-sheet" id="letterPaperSheet">
+          <h3 class="heading-serif" style="font-size: 1.4rem; color: var(--pink-deep); margin-bottom: 12px;">
+            Dear Mishi, 💗
+          </h3>
 
-        <!-- Easter Egg Interactive Stickers Cluster -->
-        <div class="easter-stickers-cluster">
-          <button class="easter-sticker-btn" data-msg="Shhh... Mishi is reading! 🤫📚">📚 Book Magic</button>
-          <button class="easter-sticker-btn" data-msg="One more scoop? Always! 🍦😋">🍦 Sweet Scoops</button>
-          <button class="easter-sticker-btn" data-msg="Chef mode forever activated! 👩‍🍳✨">👩‍🍳 Master Chef</button>
-          <button class="easter-sticker-btn" data-msg="Okay Mishi, I'll leave! 😭👻">👻 Friendly Ghost</button>
-          <button class="easter-sticker-btn" data-msg="Meow... happy birthday Mishi! 🎀">🐱 Kitty Hugs</button>
+          <p>
+            I don't really know how to fit everything into a birthday message... because some people are simply too special to fit into a few lines.
+          </p>
+
+          <p>
+            But today is your day, so I had to try.
+          </p>
+
+          <p style="font-weight: 700; color: var(--text-deep);">
+            4 September 2008...
+          </p>
+
+          <p>
+            The day a girl named Maisha entered this world. And somehow, she became this wonderfully random combination of things...
+          </p>
+
+          <p>
+            📚 A girl who can disappear into a book and forget about the rest of the world.<br>
+            🍦 A girl who believes ice cream can make almost any day better.<br>
+            👩‍🍳 A girl who can turn a kitchen into her own little kingdom.<br>
+            👻 And, of course... a girl who can be completely defeated by the existence of a ghost. 😂
+          </p>
+
+          <p>
+            Honestly... I think those little things are what make you, you. Your interests. Your little habits. Your funny fears. Your smile. Your way of being yourself.
+          </p>
+
+          <p>
+            I hope you never lose those little things. Keep reading the stories you love. Keep creating beautiful things. Keep finding happiness in the simplest moments.
+          </p>
+
+          <p style="font-style: italic; color: var(--text-deep);">
+            And whenever life gets difficult... remember that one difficult page doesn't mean the whole story is bad. There are still so many chapters waiting for you.
+          </p>
+
+          <p>
+            I hope the chapters ahead are filled with: more laughter, more adventures, more books, more ice cream, more delicious creations, more beautiful memories... and absolutely ZERO ghosts. 👻😭
+          </p>
+
+          <p>
+            And maybe... a few unexpected people who make your days a little brighter. 🌷
+          </p>
+
+          <p style="font-size: 1.15rem; font-weight: 800; color: var(--pink-deep);">
+            Happy Birthday, Mishi. 🎂💗
+          </p>
+
+          <p>
+            I hope this new chapter becomes one of your most beautiful ones yet. Keep smiling. Keep being you. And never forget... you are worth celebrating.
+          </p>
+
+          <div style="margin-top: 18px; border-top: 1px dashed var(--border-light); padding-top: 12px; font-family: var(--font-note); font-size: 1.3rem;">
+            With lots of warmth & care,<br>
+            Someone who wanted to make your birthday a little more special. 💗
+          </div>
         </div>
 
-        <p style="font-family: var(--font-hand); font-size: clamp(1.4rem, 4.5vw, 1.8rem); color: var(--pink-deep); font-weight: 700; margin: 4px 0 20px;">
-          Keep smiling, Mishi. 🎀<br>
-          Happy Birthday. 💗
-        </p>
+        <a href="#ch11-reveal" class="btn-storybook" style="margin-top: 24px;">
+          <span>Chapter 11: One Last Thing... 👀 →</span>
+        </a>
+      </div>
+    </section>
 
-        <button class="btn-storybook" id="relaunchConfettiBtn">
-          <span>Launch Confetti Rain 🎉✨</span>
-        </button>
+    <!-- =========================================
+         CHAPTER 11 & FINAL CELEBRATION 🎉
+         ========================================= -->
+    <section class="chapter-section" id="ch11-reveal">
+      <div class="chapter-card">
+        <div class="chapter-pill">
+          <span>👀</span>
+          <span>Chapter 11 — The Final Chapter</span>
+        </div>
+
+        <h2>Wait... I almost forgot something. 👀</h2>
+
+        <!-- Interactive Mini-Quiz Game -->
+        <div style="width: 100%; margin: 12px 0;" id="quizSection">
+          <p style="font-weight: 700; font-size: 14.5px; margin-bottom: 8px;">
+            Who do you think spent way too much time making this little world for you? 👀
+          </p>
+          <div class="quiz-options-grid">
+            <button class="quiz-btn" onclick="handleQuizAnswer('fairy')">A. A birthday fairy 🧚</button>
+            <button class="quiz-btn" onclick="handleQuizAnswer('dev')">B. A very talented developer 😌</button>
+            <button class="quiz-btn" onclick="handleQuizAnswer('tanvir')">C. Someone named Tanvir who really likes you 💗</button>
+          </div>
+        </div>
+
+        <!-- The Emotional Big Reveal Box -->
+        <div id="finalTanvirRevealBox" style="display: none; width: 100%; animation: theater-fade-in 0.5s forwards;">
+          <div style="background: #FFF5F7; border: 2.5px solid var(--pink-deep); border-radius: var(--radius-md); padding: 20px 16px; margin-bottom: 16px;">
+            <div class="mascot-avatar-frame float-gentle" style="background: #FFD6E0;">
+              <span>🐱</span>
+              <div class="badge">🎀</div>
+            </div>
+
+            <p style="font-size: 15px; color: var(--text-deep); margin-bottom: 6px;">
+              You love books. You love ice cream. You're amazing in the kitchen. You're terrified of ghosts.
+            </p>
+            <p style="font-family: var(--font-hand); font-size: 2.8rem; color: var(--pink-deep); line-height: 1; margin: 8px 0;">
+              And I really like you. 🌷
+            </p>
+            <p style="font-size: 13.5px; color: var(--text-muted); font-style: italic;">
+              I just thought you should know today. 🥺💗
+            </p>
+
+            <div style="margin-top: 14px; font-weight: 800; font-size: 1.15rem; color: var(--text-deep);">
+              — Tanvir 💗
+            </div>
+          </div>
+
+          <!-- Mishi Stats Easter Egg -->
+          <div class="mishi-status-card">
+            <div style="font-weight: 800; margin-bottom: 8px; color: var(--text-deep); display: flex; align-items: center; justify-content: space-between;">
+              <span>MISHI OFFICIAL STATUS:</span>
+              <span id="secretHeartBtn" style="cursor: pointer;" title="Hidden Easter Egg">🤍</span>
+            </div>
+            
+            <div class="status-row">
+              <div class="status-header"><span>📚 Book Mode</span><span>100%</span></div>
+              <div class="status-mini-bar"><div class="status-mini-fill" style="width: 100%;"></div></div>
+            </div>
+            
+            <div class="status-row">
+              <div class="status-header"><span>🍦 Ice Cream Mode</span><span>100%</span></div>
+              <div class="status-mini-bar"><div class="status-mini-fill" style="width: 100%;"></div></div>
+            </div>
+
+            <div class="status-row">
+              <div class="status-header"><span>👩‍🍳 Chef Kingdom</span><span>100%</span></div>
+              <div class="status-mini-bar"><div class="status-mini-fill" style="width: 100%;"></div></div>
+            </div>
+
+            <div class="status-row" id="ghostStatusRow" style="cursor: pointer;">
+              <div class="status-header"><span>👻 Ghost Resistance (Tap)</span><span>2%</span></div>
+              <div class="status-mini-bar"><div class="status-mini-fill" style="width: 2%; background: #A855F7;"></div></div>
+            </div>
+          </div>
+
+          <!-- Grand Final Celebration Button -->
+          <button class="btn-storybook butter breathe-pulse" id="btnGrandCelebration" style="font-size: 16px; padding: 14px 28px;">
+            <span>🎉 Launch Birthday Confetti! 🎂💗</span>
+          </button>
+
+          <p style="font-size: 13px; color: var(--text-muted); margin-top: 14px;">
+            May your next chapter be even more beautiful than the last. 📖✨<br>
+            <strong>Keep smiling, Mishi. 🎀</strong>
+          </p>
+        </div>
 
       </div>
     </section>
 
   </div>
 
-  <!-- FLOATING BOTTOM NAVIGATION -->
-  <nav class="bottom-nav" aria-label="Storybook chapters">
-    <a href="#ch1-story-begins" class="nav-btn active" id="nav-ch1">
-      <span class="icon">📖</span>
-      <span>Story</span>
-    </a>
-    <a href="#ch2-meet-mishi" class="nav-btn" id="nav-ch2">
-      <span class="icon">🎀</span>
-      <span>Mishi</span>
-    </a>
-    <a href="#ch7-birthday" class="nav-btn" id="nav-ch7">
-      <span class="icon">🎂</span>
-      <span>Cake</span>
-    </a>
-    <a href="#ch8-letter" class="nav-btn" id="nav-ch8">
-      <span class="icon">💌</span>
-      <span>Letter</span>
-    </a>
-    <a href="#final-grand-screen" class="nav-btn" id="nav-final">
-      <span class="icon">🎉</span>
-      <span>Finale</span>
-    </a>
-  </nav>
-
   <!-- =========================================
-       15. VANILLA JAVASCRIPT LOGIC & INTERACTIONS
+       JAVASCRIPT APPLICATION LOGIC
        ========================================= -->
   <script>
-    /* Global Birthday Configuration */
+    /* =========================================
+       CONFIG & PERSONALIZATION
+       ========================================= */
     const birthdayConfig = {
       name: "Maisha",
       nickname: "Mishi",
-      birthday: "4 September 2008"
+      birthday: "4 September 2008",
+      musicUrl: "" // Optional custom music URL if provided
     };
 
-    /* Web Audio API Birthday Synthesizer Engine (Music Box & Chimes) */
+    /* =========================================
+       WEB AUDIO API SYNTHESIZER (MUSIC BOX & CHIMES)
+       ========================================= */
     let audioCtx = null;
     let isMusicPlaying = false;
     let musicTimeoutId = null;
@@ -2210,7 +1903,6 @@
       return audioCtx;
     }
 
-    // Single unified tone generator with smooth attack & decay
     function playTone(freq, duration = 0.35, type = 'sine', volume = 0.08) {
       const ctx = getAudioContext();
       if (!ctx) return;
@@ -2225,12 +1917,9 @@
         gain.connect(ctx.destination);
         osc.start();
         osc.stop(ctx.currentTime + duration);
-      } catch (e) {
-        // Safe silent fail if audio context is blocked
-      }
+      } catch (e) {}
     }
 
-    // Melodic music box chime generator
     function playMusicBoxBell(freq, duration = 0.6, volume = 0.07) {
       const ctx = getAudioContext();
       if (!ctx) return;
@@ -2238,28 +1927,20 @@
         const osc1 = ctx.createOscillator();
         const osc2 = ctx.createOscillator();
         const gain = ctx.createGain();
-
         osc1.type = 'sine';
         osc1.frequency.setValueAtTime(freq, ctx.currentTime);
-
-        // Harmonic overtone for sparkling bell acoustic
         osc2.type = 'triangle';
         osc2.frequency.setValueAtTime(freq * 2, ctx.currentTime);
-
         gain.gain.setValueAtTime(volume, ctx.currentTime);
         gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
-
         osc1.connect(gain);
         osc2.connect(gain);
         gain.connect(ctx.destination);
-
         osc1.start();
         osc2.start();
         osc1.stop(ctx.currentTime + duration);
         osc2.stop(ctx.currentTime + duration);
-      } catch (e) {
-        // Safe fail
-      }
+      } catch (e) {}
     }
 
     function playSweetChime() {
@@ -2288,58 +1969,45 @@
       } catch (e) {}
     }
 
-    // Polyphonic Happy Birthday Music Box Song Arrangement
+    // Polyphonic Happy Birthday Score
     const happyBirthdayScore = [
-      // Phrase 1: "Happy Birthday to you"
-      { f: 261.63, d: 0.35, chord: [130.81, 196.00] }, // C4
-      { f: 261.63, d: 0.25, chord: null },             // C4
-      { f: 293.66, d: 0.60, chord: [146.83] },         // D4
-      { f: 261.63, d: 0.60, chord: [130.81] },         // C4
-      { f: 349.23, d: 0.60, chord: [174.61, 220.00] }, // F4
-      { f: 329.63, d: 1.10, chord: [164.81, 196.00] }, // E4
-
-      // Phrase 2: "Happy Birthday to you"
-      { f: 261.63, d: 0.35, chord: [130.81] },         // C4
-      { f: 261.63, d: 0.25, chord: null },             // C4
-      { f: 293.66, d: 0.60, chord: [146.83] },         // D4
-      { f: 261.63, d: 0.60, chord: [130.81] },         // C4
-      { f: 392.00, d: 0.60, chord: [196.00, 246.94] }, // G4
-      { f: 349.23, d: 1.10, chord: [174.61, 220.00] }, // F4
-
-      // Phrase 3: "Happy Birthday dear Mishi"
-      { f: 261.63, d: 0.35, chord: [130.81] },         // C4
-      { f: 261.63, d: 0.25, chord: null },             // C4
-      { f: 523.25, d: 0.60, chord: [261.63, 329.63] }, // C5
-      { f: 440.00, d: 0.60, chord: [220.00, 261.63] }, // A4
-      { f: 349.23, d: 0.60, chord: [174.61, 220.00] }, // F4
-      { f: 329.63, d: 0.60, chord: [164.81, 196.00] }, // E4
-      { f: 293.66, d: 0.90, chord: [146.83, 174.61] }, // D4
-
-      // Phrase 4: "Happy Birthday to you"
-      { f: 466.16, d: 0.35, chord: [233.08] },         // Bb4
-      { f: 466.16, d: 0.25, chord: null },             // Bb4
-      { f: 440.00, d: 0.60, chord: [220.00, 261.63] }, // A4
-      { f: 349.23, d: 0.60, chord: [174.61, 220.00] }, // F4
-      { f: 392.00, d: 0.60, chord: [196.00, 246.94] }, // G4
-      { f: 349.23, d: 1.40, chord: [174.61, 261.63] }  // F4
+      { f: 261.63, d: 0.35, chord: [130.81, 196.00] },
+      { f: 261.63, d: 0.25, chord: null },
+      { f: 293.66, d: 0.60, chord: [146.83] },
+      { f: 261.63, d: 0.60, chord: [130.81] },
+      { f: 349.23, d: 0.60, chord: [174.61, 220.00] },
+      { f: 329.63, d: 1.10, chord: [164.81, 196.00] },
+      { f: 261.63, d: 0.35, chord: [130.81] },
+      { f: 261.63, d: 0.25, chord: null },
+      { f: 293.66, d: 0.60, chord: [146.83] },
+      { f: 261.63, d: 0.60, chord: [130.81] },
+      { f: 392.00, d: 0.60, chord: [196.00, 246.94] },
+      { f: 349.23, d: 1.10, chord: [174.61, 220.00] },
+      { f: 261.63, d: 0.35, chord: [130.81] },
+      { f: 261.63, d: 0.25, chord: null },
+      { f: 523.25, d: 0.60, chord: [261.63, 329.63] },
+      { f: 440.00, d: 0.60, chord: [220.00, 261.63] },
+      { f: 349.23, d: 0.60, chord: [174.61, 220.00] },
+      { f: 329.63, d: 0.60, chord: [164.81, 196.00] },
+      { f: 293.66, d: 0.90, chord: [146.83, 174.61] },
+      { f: 466.16, d: 0.35, chord: [233.08] },
+      { f: 466.16, d: 0.25, chord: null },
+      { f: 440.00, d: 0.60, chord: [220.00, 261.63] },
+      { f: 349.23, d: 0.60, chord: [174.61, 220.00] },
+      { f: 392.00, d: 0.60, chord: [196.00, 246.94] },
+      { f: 349.23, d: 1.40, chord: [174.61, 261.63] }
     ];
 
     let currentScoreIndex = 0;
-
     function playMelodyLoop() {
       if (!isMusicPlaying) return;
       const note = happyBirthdayScore[currentScoreIndex];
-      
-      // Play lead melody bell
       playMusicBoxBell(note.f, note.d * 1.2, 0.08);
 
-      // Play soft bass accompaniment chord if defined
       if (note.chord && note.chord.length) {
         note.chord.forEach((cFreq, i) => {
           setTimeout(() => {
-            if (isMusicPlaying) {
-              playTone(cFreq, note.d * 1.1, 'sine', 0.035);
-            }
+            if (isMusicPlaying) playTone(cFreq, note.d * 1.1, 'sine', 0.035);
           }, i * 40);
         });
       }
@@ -2377,7 +2045,7 @@
           playMelodyLoop();
           clearInterval(noteParticleInterval);
           noteParticleInterval = setInterval(spawnMusicNote, 1200);
-          showToast("🎵 Playing sweet birthday music for Mishi...");
+          showToast("🎵 Playing sweet birthday melody for Mishi...");
         } else {
           musicToggleBtn.classList.remove('playing');
           if (musicIcon) musicIcon.textContent = '🎵';
@@ -2388,15 +2056,12 @@
       });
     }
 
-    // Auto unlock audio on first page click or touch
-    window.addEventListener('click', () => {
-      getAudioContext();
-    }, { once: true });
-    window.addEventListener('touchstart', () => {
-      getAudioContext();
-    }, { once: true });
+    window.addEventListener('click', () => { getAudioContext(); }, { once: true });
+    window.addEventListener('touchstart', () => { getAudioContext(); }, { once: true });
 
-    /* Interactive Easter Egg Toast Function */
+    /* =========================================
+       EASTER EGG TOAST & SCREEN TAP HEARTS
+       ========================================= */
     let toastTimeout = null;
     function showToast(msg) {
       const toast = document.getElementById('easterToast');
@@ -2409,7 +2074,6 @@
       }, 2600);
     }
 
-    /* Screen Tap Floating Heart Spawner */
     document.addEventListener('click', (e) => {
       const heart = document.createElement('span');
       heart.className = 'tap-heart-fx';
@@ -2417,12 +2081,20 @@
       heart.textContent = symbols[Math.floor(Math.random() * symbols.length)];
       heart.style.left = `${e.clientX}px`;
       heart.style.top = `${e.clientY}px`;
+      heart.style.setProperty('--tx', `${(Math.random() - 0.5) * 50}px`);
       document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 1100);
+      setTimeout(() => heart.remove(), 1200);
     });
 
-    /* Background Sparkling Particle Engine */
-    const canvas = document.getElementById('particle-canvas');
+    function scrollToChapter(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    /* =========================================
+       SPARKLE CANVAS BACKGROUND
+       ========================================= */
+    const canvas = document.getElementById('sparkleCanvas');
     const ctx = canvas ? canvas.getContext('2d') : null;
     let particles = [];
 
@@ -2439,28 +2111,22 @@
         this.reset();
       }
       reset() {
-        this.x = Math.random() * (canvas ? canvas.width : 400);
-        this.y = Math.random() * (canvas ? canvas.height : 800);
+        if (!canvas) return;
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
         this.size = Math.random() * 2.5 + 1;
+        this.alpha = Math.random() * 0.6 + 0.2;
         this.speedY = -(Math.random() * 0.4 + 0.1);
-        this.speedX = (Math.random() - 0.5) * 0.3;
-        this.opacity = Math.random() * 0.6 + 0.2;
-        this.fadeSpeed = Math.random() * 0.005 + 0.002;
-        this.color = Math.random() > 0.5 ? '#FFD6E0' : '#FFF2D6';
+        this.color = Math.random() > 0.5 ? '#FFB3C6' : '#FFD6E0';
       }
       update() {
         this.y += this.speedY;
-        this.x += this.speedX;
-        this.opacity -= this.fadeSpeed;
-        if (this.opacity <= 0 || this.y < 0) {
-          this.reset();
-          this.y = canvas ? canvas.height + 10 : 800;
-        }
+        if (this.y < 0) this.reset();
       }
       draw() {
         if (!ctx) return;
         ctx.save();
-        ctx.globalAlpha = this.opacity;
+        ctx.globalAlpha = this.alpha;
         ctx.fillStyle = this.color;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -2473,7 +2139,7 @@
       particles.push(new SparkleParticle());
     }
 
-    function animateParticles() {
+    function animateSparkles() {
       if (ctx && canvas) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         particles.forEach(p => {
@@ -2481,108 +2147,90 @@
           p.draw();
         });
       }
-      requestAnimationFrame(animateParticles);
+      requestAnimationFrame(animateSparkles);
     }
-    animateParticles();
+    animateSparkles();
 
-    /* Confetti Burst Spawner */
-    function triggerConfettiBurst(x, y, customSymbols = null, count = 24) {
-      const symbols = customSymbols || ['🎉', '🎂', '💗', '✨', '🎀', '🌸', '📚', '🍦'];
-      for (let i = 0; i < count; i++) {
-        const conf = document.createElement('span');
-        conf.className = 'tap-heart-fx';
-        conf.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-        conf.style.left = `${x || window.innerWidth / 2}px`;
-        conf.style.top = `${y || window.innerHeight / 2}px`;
-        conf.style.fontSize = `${Math.random() * 14 + 18}px`;
-        document.body.appendChild(conf);
-        setTimeout(() => conf.remove(), 1100);
-      }
+    /* =========================================
+       CHAPTER 02: MEET MISHI TRAIT REVEAL
+       ========================================= */
+    let currentTraitStep = 1;
+    const btnRevealNextTrait = document.getElementById('btnRevealNextTrait');
+    const btnGoToCh3 = document.getElementById('btnGoToCh3');
+    if (btnRevealNextTrait) {
+      btnRevealNextTrait.addEventListener('click', () => {
+        currentTraitStep++;
+        playSweetChime();
+        if (currentTraitStep === 2) {
+          const item = document.getElementById('traitItem2');
+          if (item) item.classList.add('visible');
+          showToast("Ice cream is essential! 🍦");
+        } else if (currentTraitStep === 3) {
+          const item = document.getElementById('traitItem3');
+          if (item) item.classList.add('visible');
+          showToast("Chef Mishi in the building! 👩‍🍳");
+        } else if (currentTraitStep === 4) {
+          const item = document.getElementById('traitItem4');
+          if (item) item.classList.add('visible');
+          btnRevealNextTrait.style.display = 'none';
+          if (btnGoToCh3) btnGoToCh3.style.display = 'inline-flex';
+          showToast("And yes... ghosts. 👻😂");
+        }
+      });
     }
 
     /* =========================================
-       CHAPTER INTERACTIONS
+       CHAPTER 03: THE GIRL WHO LOVES STORIES
        ========================================= */
+    const btnOpenBook = document.getElementById('btnOpenBook');
+    const btnDisturbMishi = document.getElementById('btnDisturbMishi');
+    const bookPageText = document.getElementById('bookPageText');
+    let bookOpened = false;
+    let disturbCount = 0;
 
-    // Chapter 01: Mascot & Date Tag Easter Eggs
-    const catMascotHero = document.getElementById('catMascotHero');
-    if (catMascotHero) {
-      catMascotHero.addEventListener('click', () => {
+    if (btnOpenBook && bookPageText) {
+      btnOpenBook.addEventListener('click', () => {
         playSweetChime();
-        showToast("Meow... happy birthday Mishi! 🎀");
-      });
-    }
-    const dateTagBtn = document.getElementById('dateTagBtn');
-    if (dateTagBtn) {
-      dateTagBtn.addEventListener('click', () => {
-        playSweetChime();
-        showToast("4 September 2008 — the day this story began. 🌷");
+        bookOpened = true;
+        bookPageText.innerHTML = "<em>Plot twist...</em><br><strong>Mishi might already be living inside another story. ✨</strong><br><span style='font-size: 13px; color: var(--text-muted);'>Please don't disturb her. She's reading. 🤫📚</span>";
+        showToast("Page turned... 📖✨");
       });
     }
 
-    // Chapter 02: Progressive Discovery reveal on scroll
-    const discLines = [
-      document.getElementById('discLine1'),
-      document.getElementById('discLine2'),
-      document.getElementById('discLine3'),
-      document.getElementById('discLine4')
-    ];
-    let discRevealed = false;
-    function checkDiscoveryScroll() {
-      const ch2 = document.getElementById('ch2-meet-mishi');
-      if (ch2 && !discRevealed) {
-        const rect = ch2.getBoundingClientRect();
-        if (rect.top < window.innerHeight * 0.75) {
-          discRevealed = true;
-          discLines.forEach((line, idx) => {
-            if (line) {
-              setTimeout(() => {
-                line.classList.add('revealed');
-              }, idx * 280);
-            }
-          });
+    if (btnDisturbMishi && bookPageText) {
+      btnDisturbMishi.addEventListener('click', () => {
+        disturbCount++;
+        playTone(400 + disturbCount * 50, 0.25, 'triangle', 0.08);
+        if (disturbCount === 1) {
+          bookPageText.textContent = '"Mishi?" ... ... 👀';
+        } else if (disturbCount === 2) {
+          bookPageText.textContent = '"Mishi? ... MISHI?" 🥺';
+        } else if (disturbCount === 3) {
+          bookPageText.innerHTML = '<strong style="color: #E84A75; font-size: 1.2em;">"SHHHHH! 😑📖"</strong><br><span style="font-size: 13px;">Okay okay... I\'ll let you read! 🥺</span>';
+          showToast("Mishi is reading! 🤫");
+          disturbCount = 0;
         }
-      }
-    }
-    window.addEventListener('scroll', checkDiscoveryScroll);
-    setTimeout(checkDiscoveryScroll, 600);
-
-    // Chapter 03: Open the Book Interaction
-    const openBookBtn = document.getElementById('openBookBtn');
-    const bookPageContent = document.getElementById('bookPageContent');
-    if (openBookBtn && bookPageContent) {
-      openBookBtn.addEventListener('click', () => {
-        bookPageContent.classList.toggle('opened');
-        playSweetChime();
-        showToast("Shhh... Mishi is reading. 🤫📚");
       });
     }
 
-    // Chapter 04: The Ice Cream Theory Flavours & Glitch-Free Meter Bar
+    /* =========================================
+       CHAPTER 04: THE ICE CREAM THEORY
+       ========================================= */
     const flavourBtns = document.querySelectorAll('.flavour-btn');
     const iceCreamStatusTag = document.getElementById('iceCreamStatusTag');
-    const meterBar = document.getElementById('meterBar');
-    const meterPercentText = document.getElementById('meterPercentText');
-    const meterMoodLabel = document.getElementById('meterMoodLabel');
     const stackedScoops = document.getElementById('stackedScoops');
-    
     let iceCreamClicks = 0;
 
     flavourBtns.forEach(btn => {
       btn.addEventListener('click', (e) => {
         iceCreamClicks++;
-        
-        // Play sweet bubbly pop sound
         playTone(550 + (iceCreamClicks % 5) * 80, 0.22, 'triangle', 0.09);
-
         const msg = btn.getAttribute('data-msg');
-        const flavour = btn.getAttribute('data-flavour') || 'Scoop';
         const emoji = btn.getAttribute('data-emoji') || '🍨';
         const color = btn.getAttribute('data-color') || '#FFD6E0';
 
         if (iceCreamStatusTag) iceCreamStatusTag.textContent = msg;
 
-        // Dynamic scoop stacking in cone (max 6 visible scoops)
         if (stackedScoops) {
           const newScoop = document.createElement('div');
           newScoop.className = 'single-stacked-scoop';
@@ -2590,70 +2238,43 @@
           newScoop.textContent = emoji;
           stackedScoops.appendChild(newScoop);
 
-          // Keep max 5 stacked to prevent overflowing on small mobile screens
           if (stackedScoops.children.length > 5) {
             stackedScoops.removeChild(stackedScoops.firstElementChild);
           }
         }
-
-        // Glitch-free smooth happiness calculation
-        const baseHappiness = 35;
-        const happiness = Math.min(150, baseHappiness + iceCreamClicks * 18);
-        const displayWidthPercent = Math.min(100, happiness);
-
-        if (meterBar) {
-          meterBar.style.width = `${displayWidthPercent}%`;
-          if (happiness >= 100) {
-            meterBar.classList.add('maxed');
-          }
-        }
-
-        if (meterPercentText) {
-          if (happiness >= 150) {
-            meterPercentText.textContent = `150% (Infinite Joy! 💖)`;
-          } else if (happiness >= 100) {
-            meterPercentText.textContent = `100% (Maximum Joy! 🏆)`;
-          } else {
-            meterPercentText.textContent = `${happiness}%`;
-          }
-        }
-
-        if (meterMoodLabel) {
-          if (happiness < 55) {
-            meterMoodLabel.textContent = "Needs more scoops! 🍨";
-          } else if (happiness < 80) {
-            meterMoodLabel.textContent = "Getting delicious! 😋🍦";
-          } else if (happiness < 100) {
-            meterMoodLabel.textContent = "Chef Mishi is smiling! ✨💗";
-          } else if (happiness === 100) {
-            meterMoodLabel.textContent = "🎉 100% Peak Ice Cream Euphoria!";
-            triggerConfettiBurst(e.clientX, e.clientY, ['🍦', '🍨', '🍓', '✨', '💗'], 16);
-          } else {
-            meterMoodLabel.textContent = "🚀 Sugar Rush Overload! Infinite happiness!";
-          }
-        }
-
         showToast(msg);
       });
     });
 
-    // Chapter 05: Chef Mishi
-    const enterChefModeBtn = document.getElementById('enterChefModeBtn');
-    const chefWarningBox = document.getElementById('chefWarningBox');
-    const panSteam = document.getElementById('panSteam');
-    if (enterChefModeBtn && chefWarningBox) {
-      enterChefModeBtn.addEventListener('click', () => {
+    /* =========================================
+       CHAPTER 05: CHEF MISHI
+       ========================================= */
+    const btnEnterChefMode = document.getElementById('btnEnterChefMode');
+    const btnTasteTest = document.getElementById('btnTasteTest');
+    const chefStatusTag = document.getElementById('chefStatusTag');
+    const kitchenPan = document.getElementById('kitchenPan');
+
+    if (btnEnterChefMode && chefStatusTag && kitchenPan) {
+      btnEnterChefMode.addEventListener('click', () => {
         playSweetChime();
-        chefWarningBox.style.display = 'block';
-        if (panSteam) {
-          panSteam.textContent = '🍳 🔥 ✨ 😋';
-          panSteam.classList.add('wiggle-anim');
-        }
-        showToast("Chef mode activated! 👩‍🍳✨");
+        kitchenPan.classList.add('cooking');
+        chefStatusTag.innerHTML = "<strong>Warning:</strong> Entering Chef Mishi's kitchen may cause hunger, happiness, and an unhealthy desire for seconds! 😂💗";
+        setTimeout(() => kitchenPan.classList.remove('cooking'), 1800);
+        showToast("Chef Mode Activated! 👩‍🍳✨");
       });
     }
 
-    // Chapter 06: The Little Ghost Incident 👻 (Tanvir & Mishi 8-Scene Story)
+    if (btnTasteTest && chefStatusTag) {
+      btnTasteTest.addEventListener('click', () => {
+        playSweetChime();
+        chefStatusTag.innerHTML = "<strong>Hmm... Taste Test: 10/10! 🏆</strong><br><span style='font-size: 13px; color: var(--text-muted);'>Definitely not because I'm scared of Chef Mishi. 😭💗</span>";
+        showToast("10/10 Delicious! 😋");
+      });
+    }
+
+    /* =========================================
+       CHAPTER 06: THE LITTLE GHOST INCIDENT (8 SCENES)
+       ========================================= */
     const ghostCard = document.getElementById('ghostCard');
     const ghostSceneDots = document.querySelectorAll('#ghostSceneDots .scene-dot');
 
@@ -2669,7 +2290,6 @@
     ];
 
     function setGhostScene(sceneIndex) {
-      // 0-indexed (0 to 7)
       ghostScreens.forEach((scr, idx) => {
         if (scr) {
           if (idx === sceneIndex) {
@@ -2680,7 +2300,6 @@
         }
       });
 
-      // Update progress dots
       ghostSceneDots.forEach((dot, idx) => {
         if (idx === sceneIndex) {
           dot.classList.add('active');
@@ -2688,251 +2307,217 @@
           dot.classList.remove('active');
         }
       });
-
-      // Apply ambient atmospheric themes
-      if (ghostCard) {
-        ghostCard.classList.remove('prank-dim', 'happy-pink', 'card-spooky-shake');
-        
-        if (sceneIndex === 1 || sceneIndex === 2 || sceneIndex === 3 || sceneIndex === 4) {
-          ghostCard.classList.add('prank-dim');
-        } else if (sceneIndex >= 5) {
-          ghostCard.classList.add('happy-pink');
-        }
-
-        // Scene 3: Screen shake on BOO
-        if (sceneIndex === 2) {
-          void ghostCard.offsetWidth; // force reflow
-          ghostCard.classList.add('card-spooky-shake');
-        }
-      }
     }
 
-    // Step 1 -> Step 2
-    const btnGhostNext1 = document.getElementById('btnGhostNext1');
-    if (btnGhostNext1) {
-      btnGhostNext1.addEventListener('click', () => {
-        playSweetChime();
-        setGhostScene(1);
-        showToast("Tanvir is plotting... 😈👀");
-      });
-    }
-
-    // Step 2 -> Step 3 (Ghost appears!)
-    const btnGhostNext2 = document.getElementById('btnGhostNext2');
-    if (btnGhostNext2) {
-      btnGhostNext2.addEventListener('click', (e) => {
-        playSpookyWobbleTone();
-        setGhostScene(2);
-        triggerConfettiBurst(e.clientX, e.clientY, ['👻', '⚡', '🙀', '💨'], 12);
-        showToast("BOO! 👻 Mishi: AHHHH! 😭");
-      });
-    }
-
-    // Step 3 -> Step 4 (Mishi gets sad)
-    const btnGhostNext3 = document.getElementById('btnGhostNext3');
-    if (btnGhostNext3) {
-      btnGhostNext3.addEventListener('click', () => {
-        playTone(360, 0.4, 'sine', 0.08);
-        setGhostScene(3);
-        showToast("Uh oh... Mishi is crying 🥺");
-      });
-    }
-
-    // Step 4 -> Step 5 (Tanvir rescues)
-    const btnGhostNext4 = document.getElementById('btnGhostNext4');
-    if (btnGhostNext4) {
-      btnGhostNext4.addEventListener('click', () => {
-        playTone(520, 0.35, 'triangle', 0.1);
-        setGhostScene(4);
-        showToast("Tanvir to the rescue! 🏃‍♂️💨");
-      });
-    }
-
-    // Step 5 -> Step 6 (Ghost Defeated)
-    const btnGhostNext5 = document.getElementById('btnGhostNext5');
-    if (btnGhostNext5) {
-      btnGhostNext5.addEventListener('click', (e) => {
-        playSweetChime();
-        setGhostScene(5);
-        triggerConfettiBurst(e.clientX, e.clientY, ['✨', '✅', '🌸', '🤝'], 16);
-        showToast("Ghost banished! Mission accomplished. 😌");
-      });
-    }
-
-    // Step 6 -> Step 7 (Happy Mishi)
-    const btnGhostNext6 = document.getElementById('btnGhostNext6');
-    if (btnGhostNext6) {
-      btnGhostNext6.addEventListener('click', (e) => {
-        playSweetChime();
-        setGhostScene(6);
-        triggerConfettiBurst(e.clientX, e.clientY, ['🌷', '💗', '🍨', '✨', '🎀'], 24);
-        showToast("Mishi is happy again! 🌷💗");
-      });
-    }
-
-    // Step 7 -> Step 8 (Cute Twist)
-    const btnGhostNext7 = document.getElementById('btnGhostNext7');
-    if (btnGhostNext7) {
-      btnGhostNext7.addEventListener('click', () => {
-        playTone(620, 0.25, 'sine', 0.08);
-        setGhostScene(7);
-        showToast("Tanvir... 👀😂");
-      });
-    }
-
-    // Replay Story
-    const btnGhostReplay = document.getElementById('btnGhostReplay');
-    if (btnGhostReplay) {
-      btnGhostReplay.addEventListener('click', () => {
-        playSweetChime();
-        setGhostScene(0);
-        showToast("Replaying chapter... 📖✨");
-      });
-    }
-
-    // Chapter 07: Cake Candle Blowing
-    const cakeInteractive = document.getElementById('cakeInteractive');
-    const flames = [
-      document.getElementById('flame1'),
-      document.getElementById('flame2'),
-      document.getElementById('flame3')
-    ];
-    const cakeWishStatus = document.getElementById('cakeWishStatus');
-    let flamesBlown = 0;
-    if (cakeInteractive) {
-      cakeInteractive.addEventListener('click', (e) => {
-        if (flamesBlown < flames.length) {
-          flames[flamesBlown].classList.add('blown');
-          playTone(400 - flamesBlown * 60, 0.2, 'sine', 0.08);
-          flamesBlown++;
-          if (flamesBlown === flames.length) {
-            playSweetChime();
-            if (cakeWishStatus) {
-              cakeWishStatus.textContent = "🎉 Wish sealed! May your new chapter be full of joy! 🎂💗";
-            }
-            triggerConfettiBurst(e.clientX, e.clientY);
-            showToast("Happy Birthday Mishi! 🎂✨");
-          }
-        }
-      });
-    }
-
-    // Chapter 08: Envelope & Letter Opening
-    const openLetterMainBtn = document.getElementById('openLetterMainBtn');
-    const envelopeTriggerBtn = document.getElementById('envelopeTriggerBtn');
-    const envelopeBox = document.getElementById('envelopeBox');
-    const letterPaper = document.getElementById('letterPaper');
-
-    function openEnvelopeSequence() {
-      if (envelopeBox) envelopeBox.classList.add('opened');
+    document.getElementById('btnGhostNext1')?.addEventListener('click', () => {
       playSweetChime();
-      triggerConfettiBurst(window.innerWidth / 2, window.innerHeight * 0.4, ['💌', '💗', '✨', '🌷']);
-      setTimeout(() => {
-        if (letterPaper) {
-          letterPaper.classList.add('visible');
-          letterPaper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setGhostScene(1);
+      showToast("Tanvir is plotting... 😈👀");
+    });
+
+    document.getElementById('btnGhostNext2')?.addEventListener('click', () => {
+      playSpookyWobbleTone();
+      setGhostScene(2);
+      showToast("BOO! 👻 Mishi: AHHHH! 😭");
+    });
+
+    document.getElementById('btnGhostNext3')?.addEventListener('click', () => {
+      playTone(360, 0.4, 'sine', 0.08);
+      setGhostScene(3);
+      showToast("Uh oh... Mishi is crying 🥺");
+    });
+
+    document.getElementById('btnGhostNext4')?.addEventListener('click', () => {
+      playTone(520, 0.35, 'triangle', 0.1);
+      setGhostScene(4);
+      showToast("Tanvir to the rescue! 🏃‍♂️💨");
+    });
+
+    document.getElementById('btnGhostNext5')?.addEventListener('click', () => {
+      playSweetChime();
+      setGhostScene(5);
+      showToast("Ghost banished! Mission accomplished. 😌");
+    });
+
+    document.getElementById('btnGhostNext6')?.addEventListener('click', () => {
+      playSweetChime();
+      setGhostScene(6);
+      showToast("Mishi is happy again! 🌷💗");
+    });
+
+    document.getElementById('btnGhostNext7')?.addEventListener('click', () => {
+      playTone(620, 0.25, 'sine', 0.08);
+      setGhostScene(7);
+      showToast("Tanvir... 👀😂");
+    });
+
+    document.getElementById('btnGhostReplay')?.addEventListener('click', () => {
+      playSweetChime();
+      setGhostScene(0);
+      showToast("Replaying chapter... 📖✨");
+    });
+
+    /* =========================================
+       CHAPTER 07: THE LITTLE THINGS ABOUT MISHI
+       ========================================= */
+    const littleThingCards = document.querySelectorAll('.little-thing-card');
+    const littleThingDetail = document.getElementById('littleThingDetail');
+    littleThingCards.forEach(card => {
+      card.addEventListener('click', () => {
+        playSweetChime();
+        const title = card.getAttribute('data-title');
+        const emoji = card.getAttribute('data-emoji');
+        if (littleThingDetail) {
+          littleThingDetail.innerHTML = `<strong>${emoji}</strong> ${title}`;
         }
-      }, 500);
-    }
-    if (openLetterMainBtn) openLetterMainBtn.addEventListener('click', openEnvelopeSequence);
-    if (envelopeTriggerBtn) envelopeTriggerBtn.addEventListener('click', openEnvelopeSequence);
-
-    // Chapter 09: One Last Thing Romantic Reveal
-    const oneLastThingBtn = document.getElementById('oneLastThingBtn');
-    const revealScreen = document.getElementById('reveal-screen');
-    const revealLines = [
-      document.getElementById('rLine1'),
-      document.getElementById('rLine2'),
-      document.getElementById('rLine3'),
-      document.getElementById('rLine4'),
-      document.getElementById('rLine5'),
-      document.getElementById('rLine6'),
-      document.getElementById('rLine7'),
-      document.getElementById('rLine8'),
-      document.getElementById('rLine9')
-    ];
-
-    if (oneLastThingBtn && revealScreen) {
-      oneLastThingBtn.addEventListener('click', () => {
-        revealScreen.classList.add('active');
-        revealScreen.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        playSweetChime();
-
-        // Reveal lines slowly one by one
-        revealLines.forEach((line, index) => {
-          if (line) {
-            setTimeout(() => {
-              line.classList.add('shown');
-              if (index === 5) {
-                // Heart chime on "I really like you"
-                playSweetChime();
-                triggerConfettiBurst(window.innerWidth / 2, window.innerHeight * 0.5, ['🌷', '💗', '✨']);
-              }
-            }, index * 900);
-          }
-        });
-      });
-    }
-
-    // Final Celebration Screen Trigger
-    const proceedToGrandFinalBtn = document.getElementById('proceedToGrandFinalBtn');
-    const finalGrandScreen = document.getElementById('final-grand-screen');
-    const relaunchConfettiBtn = document.getElementById('relaunchConfettiBtn');
-
-    if (proceedToGrandFinalBtn && finalGrandScreen) {
-      proceedToGrandFinalBtn.addEventListener('click', () => {
-        finalGrandScreen.classList.add('active');
-        finalGrandScreen.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        playSweetChime();
-        triggerConfettiBurst(window.innerWidth / 2, window.innerHeight * 0.4, ['🎉', '🎂', '💗', '✨', '🎀', '🌸'], 36);
-      });
-    }
-
-    if (relaunchConfettiBtn) {
-      relaunchConfettiBtn.addEventListener('click', (e) => {
-        playSweetChime();
-        triggerConfettiBurst(e.clientX, e.clientY, ['🎉', '🎂', '💗', '✨', '🎀', '🌸', '📚', '🍦'], 40);
-        showToast("Happy Birthday Mishi! 🎉💗");
-      });
-    }
-
-    // Easter egg stickers buttons
-    const easterStickerBtns = document.querySelectorAll('.easter-sticker-btn');
-    easterStickerBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const msg = btn.getAttribute('data-msg');
-        playSweetChime();
-        showToast(msg);
+        showToast(title);
       });
     });
 
-    // Active bottom navigation update on scroll
-    const sections = document.querySelectorAll('section');
-    const navItems = {
-      'ch1-story-begins': document.getElementById('nav-ch1'),
-      'ch2-meet-mishi': document.getElementById('nav-ch2'),
-      'ch7-birthday': document.getElementById('nav-ch7'),
-      'ch8-letter': document.getElementById('nav-ch8'),
-      'final-grand-screen': document.getElementById('nav-final')
+    /* =========================================
+       CHAPTER 08: BIRTHDAY CAKE & CANDLES
+       ========================================= */
+    const btnBlowCandles = document.getElementById('btnBlowCandles');
+    const candleWishStatus = document.getElementById('candleWishStatus');
+    const flames = [document.getElementById('flame1'), document.getElementById('flame2'), document.getElementById('flame3')];
+    let candlesBlown = false;
+
+    function blowOutCandlesAction() {
+      if (candlesBlown) return;
+      candlesBlown = true;
+      playSweetChime();
+      flames.forEach(f => {
+        if (f) f.classList.add('blown-out');
+      });
+      if (candleWishStatus) {
+        candleWishStatus.innerHTML = "🎉 <strong>May all your wishes come true, Mishi! 🎂✨</strong>";
+      }
+      showToast("Wish made! Happy Birthday Mishi! 🎂💗");
+      triggerConfettiBurst(window.innerWidth / 2, window.innerHeight / 2, ['🎂', '✨', '🌸', '🎀', '🍰'], 24);
+    }
+
+    if (btnBlowCandles) {
+      btnBlowCandles.addEventListener('click', blowOutCandlesAction);
+    }
+    flames.forEach(f => {
+      if (f) f.addEventListener('click', blowOutCandlesAction);
+    });
+
+    /* =========================================
+       CHAPTER 09: DO YOU KNOW WHAT I LIKE ABOUT YOU?
+       ========================================= */
+    let reasonStep = 1;
+    const btnRevealReasons = document.getElementById('btnRevealReasons');
+    const btnRevealReasonsText = document.getElementById('btnRevealReasonsText');
+    const btnGoToLetter = document.getElementById('btnGoToLetter');
+
+    if (btnRevealReasons) {
+      btnRevealReasons.addEventListener('click', () => {
+        reasonStep++;
+        playSweetChime();
+        const nextReason = document.getElementById(`reason${reasonStep}`);
+        if (nextReason) nextReason.classList.add('show');
+
+        if (reasonStep === 5) {
+          btnRevealReasons.style.display = 'none';
+          if (btnGoToLetter) btnGoToLetter.style.display = 'inline-flex';
+          showToast("That's why I made all this... 💗");
+        }
+      });
+    }
+
+    /* =========================================
+       CHAPTER 10: WAX-SEALED ENVELOPE & LETTER
+       ======================================== */
+    const waxEnvelopeBtn = document.getElementById('waxEnvelopeBtn');
+    const letterPaperSheet = document.getElementById('letterPaperSheet');
+    const envelopeBox = document.getElementById('envelopeBox');
+
+    if (waxEnvelopeBtn && letterPaperSheet) {
+      waxEnvelopeBtn.addEventListener('click', () => {
+        playSweetChime();
+        if (envelopeBox) envelopeBox.style.display = 'none';
+        letterPaperSheet.classList.add('revealed');
+        showToast("Letter unfolded with love... 💌");
+      });
+    }
+
+    /* =========================================
+       CHAPTER 11: QUIZ & FINAL REVEAL
+       ========================================= */
+    window.handleQuizAnswer = function(choice) {
+      playSweetChime();
+      const quizSec = document.getElementById('quizSection');
+      const revealBox = document.getElementById('finalTanvirRevealBox');
+      if (quizSec) quizSec.style.display = 'none';
+      if (revealBox) revealBox.style.display = 'block';
+
+      if (choice === 'tanvir') {
+        showToast("You guessed it right... Tanvir! 💗");
+      } else {
+        showToast("Wrong answer! It's Tanvir! 😂💗");
+      }
+      triggerConfettiBurst(window.innerWidth / 2, window.innerHeight / 2, ['💗', '🌷', '✨', '🎀', '🎉'], 30);
     };
 
-    window.addEventListener('scroll', () => {
-      let currentSectionId = '';
-      sections.forEach(sec => {
-        const top = sec.offsetTop - 120;
-        if (window.scrollY >= top) {
-          currentSectionId = sec.id;
-        }
+    const btnGrandCelebration = document.getElementById('btnGrandCelebration');
+    if (btnGrandCelebration) {
+      btnGrandCelebration.addEventListener('click', () => {
+        playSweetChime();
+        triggerConfettiBurst(window.innerWidth / 2, window.innerHeight / 3, ['🎉', '🎂', '💗', '🎀', '🍨', '📚', '✨', '🐱'], 40);
+        showToast("HAPPY BIRTHDAY MISHI! 🎂🎉💗");
       });
-      Object.keys(navItems).forEach(id => {
-        if (navItems[id]) {
-          if (id === currentSectionId) {
-            navItems[id].classList.add('active');
-          } else {
-            navItems[id].classList.remove('active');
-          }
-        }
-      });
+    }
+
+    /* =========================================
+       CONFETTI BURST HELPER
+       ========================================= */
+    function triggerConfettiBurst(originX, originY, symbols = ['✨', '💗', '🎉'], count = 20) {
+      for (let i = 0; i < count; i++) {
+        const p = document.createElement('span');
+        p.className = 'confetti-particle';
+        p.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+        p.style.left = `${originX || window.innerWidth / 2}px`;
+        p.style.top = `${originY || window.innerHeight / 2}px`;
+        p.style.fontSize = `${Math.random() * 16 + 16}px`;
+        
+        const angle = Math.random() * Math.PI * 2;
+        const velocity = Math.random() * 120 + 60;
+        const tx = Math.cos(angle) * velocity;
+        const ty = Math.sin(angle) * velocity - 40;
+
+        p.animate([
+          { transform: 'translate(0, 0) scale(0.6)', opacity: 1 },
+          { transform: `translate(${tx}px, ${ty}px) scale(1.2)`, opacity: 0 }
+        ], {
+          duration: 1400 + Math.random() * 400,
+          easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+          fill: 'forwards'
+        });
+
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 1800);
+      }
+    }
+
+    /* =========================================
+       HIDDEN EASTER EGGS
+       ========================================= */
+    document.getElementById('mascotCatHero')?.addEventListener('click', () => {
+      playSweetChime();
+      showToast("Meow... happy birthday Mishi! 🎀🐱");
+    });
+    document.getElementById('heroDateBadge')?.addEventListener('click', () => {
+      playSweetChime();
+      showToast("4 September 2008 — the day this story began. 🌷");
+    });
+    document.getElementById('ghostStatusRow')?.addEventListener('click', () => {
+      playTone(280, 0.3, 'sawtooth', 0.08);
+      showToast("Yeah... we already knew that. 😭👻");
+    });
+    document.getElementById('secretHeartBtn')?.addEventListener('click', () => {
+      playSweetChime();
+      showToast("You found something I didn't tell you about... 🥺💗");
     });
   </script>
 </body>
