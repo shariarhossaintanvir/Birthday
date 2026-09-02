@@ -571,7 +571,24 @@
       font-weight: 700;
       font-size: 14px;
       color: var(--pink-accent);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
+    }
+    .hero-age-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: var(--peach-soft);
+      border: 1.5px solid var(--border-soft);
+      padding: 5px 15px;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-body);
+      font-weight: 800;
+      font-size: 13.5px;
+      color: var(--text-deep);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 10px;
+      animation: float-soft 3.2s ease-in-out infinite;
     }
     .hero-mishi-name {
       font-family: var(--font-heading);
@@ -1676,6 +1693,13 @@
 
         <div class="hero-title-group">
           <p class="hero-date-badge" id="heroDateBadge" title="Tap to remember">4 September 2008</p>
+          <div style="display: flex; justify-content: center; width: 100%;">
+            <div class="hero-age-badge" id="heroAgeBadge">
+              <span>🎂</span>
+              <span id="heroAgeText">Turning 18 Today</span>
+              <span>✨</span>
+            </div>
+          </div>
           <p style="font-size: clamp(1rem, 3.5vw, 1.25rem); color: var(--text-muted);">
             Once upon a time... ✨
           </p>
@@ -3614,9 +3638,31 @@
     }
 
     /* =========================================
-       DAYS UNTIL MISHI'S DAY (SEPTEMBER 4TH)
+       DYNAMIC AGE & DAYS UNTIL MISHI'S DAY (SEPTEMBER 4TH)
        ========================================= */
-    function updateMishiCountdown() {
+    function updateMaishaAgeAndCountdown() {
+      const birthYear = 2008;
+      const now = new Date();
+      const currentYear = now.getFullYear();
+      
+      // Calculate how old Maisha is turning (or turned) in current year cycle
+      // If today is on/after Sept 4th of current year, she turned (currentYear - birthYear)
+      // If before Sept 4th, she is turning (currentYear - birthYear) on her upcoming birthday
+      const thisYearBday = new Date(currentYear, 8, 4, 0, 0, 0, 0);
+      const isTodayBday = now.getMonth() === 8 && now.getDate() === 4;
+      const ageThisYear = currentYear - birthYear;
+
+      const ageTextEl = document.getElementById('heroAgeText');
+      if (ageTextEl) {
+        if (isTodayBday) {
+          ageTextEl.textContent = `Turning ${ageThisYear} Today! 🎉`;
+        } else if (now.getTime() < thisYearBday.getTime()) {
+          ageTextEl.textContent = `Turning ${ageThisYear} this year ✨`;
+        } else {
+          ageTextEl.textContent = `Turned ${ageThisYear} years old 🌸`;
+        }
+      }
+
       const daysEl = document.getElementById('cdDays');
       const hoursEl = document.getElementById('cdHours');
       const minsEl = document.getElementById('cdMins');
@@ -3626,13 +3672,13 @@
 
       if (!daysEl || !hoursEl || !minsEl || !secsEl) return;
 
-      const now = new Date();
-      const currentYear = now.getFullYear();
-
       // Check if today is September 4th (month 8 in 0-indexed JS Dates)
-      if (now.getMonth() === 8 && now.getDate() === 4) {
+      if (isTodayBday) {
         if (gridEl) gridEl.style.display = 'none';
-        if (bannerEl) bannerEl.style.display = 'block';
+        if (bannerEl) {
+          bannerEl.style.display = 'block';
+          bannerEl.textContent = `🎉 Today is Mishi's Day! Happy ${ageThisYear}th Birthday, Mishi! 🎂✨`;
+        }
         return;
       }
 
@@ -3657,8 +3703,8 @@
       if (bannerEl) bannerEl.style.display = 'none';
     }
 
-    updateMishiCountdown();
-    setInterval(updateMishiCountdown, 1000);
+    updateMaishaAgeAndCountdown();
+    setInterval(updateMaishaAgeAndCountdown, 1000);
 
     /* =========================================
        HIDDEN EASTER EGGS
