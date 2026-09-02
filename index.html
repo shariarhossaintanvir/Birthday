@@ -326,6 +326,63 @@
       }
     }
 
+    /* =========================================
+       GLOBAL CHAPTER HEADER DESIGN SYSTEM
+       ========================================= */
+    .chapter-header {
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin: 0 auto 20px;
+      padding: 0 16px;
+      position: static;
+    }
+
+    .chapter-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      max-width: 100%;
+      box-sizing: border-box;
+      padding: 7px 14px;
+      border-radius: var(--radius-pill);
+      background: var(--pink-soft);
+      border: 1.5px solid var(--border-soft);
+      color: var(--text-deep);
+      font-family: var(--font-body);
+      font-size: clamp(11px, 3vw, 13px);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      margin-bottom: 10px;
+      position: static;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .chapter-title {
+      margin: 0;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      font-family: var(--font-heading);
+      font-size: clamp(22px, 6vw, 34px);
+      line-height: 1.25;
+      font-weight: 700;
+      color: var(--text-deep);
+      text-align: center;
+      overflow-wrap: break-word;
+      word-break: normal;
+      white-space: normal;
+      letter-spacing: -0.3px;
+    }
+
     .chapter-pill {
       display: inline-flex;
       align-items: center;
@@ -1511,7 +1568,11 @@
     <span class="nav-pill-sep">•</span>
     <button class="nav-pill-btn" data-target="ch10-letter" onclick="scrollToChapter('ch10-letter')">💌 Letter</button>
     <span class="nav-pill-sep">•</span>
-    <button class="nav-pill-btn" data-target="ch11-reveal" onclick="scrollToChapter('ch11-reveal')">🎉 Tanvir</button>
+    <button class="nav-pill-btn" data-target="ch11-last" onclick="scrollToChapter('ch11-last')">👀 Quiz</button>
+    <span class="nav-pill-sep">•</span>
+    <button class="nav-pill-btn" data-target="ch12-reveal" onclick="scrollToChapter('ch12-reveal')">🌷 Reveal</button>
+    <span class="nav-pill-sep">•</span>
+    <button class="nav-pill-btn" data-target="ch13-celebration" onclick="scrollToChapter('ch13-celebration')">🎉 Party</button>
   </nav>
 
   <!-- Interactive Easter Egg Toast Notification -->
@@ -1525,9 +1586,9 @@
          ========================================= -->
     <section class="chapter-section" id="ch1-start">
       <div class="chapter-card">
-        <div class="chapter-pill">
-          <span>🌷</span>
-          <span>Chapter 01</span>
+        <div class="chapter-header">
+          <div class="chapter-badge">Chapter 01</div>
+          <h2 class="chapter-title">The Story Begins 🌷</h2>
         </div>
 
         <div class="hero-title-group">
@@ -1566,12 +1627,11 @@
          ========================================= -->
     <section class="chapter-section" id="ch2-meet">
       <div class="chapter-card">
-        <div class="chapter-pill">
-          <span>🎀</span>
-          <span>Chapter 02</span>
+        <div class="chapter-header">
+          <div class="chapter-badge">Chapter 02</div>
+          <h2 class="chapter-title">Meet Mishi 🎀</h2>
         </div>
 
-        <h2>Meet Mishi 🎀</h2>
         <p style="font-style: italic; color: var(--text-muted); font-size: 14.5px; margin-bottom: 12px;">
           Let's open the first page of her story...
         </p>
@@ -1610,7 +1670,7 @@
         </button>
 
         <a href="#ch3-books" class="btn-storybook" id="btnGoToCh3" style="display: none;">
-          <span>Chapter 03: The Book Lover 📚 →</span>
+          <span>Chapter 03: The Book Lover 📚</span>
         </a>
       </div>
     </section>
@@ -1620,12 +1680,11 @@
          ========================================= -->
     <section class="chapter-section" id="ch3-books">
       <div class="chapter-card">
-        <div class="chapter-pill" style="background: var(--peach-soft);">
-          <span>📚</span>
-          <span>Chapter 03</span>
+        <div class="chapter-header">
+          <div class="chapter-badge">Chapter 03</div>
+          <h2 class="chapter-title">The Girl Who Loves Stories 📚</h2>
         </div>
 
-        <h2>The Girl Who Loves Stories 📚</h2>
         <p style="color: var(--text-muted); font-size: 15px; margin: 6px 0 14px;">
           Give Mishi a good book... and suddenly the rest of the world can wait. ☕🌸
         </p>
@@ -1654,7 +1713,7 @@
         </div>
 
         <a href="#ch4-icecream" class="btn-storybook" style="margin-top: 20px;">
-          <span>Chapter 04: The Ice Cream Theory 🍦 →</span>
+          <span>Chapter 04: The Ice Cream Theory 🍦</span>
         </a>
       </div>
     </section>
@@ -1664,12 +1723,11 @@
          ========================================= -->
     <section class="chapter-section" id="ch4-icecream">
       <div class="chapter-card">
-        <div class="chapter-pill" style="background: var(--butter-yellow);">
-          <span>🍦</span>
-          <span>Chapter 04</span>
+        <div class="chapter-header">
+          <div class="chapter-badge">Chapter 04</div>
+          <h2 class="chapter-title">The Ice Cream Theory 🍦</h2>
         </div>
 
-        <h2>The Ice Cream Theory 🍦</h2>
         <p style="color: var(--text-muted); font-size: 15px; margin: 4px 0 10px;">
           Some people have a favourite flavour.<br>
           <strong style="color: var(--text-deep);">Mishi has ALL of them. 😂</strong>
@@ -1736,7 +1794,7 @@
         </div>
 
         <a href="#ch5-chef" class="btn-storybook" style="margin-top: 18px;">
-          <span>Chapter 05: Chef Mishi 👩‍🍳 →</span>
+          <span>Chapter 05: Chef Mishi 👩‍🍳</span>
         </a>
       </div>
     </section>
@@ -1746,12 +1804,11 @@
          ========================================= -->
     <section class="chapter-section" id="ch5-chef">
       <div class="chapter-card">
-        <div class="chapter-pill" style="background: var(--peach-soft);">
-          <span>👩‍🍳</span>
-          <span>Chapter 05 — Kitchen Magic</span>
+        <div class="chapter-header">
+          <div class="chapter-badge">Chapter 05</div>
+          <h2 class="chapter-title">Chef Mishi 👩‍🍳</h2>
         </div>
 
-        <h2>Chef Mishi's Special 👩‍🍳</h2>
         <p style="color: var(--text-muted); font-size: 15px; margin: 4px 0 6px;">
           Today's special...
         </p>
@@ -1848,7 +1905,7 @@
             <p style="font-size: 1.35rem; font-family: var(--font-hand); color: var(--pink-deep);">"A little bit of Mishi magic. ✨"</p>
           </div>
           <button class="btn-storybook secondary" id="btnNextRecipePage" style="font-size: 12px; padding: 6px 14px; margin-top: 8px;">
-            <span id="btnRecipePageText">Next Page 📖 →</span>
+            <span id="btnRecipePageText">Next Page 📖</span>
           </button>
         </div>
 
@@ -1870,22 +1927,21 @@
         </div>
 
         <a href="#ch6-artist" class="btn-storybook" style="margin-top: 20px;">
-          <span>Continue →</span>
+          <span>Chapter 06: Mishi's Little Canvas 🎨</span>
         </a>
       </div>
     </section>
 
     <!-- =========================================
-         CHAPTER 06: THE GIRL WHO PAINTS HER WORLD 🎨
+         CHAPTER 06: MISHI'S LITTLE CANVAS 🎨
          ========================================= -->
     <section class="chapter-section" id="ch6-artist">
       <div class="chapter-card">
-        <div class="chapter-pill" style="background: var(--lavender-soft);">
-          <span>🎨</span>
-          <span>Chapter 06 — Pure Artistry</span>
+        <div class="chapter-header">
+          <div class="chapter-badge">Chapter 06</div>
+          <h2 class="chapter-title">Mishi's Little Canvas 🎨</h2>
         </div>
 
-        <h2>The Girl Who Paints Her World 🎨</h2>
         <p style="color: var(--text-muted); font-size: 15px; margin: 4px 0 12px; line-height: 1.6;">
           There's another thing Mishi is really good at...<br>
           <strong style="color: var(--text-deep);">She paints. 🎨</strong><br>
@@ -1980,12 +2036,11 @@
          ========================================= -->
     <section class="chapter-section" id="ch7-ghost">
       <div class="chapter-card" id="ghostCard">
-        <div class="chapter-pill" style="background: var(--lavender-soft);">
-          <span>👻</span>
-          <span>Chapter 07 — A True Mini Story</span>
+        <div class="chapter-header">
+          <div class="chapter-badge">Chapter 07</div>
+          <h2 class="chapter-title">The Little Ghost Incident 👻</h2>
         </div>
 
-        <h2 style="font-size: clamp(1.8rem, 6vw, 2.4rem);">The Little Ghost Incident 👻</h2>
         <p style="font-family: var(--font-display); font-size: 1.15rem; font-style: italic; color: var(--pink-deep); margin-bottom: 6px;">
           A real-life dynamic between Tanvir & Mishi...
         </p>
@@ -2221,7 +2276,7 @@
         </div>
 
         <a href="#ch8-things" class="btn-storybook" style="margin-top: 20px;">
-          <span>Chapter 08: The Little Things 🎀 →</span>
+          <span>Chapter 08: The Little Things About Mishi 🎀</span>
         </a>
       </div>
     </section>
@@ -2231,12 +2286,11 @@
          ========================================= -->
     <section class="chapter-section" id="ch8-things">
       <div class="chapter-card">
-        <div class="chapter-pill">
-          <span>🎀</span>
-          <span>Chapter 08</span>
+        <div class="chapter-header">
+          <div class="chapter-badge">Chapter 08</div>
+          <h2 class="chapter-title">The Little Things About Mishi 🎀</h2>
         </div>
 
-        <h2>The Little Things About Mishi 🎀</h2>
         <p style="color: var(--text-muted); font-size: 14.5px; margin: 4px 0 14px;">
           Tap each piece of her little universe... ✨
         </p>
@@ -2278,7 +2332,7 @@
         </div>
 
         <a href="#ch9-birthday" class="btn-storybook butter" style="margin-top: 20px;">
-          <span>Chapter 09: Today Is Her Day 🎂 →</span>
+          <span>Chapter 09: Today Is Her Day 🎂</span>
         </a>
       </div>
     </section>
@@ -2288,12 +2342,11 @@
          ========================================= -->
     <section class="chapter-section" id="ch9-birthday">
       <div class="chapter-card">
-        <div class="chapter-pill" style="background: var(--butter-yellow);">
-          <span>🎂</span>
-          <span>Chapter 09 — A New Beginning</span>
+        <div class="chapter-header">
+          <div class="chapter-badge">Chapter 09</div>
+          <h2 class="chapter-title">Today Is Her Day 🎂</h2>
         </div>
 
-        <h2 style="font-size: clamp(1.8rem, 6vw, 2.4rem);">Happy Birthday, Mishi! 🎂🎀</h2>
         <p class="hero-date-badge" style="margin: 6px 0 12px;">4 September • A Brand New Chapter</p>
 
         <!-- Interactive Birthday Cake with Blowable Candles -->
@@ -2335,7 +2388,7 @@
         </button>
 
         <a href="#ch10-letter" class="btn-storybook" style="margin-top: 20px;">
-          <span>Chapter 10: A Little Letter For You 💌 →</span>
+          <span>Chapter 10: A Little Letter For You 💌</span>
         </a>
       </div>
     </section>
@@ -2345,12 +2398,11 @@
          ========================================= -->
     <section class="chapter-section" id="ch10-letter">
       <div class="chapter-card">
-        <div class="chapter-pill" style="background: var(--peach-soft);">
-          <span>💌</span>
-          <span>Chapter 10 — The Heart of the Story</span>
+        <div class="chapter-header">
+          <div class="chapter-badge">Chapter 10</div>
+          <h2 class="chapter-title">A Little Letter For You 💌</h2>
         </div>
 
-        <h2>A Little Letter For You 💌</h2>
         <p style="color: var(--text-muted); font-size: 14.5px; margin: 4px 0 14px;">
           For Mishi — from someone who wanted to make today special.
         </p>
@@ -2433,23 +2485,21 @@
           </div>
         </div>
 
-        <a href="#ch11-reveal" class="btn-storybook" style="margin-top: 24px;">
-          <span>Chapter 11: One Last Thing... 👀 →</span>
+        <a href="#ch11-last" class="btn-storybook" style="margin-top: 24px;">
+          <span>Chapter 11: One Last Thing 👀</span>
         </a>
       </div>
     </section>
 
     <!-- =========================================
-         CHAPTER 11 & FINAL CELEBRATION 🎉 (CHAPTER 11, 12, 13)
+         CHAPTER 11: ONE LAST THING 👀
          ========================================= -->
-    <section class="chapter-section" id="ch11-reveal">
+    <section class="chapter-section" id="ch11-last">
       <div class="chapter-card">
-        <div class="chapter-pill">
-          <span>👀</span>
-          <span>Chapter 11 — The Final Chapter</span>
+        <div class="chapter-header">
+          <div class="chapter-badge">Chapter 11</div>
+          <h2 class="chapter-title">One Last Thing 👀</h2>
         </div>
-
-        <h2>Wait... I almost forgot something. 👀</h2>
 
         <!-- Interactive Mini-Quiz Game -->
         <div style="width: 100%; margin: 12px 0;" id="quizSection">
@@ -2463,84 +2513,115 @@
           </div>
         </div>
 
-        <!-- The Emotional Big Reveal Box (CHAPTER 12: Tanvir Reveal & CHAPTER 13: Final Celebration) -->
-        <div id="finalTanvirRevealBox" style="display: none; width: 100%; animation: theater-fade-in 0.5s forwards;">
-          <div style="background: #FFF5F7; border: 2.5px solid var(--pink-deep); border-radius: var(--radius-md); padding: 22px 16px; margin-bottom: 16px;">
-            <div class="mascot-avatar-frame float-gentle" style="background: #FFD6E0;">
-              <span>🐱</span>
-              <div class="badge">🎀</div>
-            </div>
-
-            <p style="font-size: 15.5px; color: var(--text-deep); margin-bottom: 8px; line-height: 1.6; font-weight: 600;">
-              You love books. 📚<br>
-              You love ice cream. 🍦<br>
-              You're amazing in the kitchen. 👩‍🍳<br>
-              You're an amazing painter. 🎨<br>
-              You're terrified of ghosts. 👻😂
-            </p>
-            <p style="font-style: italic; color: var(--text-muted); font-size: 14.5px; margin: 6px 0;">
-              And somehow...
-            </p>
-            <p style="font-family: var(--font-heading); font-size: clamp(1.8rem, 6.5vw, 2.5rem); font-weight: 800; color: var(--pink-accent); line-height: 1.2; margin: 12px 0 6px; letter-spacing: -0.3px;">
-              I really like you. 🌷
-            </p>
-            <p style="font-size: 15px; color: var(--text-deep); font-weight: 700; margin-bottom: 12px;">
-              I just thought you should know. 🥺
-            </p>
-
-            <div style="margin-top: 14px; font-weight: 800; font-size: 1.3rem; color: var(--text-deep); font-family: var(--font-body);">
-              — Tanvir 💗
-            </div>
-          </div>
-
-          <!-- Mishi Stats Easter Egg -->
-          <div class="mishi-status-card">
-            <div style="font-weight: 800; margin-bottom: 8px; color: var(--text-deep); display: flex; align-items: center; justify-content: space-between;">
-              <span>MISHI OFFICIAL STATUS:</span>
-              <span id="secretHeartBtn" style="cursor: pointer;" title="Hidden Easter Egg">🤍</span>
-            </div>
-            
-            <div class="status-row">
-              <div class="status-header"><span>📚 Book Mode</span><span>100%</span></div>
-              <div class="status-mini-bar"><div class="status-mini-fill" style="width: 100%;"></div></div>
-            </div>
-            
-            <div class="status-row">
-              <div class="status-header"><span>🍦 Ice Cream Mode</span><span>100%</span></div>
-              <div class="status-mini-bar"><div class="status-mini-fill" style="width: 100%;"></div></div>
-            </div>
-
-            <div class="status-row">
-              <div class="status-header"><span>👩‍🍳 Chef Kingdom</span><span>100%</span></div>
-              <div class="status-mini-bar"><div class="status-mini-fill" style="width: 100%;"></div></div>
-            </div>
-
-            <div class="status-row">
-              <div class="status-header"><span>🎨 Artist Mode</span><span>100%</span></div>
-              <div class="status-mini-bar"><div class="status-mini-fill" style="width: 100%;"></div></div>
-            </div>
-
-            <div class="status-row" id="ghostStatusRow" style="cursor: pointer;">
-              <div class="status-header"><span>👻 Ghost Resistance (Tap)</span><span>2%</span></div>
-              <div class="status-mini-bar"><div class="status-mini-fill" style="width: 2%; background: #A855F7;"></div></div>
-            </div>
-          </div>
-
-          <!-- Grand Final Celebration Button (CHAPTER 13) -->
-          <button class="btn-storybook butter breathe-pulse" id="btnGrandCelebration" style="font-size: 16px; padding: 14px 28px;">
-            <span>🎉 Launch Birthday Confetti! 🎂💗</span>
-          </button>
-
-          <p style="font-size: 13.5px; color: var(--text-muted); margin-top: 14px; line-height: 1.5;">
-            May your next chapter be even more beautiful than the last. 📖✨<br>
-            <strong style="color: var(--text-deep);">Keep smiling, Mishi. 🎀</strong>
-          </p>
-        </div>
-            May your next chapter be even more beautiful than the last. 📖✨<br>
-            <strong>Keep smiling, Mishi. 🎀</strong>
-          </p>
+        <div id="quizFeedback" style="display: none; background: #FFF5F7; border: 2px dashed var(--pink-deep); border-radius: var(--radius-md); padding: 14px; margin-top: 14px; font-size: 14.5px; color: var(--text-deep); text-align: center; line-height: 1.5;">
         </div>
 
+        <a href="#ch12-reveal" class="btn-storybook butter" style="margin-top: 18px;">
+          <span>Chapter 12: The Reveal 👀</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- =========================================
+         CHAPTER 12: THE REVEAL 👀
+         ========================================= -->
+    <section class="chapter-section" id="ch12-reveal">
+      <div class="chapter-card">
+        <div class="chapter-header">
+          <div class="chapter-badge">Chapter 12</div>
+          <h2 class="chapter-title">The Reveal 👀</h2>
+        </div>
+
+        <div style="background: #FFF5F7; border: 2.5px solid var(--pink-deep); border-radius: var(--radius-md); padding: 22px 16px; margin-bottom: 16px; width: 100%;">
+          <div class="mascot-avatar-frame float-gentle" style="background: #FFD6E0;">
+            <span>🐱</span>
+            <div class="badge">🎀</div>
+          </div>
+
+          <p style="font-size: 15.5px; color: var(--text-deep); margin-bottom: 8px; line-height: 1.6; font-weight: 600;">
+            You love books. 📚<br>
+            You love ice cream. 🍦<br>
+            You're amazing in the kitchen. 👩‍🍳<br>
+            You're an amazing painter. 🎨<br>
+            You're terrified of ghosts. 👻😂
+          </p>
+          <p style="font-style: italic; color: var(--text-muted); font-size: 14.5px; margin: 6px 0;">
+            And somehow...
+          </p>
+          <p style="font-family: var(--font-heading); font-size: clamp(1.8rem, 6.5vw, 2.5rem); font-weight: 800; color: var(--pink-accent); line-height: 1.2; margin: 12px 0 6px; letter-spacing: -0.3px;">
+            I really like you. 🌷
+          </p>
+          <p style="font-size: 15px; color: var(--text-deep); font-weight: 700; margin-bottom: 12px;">
+            I just thought you should know. 🥺
+          </p>
+
+          <div style="margin-top: 14px; font-weight: 800; font-size: 1.3rem; color: var(--text-deep); font-family: var(--font-body);">
+            — Tanvir 💗
+          </div>
+        </div>
+
+        <!-- Mishi Stats Easter Egg -->
+        <div class="mishi-status-card" style="width: 100%;">
+          <div style="font-weight: 800; margin-bottom: 8px; color: var(--text-deep); display: flex; align-items: center; justify-content: space-between;">
+            <span>MISHI OFFICIAL STATUS:</span>
+            <span id="secretHeartBtn" style="cursor: pointer;" title="Hidden Easter Egg">🤍</span>
+          </div>
+          
+          <div class="status-row">
+            <div class="status-header"><span>📚 Book Mode</span><span>100%</span></div>
+            <div class="status-mini-bar"><div class="status-mini-fill" style="width: 100%;"></div></div>
+          </div>
+          
+          <div class="status-row">
+            <div class="status-header"><span>🍦 Ice Cream Mode</span><span>100%</span></div>
+            <div class="status-mini-bar"><div class="status-mini-fill" style="width: 100%;"></div></div>
+          </div>
+
+          <div class="status-row">
+            <div class="status-header"><span>👩‍🍳 Chef Kingdom</span><span>100%</span></div>
+            <div class="status-mini-bar"><div class="status-mini-fill" style="width: 100%;"></div></div>
+          </div>
+
+          <div class="status-row">
+            <div class="status-header"><span>🎨 Artist Mode</span><span>100%</span></div>
+            <div class="status-mini-bar"><div class="status-mini-fill" style="width: 100%;"></div></div>
+          </div>
+
+          <div class="status-row" id="ghostStatusRow" style="cursor: pointer;">
+            <div class="status-header"><span>👻 Ghost Resistance (Tap)</span><span>2%</span></div>
+            <div class="status-mini-bar"><div class="status-mini-fill" style="width: 2%; background: #A855F7;"></div></div>
+          </div>
+        </div>
+
+        <a href="#ch13-celebration" class="btn-storybook butter" style="margin-top: 18px;">
+          <span>Chapter 13: Happy Birthday, Mishi! 🎉</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- =========================================
+         CHAPTER 13: HAPPY BIRTHDAY, MISHI! 🎉
+         ========================================= -->
+    <section class="chapter-section" id="ch13-celebration">
+      <div class="chapter-card">
+        <div class="chapter-header">
+          <div class="chapter-badge">Chapter 13</div>
+          <h2 class="chapter-title">Happy Birthday, Mishi! 🎉</h2>
+        </div>
+
+        <!-- Grand Final Celebration Button (CHAPTER 13) -->
+        <button class="btn-storybook butter breathe-pulse" id="btnGrandCelebration" style="font-size: 16px; padding: 14px 28px; margin: 10px 0;">
+          <span>🎉 Launch Birthday Confetti! 🎂💗</span>
+        </button>
+
+        <p style="font-size: 15px; color: var(--text-deep); margin-top: 14px; line-height: 1.6; font-weight: 600;">
+          May your next chapter be even more beautiful than the last. 📖✨<br>
+          <strong style="color: var(--pink-accent); font-size: 16px;">Keep smiling, Mishi. 🎀</strong>
+        </p>
+
+        <a href="#ch1-start" class="btn-storybook secondary" style="margin-top: 20px; font-size: 14px;">
+          <span>Read Again From Chapter 01 📖</span>
+        </a>
       </div>
     </section>
 
@@ -3361,17 +3442,22 @@
        ========================================= */
     window.handleQuizAnswer = function(choice) {
       playSweetChime();
-      const quizSec = document.getElementById('quizSection');
-      const revealBox = document.getElementById('finalTanvirRevealBox');
-      if (quizSec) quizSec.style.display = 'none';
-      if (revealBox) revealBox.style.display = 'block';
-
-      if (choice === 'tanvir') {
-        showToast("You guessed it right... Tanvir! 💗");
-      } else {
-        showToast("Wrong answer! It's Tanvir! 😂💗");
+      const feedback = document.getElementById('quizFeedback');
+      if (feedback) {
+        feedback.style.display = 'block';
+        if (choice === 'tanvir') {
+          feedback.innerHTML = "✨ <strong>Ding ding ding! Exactly right!</strong><br>Someone named Tanvir built this entire little world for you. 🌷 Scroll to Chapter 12 for the reveal! 👀";
+          showToast("You guessed it right... Tanvir! 💗");
+        } else {
+          feedback.innerHTML = "😂 <strong>Nice guess, but nope!</strong><br>It was Tanvir all along! 😌 Scroll down to Chapter 12 to see why! 👀";
+          showToast("Wrong answer! It's Tanvir! 😂💗");
+        }
       }
       triggerConfettiBurst(window.innerWidth / 2, window.innerHeight / 2, ['💗', '🌷', '✨', '🎀', '🎉'], 30);
+      
+      setTimeout(() => {
+        scrollToChapter('ch12-reveal');
+      }, 900);
     };
 
     const btnGrandCelebration = document.getElementById('btnGrandCelebration');
