@@ -8,10 +8,10 @@
   <meta property="og:title" content="The Little Story of Mishi 📖🎀 | Happy Birthday Maisha">
   <meta property="og:description" content="A magical, personalized interactive storybook birthday celebration made with love for Maisha (Mishi) by Tanvir.">
 
-  <!-- Google Fonts: Elegant Display + Warm Handwritten + Clean Body -->
+  <!-- Google Fonts: Highly Readable Nunito + Poppins + Soft Accents -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sacramento&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600;1,700&family=Poppins:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&family=Sacramento&display=swap" rel="stylesheet">
 
   <style>
     /* =========================================
@@ -31,9 +31,11 @@
       --lavender-soft: #F3E8FF;
       --butter-yellow: #FEF3C7;
       
-      --text-deep: #4A3528;
-      --text-muted: #786255;
-      --text-light: #9C8577;
+      /* High-Contrast, WCAG AA Compliant Warm Text Colors */
+      --text-deep: #3F3036;
+      --text-main: #4B3B40;
+      --text-muted: #5A454C;
+      --text-light: #6E545C;
       
       --border-soft: #5C4033;
       --border-light: rgba(92, 64, 51, 0.16);
@@ -49,10 +51,12 @@
       --radius-lg: 28px;
       --radius-pill: 9999px;
 
-      --font-display: 'Fraunces', Georgia, serif;
-      --font-hand: 'Sacramento', cursive;
+      /* Typographic Scale: Clean, Highly Readable Sans Body & Soft Display Headings */
+      --font-heading: 'Poppins', 'Nunito', sans-serif;
+      --font-display: 'Poppins', 'Nunito', sans-serif;
+      --font-body: 'Nunito', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       --font-note: 'Caveat', cursive;
-      --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-hand: 'Caveat', cursive;
     }
 
     /* =========================================
@@ -69,9 +73,11 @@
       scroll-behavior: smooth;
       font-size: 16px;
       background-color: var(--cream-warm);
-      color: var(--text-deep);
+      color: var(--text-main);
       font-family: var(--font-body);
-      line-height: 1.6;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     body {
@@ -80,6 +86,11 @@
       overflow-x: hidden;
       position: relative;
       background: radial-gradient(circle at 10% 10%, #FFF5F7 0%, #FFFDF8 45%, #FAF2EB 100%);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      font-weight: 500;
+      color: var(--text-main);
     }
 
     /* Ambient Canvas for Floating Sparkles */
@@ -110,22 +121,46 @@
       }
     }
 
-    /* Typography Utility Classes */
-    h1, h2, h3, .heading-serif {
-      font-family: var(--font-display);
+    /* Typography Base Styles */
+    h1, h2, h3, h4, .heading-serif {
+      font-family: var(--font-heading);
       font-weight: 700;
       color: var(--text-deep);
       line-height: 1.25;
+      letter-spacing: -0.2px;
+    }
+
+    h1 {
+      font-size: clamp(26px, 7.5vw, 42px);
+    }
+
+    h2 {
+      font-size: clamp(21px, 5.5vw, 30px);
+      margin-bottom: 8px;
+    }
+
+    h3 {
+      font-size: clamp(17px, 4.5vw, 22px);
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-main);
+      font-weight: 500;
     }
 
     .handwriting {
-      font-family: var(--font-hand);
-      font-weight: 400;
+      font-family: var(--font-note);
+      font-weight: 700;
+      font-size: 1.25rem;
     }
 
     .cute-note {
       font-family: var(--font-note);
-      font-size: 1.25rem;
+      font-size: 1.35rem;
+      font-weight: 700;
+      line-height: 1.4;
     }
 
     /* =========================================
@@ -221,8 +256,8 @@
     .nav-pill-btn {
       background: none;
       border: none;
-      font-family: inherit;
-      font-size: 12.5px;
+      font-family: var(--font-body);
+      font-size: 13px;
       font-weight: 700;
       color: var(--text-deep);
       cursor: pointer;
@@ -230,7 +265,7 @@
       align-items: center;
       justify-content: center;
       gap: 4px;
-      padding: 5px 9px;
+      padding: 6px 10px;
       border-radius: var(--radius-pill);
       transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       flex-shrink: 0;
@@ -240,13 +275,13 @@
     }
     .nav-pill-btn:hover {
       background: var(--pink-soft);
-      color: var(--pink-deep);
+      color: var(--pink-accent);
       transform: translateY(-1px);
     }
     .nav-pill-btn:active,
     .nav-pill-btn.active {
       background: var(--pink-blush);
-      color: var(--pink-deep);
+      color: var(--pink-accent);
     }
 
     .nav-pill-sep {
@@ -298,10 +333,11 @@
       background: var(--pink-soft);
       border: 1.5px solid var(--border-soft);
       border-radius: var(--radius-pill);
-      padding: 4px 14px;
-      font-size: 12px;
+      padding: 5px 14px;
+      font-family: var(--font-body);
+      font-size: 13px;
       font-weight: 800;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.3px;
       text-transform: uppercase;
       color: var(--text-deep);
       box-shadow: var(--shadow-sm);
@@ -318,16 +354,18 @@
       border: 2px solid var(--border-soft);
       color: var(--text-deep);
       font-family: var(--font-body);
-      font-size: 15px;
-      font-weight: 800;
-      padding: 12px 24px;
-      min-height: 48px;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      padding: 13px 26px;
+      min-height: 50px;
       border-radius: var(--radius-pill);
       box-shadow: var(--shadow-sm);
       cursor: pointer;
       text-decoration: none;
       transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       user-select: none;
+      white-space: nowrap;
     }
     .btn-storybook:hover, .btn-storybook:active {
       transform: scale(1.03) translate(-1px, -1px);
@@ -387,20 +425,22 @@
       display: inline-block;
       background: #FFFDF8;
       border: 1.5px dashed var(--border-soft);
-      padding: 4px 16px;
+      padding: 5px 16px;
       border-radius: var(--radius-pill);
+      font-family: var(--font-body);
       font-weight: 700;
-      font-size: 13px;
+      font-size: 14px;
       color: var(--pink-accent);
       margin-bottom: 8px;
     }
     .hero-mishi-name {
-      font-family: var(--font-hand);
-      font-size: clamp(3.2rem, 11vw, 4.8rem);
-      color: var(--pink-deep);
-      line-height: 0.95;
-      text-shadow: 2px 2px 0px var(--pink-soft);
-      margin: 4px 0 8px;
+      font-family: var(--font-heading);
+      font-size: clamp(2.4rem, 8vw, 3.6rem);
+      font-weight: 800;
+      color: var(--pink-accent);
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+      margin: 6px 0 8px;
     }
 
     /* =========================================
@@ -417,13 +457,16 @@
       background: #FFFDF8;
       border: 2px solid var(--border-soft);
       border-radius: var(--radius-md);
-      padding: 12px 16px;
+      padding: 13px 16px;
       display: flex;
       align-items: center;
       gap: 12px;
       text-align: left;
-      font-weight: 700;
-      font-size: 14.5px;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 15.5px;
+      line-height: 1.5;
+      color: var(--text-deep);
       box-shadow: var(--shadow-sm);
       opacity: 0;
       transform: translateY(12px);
@@ -588,13 +631,13 @@
       box-sizing: border-box;
     }
     .special-dish-reveal {
-      font-family: var(--font-hand);
-      font-size: clamp(1.8rem, 5vw, 2.3rem);
-      font-weight: 700;
-      color: #B45309;
+      font-family: var(--font-heading);
+      font-size: clamp(1.4rem, 4.5vw, 1.9rem);
+      font-weight: 800;
+      color: #92400E;
       background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%);
       border: 2px dashed #FDBA74;
-      padding: 8px 18px;
+      padding: 8px 20px;
       border-radius: var(--radius-pill);
       display: inline-block;
       margin: 8px auto 12px;
@@ -614,8 +657,9 @@
       background: #FFFFFF;
       border: 1.5px solid var(--border-soft);
       border-radius: var(--radius-pill);
-      padding: 4px 10px;
-      font-size: 12px;
+      padding: 5px 12px;
+      font-family: var(--font-body);
+      font-size: 13px;
       font-weight: 700;
       color: var(--text-deep);
       display: inline-flex;
@@ -734,7 +778,10 @@
       padding: 10px 12px;
       margin: 10px auto 4px;
       text-align: center;
-      font-size: 13.5px;
+      font-family: var(--font-body);
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--text-deep);
       min-height: 48px;
       display: flex;
       flex-direction: column;
@@ -761,16 +808,18 @@
     }
     .taste-verdict-large {
       display: block;
-      font-family: var(--font-hand);
-      font-size: clamp(1.4rem, 4.5vw, 1.85rem);
-      color: #B45309;
+      font-family: var(--font-heading);
+      font-size: clamp(1.3rem, 4.2vw, 1.75rem);
+      font-weight: 800;
+      color: #92400E;
       margin: 6px 0 8px;
       line-height: 1.25;
     }
     .taste-appreciation-box {
-      font-size: 14px;
+      font-family: var(--font-body);
+      font-size: 15px;
       color: var(--text-deep);
-      line-height: 1.6;
+      line-height: 1.65;
       border-top: 1px dashed rgba(180, 83, 9, 0.3);
       padding-top: 10px;
       margin-top: 8px;
@@ -778,12 +827,13 @@
     .chef-respect-tag {
       display: inline-block;
       margin-top: 8px;
+      font-family: var(--font-body);
       font-weight: 800;
       color: #92400E;
       background: #FDE68A;
-      padding: 5px 14px;
+      padding: 6px 16px;
       border-radius: var(--radius-pill);
-      font-size: 13.5px;
+      font-size: 14px;
     }
 
     .recipe-book-box {
@@ -792,11 +842,12 @@
       background: #FFFDF8;
       border: 2px dashed var(--border-soft);
       border-radius: var(--radius-sm);
-      padding: 14px 12px;
+      padding: 16px 14px;
       margin: 12px auto 6px;
       display: none;
       animation: theater-fade-in 0.4s forwards;
       text-align: center;
+      font-family: var(--font-body);
     }
     .recipe-book-box.show,
     .recipe-book-box.open {
@@ -920,7 +971,8 @@
       align-items: center;
       justify-content: center;
       gap: 2px;
-      font-size: 12px;
+      font-family: var(--font-body);
+      font-size: 13px;
       font-weight: 700;
       color: #8D6E63;
       opacity: 0.75;
@@ -933,10 +985,10 @@
       line-height: 1.2;
       opacity: 0;
       transition: opacity 0.6s ease-in-out;
-      font-family: var(--font-hand);
-      font-size: 1.45rem;
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
       font-weight: 700;
-      color: var(--pink-deep);
+      color: var(--pink-accent);
       min-height: 22px;
       display: flex;
       align-items: center;
@@ -952,11 +1004,11 @@
       text-align: center;
       opacity: 0;
       transition: opacity 0.5s ease-in-out;
-      font-family: var(--font-hand);
-      font-size: 1.25rem;
+      font-family: var(--font-body);
+      font-size: 1.05rem;
       color: #B45309;
       font-weight: 700;
-      line-height: 1.2;
+      line-height: 1.3;
       min-height: 20px;
       display: flex;
       align-items: center;
@@ -1271,12 +1323,14 @@
       background: #FFFDF8;
       border: 2.5px solid var(--border-soft);
       border-radius: var(--radius-md);
-      padding: 26px 20px;
+      padding: 26px 22px;
       box-shadow: var(--shadow-lg);
       margin-top: 18px;
       text-align: left;
-      line-height: 1.8;
-      font-size: 15px;
+      line-height: 1.75;
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 500;
       color: var(--text-deep);
       animation: letter-unfold 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
@@ -1289,6 +1343,10 @@
     }
     .letter-paper-sheet p {
       margin-bottom: 14px;
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--text-main);
+      font-weight: 500;
     }
 
     /* =========================================
@@ -1305,10 +1363,11 @@
       background: #FFFDF8;
       border: 2px solid var(--border-soft);
       border-radius: var(--radius-sm);
-      padding: 12px 14px;
+      padding: 13px 16px;
       font-family: var(--font-body);
-      font-size: 14px;
-      font-weight: 700;
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.5;
       color: var(--text-deep);
       cursor: pointer;
       text-align: left;
@@ -1326,23 +1385,27 @@
       background: #FFFDF8;
       border: 2px dashed var(--border-soft);
       border-radius: var(--radius-md);
-      padding: 16px;
+      padding: 18px;
       margin: 18px 0;
       text-align: left;
-      font-size: 13px;
+      font-family: var(--font-body);
+      font-size: 14.5px;
+      color: var(--text-deep);
     }
     .status-row {
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
     .status-header {
       display: flex;
       justify-content: space-between;
       font-weight: 700;
-      margin-bottom: 2px;
+      font-size: 14px;
+      color: var(--text-deep);
+      margin-bottom: 4px;
     }
     .status-mini-bar {
       width: 100%;
-      height: 8px;
+      height: 9px;
       background: #EFE8DE;
       border-radius: var(--radius-pill);
       overflow: hidden;
@@ -1362,9 +1425,10 @@
       transform: translateX(-50%) translateY(30px);
       background: #2D241E;
       color: #FFFDF8;
-      padding: 10px 20px;
+      padding: 11px 22px;
       border-radius: var(--radius-pill);
-      font-size: 13px;
+      font-family: var(--font-body);
+      font-size: 14px;
       font-weight: 700;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
       z-index: 10001;
@@ -2303,7 +2367,7 @@
 
         <!-- Full Readable Letter Paper Sheet -->
         <div class="letter-paper-sheet" id="letterPaperSheet">
-          <h3 class="heading-serif" style="font-size: 1.4rem; color: var(--pink-deep); margin-bottom: 12px;">
+          <h3 style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: var(--pink-accent); margin-bottom: 14px;">
             Dear Mishi, 💗
           </h3>
 
@@ -2355,7 +2419,7 @@
             And maybe... a few unexpected people who make your days a little brighter. 🌷
           </p>
 
-          <p style="font-size: 1.15rem; font-weight: 800; color: var(--pink-deep);">
+          <p style="font-size: 1.15rem; font-weight: 800; color: var(--pink-accent);">
             Happy Birthday, Mishi. 🎂💗
           </p>
 
@@ -2363,7 +2427,7 @@
             I hope this new chapter becomes one of your most beautiful ones yet. Keep smiling. Keep being you. And never forget... you are worth celebrating.
           </p>
 
-          <div style="margin-top: 18px; border-top: 1px dashed var(--border-light); padding-top: 12px; font-family: var(--font-note); font-size: 1.3rem;">
+          <div style="margin-top: 20px; border-top: 1.5px dashed var(--border-light); padding-top: 14px; font-family: var(--font-note); font-size: 1.45rem; font-weight: 700; color: var(--text-deep); line-height: 1.5;">
             With lots of warmth & care,<br>
             Someone who wanted to make your birthday a little more special. ✨
           </div>
@@ -2389,7 +2453,7 @@
 
         <!-- Interactive Mini-Quiz Game -->
         <div style="width: 100%; margin: 12px 0;" id="quizSection">
-          <p style="font-weight: 700; font-size: 14.5px; margin-bottom: 8px;">
+          <p style="font-weight: 700; font-size: 15px; margin-bottom: 10px; color: var(--text-deep);">
             Who do you think spent way too much time making this little world for you? 👀
           </p>
           <div class="quiz-options-grid">
@@ -2407,24 +2471,24 @@
               <div class="badge">🎀</div>
             </div>
 
-            <p style="font-size: 15px; color: var(--text-deep); margin-bottom: 8px; line-height: 1.6;">
+            <p style="font-size: 15.5px; color: var(--text-deep); margin-bottom: 8px; line-height: 1.6; font-weight: 600;">
               You love books. 📚<br>
               You love ice cream. 🍦<br>
               You're amazing in the kitchen. 👩‍🍳<br>
               You're an amazing painter. 🎨<br>
               You're terrified of ghosts. 👻😂
             </p>
-            <p style="font-style: italic; color: var(--text-muted); font-size: 14px; margin: 6px 0;">
+            <p style="font-style: italic; color: var(--text-muted); font-size: 14.5px; margin: 6px 0;">
               And somehow...
             </p>
-            <p style="font-family: var(--font-hand); font-size: clamp(2.4rem, 8vw, 3.2rem); color: var(--pink-deep); line-height: 1.1; margin: 12px 0 6px;">
+            <p style="font-family: var(--font-heading); font-size: clamp(1.8rem, 6.5vw, 2.5rem); font-weight: 800; color: var(--pink-accent); line-height: 1.2; margin: 12px 0 6px; letter-spacing: -0.3px;">
               I really like you. 🌷
             </p>
-            <p style="font-size: 14.5px; color: var(--text-deep); font-weight: 700; margin-bottom: 12px;">
+            <p style="font-size: 15px; color: var(--text-deep); font-weight: 700; margin-bottom: 12px;">
               I just thought you should know. 🥺
             </p>
 
-            <div style="margin-top: 14px; font-weight: 800; font-size: 1.25rem; color: var(--text-deep);">
+            <div style="margin-top: 14px; font-weight: 800; font-size: 1.3rem; color: var(--text-deep); font-family: var(--font-body);">
               — Tanvir 💗
             </div>
           </div>
