@@ -383,6 +383,89 @@
       letter-spacing: -0.3px;
     }
 
+    /* =========================================
+       HERO COUNTDOWN WIDGET
+       ========================================= */
+    .hero-countdown-card {
+      width: 100%;
+      max-width: 380px;
+      margin: 12px auto 18px;
+      padding: 14px 16px;
+      background: #FFFDF9;
+      border: 2px solid var(--border-soft);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-sizing: border-box;
+      position: relative;
+    }
+    .countdown-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text-deep);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .countdown-timer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      width: 100%;
+    }
+    .countdown-box {
+      background: var(--pink-soft);
+      border: 1.5px solid var(--border-soft);
+      border-radius: var(--radius-sm);
+      padding: 8px 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 4px rgba(92, 64, 51, 0.06);
+      transition: transform 0.2s ease;
+    }
+    .countdown-box:hover {
+      transform: translateY(-2px);
+    }
+    .countdown-num {
+      font-family: var(--font-heading);
+      font-size: clamp(18px, 4.5vw, 24px);
+      font-weight: 800;
+      color: var(--pink-accent);
+      line-height: 1.1;
+    }
+    .countdown-lbl {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-top: 3px;
+      letter-spacing: 0.4px;
+    }
+    .countdown-today-banner {
+      display: none;
+      width: 100%;
+      background: linear-gradient(135deg, #FFF0F4, #FFF9EB);
+      border: 2px solid var(--pink-deep);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      font-family: var(--font-heading);
+      font-size: 15.5px;
+      font-weight: 800;
+      color: var(--pink-accent);
+      animation: heartbeat 2.2s infinite ease-in-out;
+      box-sizing: border-box;
+      line-height: 1.4;
+    }
+
     .chapter-pill {
       display: inline-flex;
       align-items: center;
@@ -1612,9 +1695,39 @@
         </p>
         <h1 class="hero-mishi-name">Mishi 🎀</h1>
 
-        <p style="font-style: italic; color: var(--text-muted); font-size: 14.5px; margin-bottom: 20px;">
+        <p style="font-style: italic; color: var(--text-muted); font-size: 14.5px; margin-bottom: 12px;">
           And this is a tiny story about her.
         </p>
+
+        <!-- Days Until Mishi's Day Counter Widget -->
+        <div class="hero-countdown-card" id="heroCountdownCard">
+          <div class="countdown-header">
+            <span>⏳</span>
+            <span>Days Until Mishi's Day</span>
+            <span>🎀</span>
+          </div>
+          <div class="countdown-timer-grid" id="countdownTimerGrid">
+            <div class="countdown-box">
+              <span class="countdown-num" id="cdDays">0</span>
+              <span class="countdown-lbl">Days</span>
+            </div>
+            <div class="countdown-box">
+              <span class="countdown-num" id="cdHours">00</span>
+              <span class="countdown-lbl">Hours</span>
+            </div>
+            <div class="countdown-box">
+              <span class="countdown-num" id="cdMins">00</span>
+              <span class="countdown-lbl">Mins</span>
+            </div>
+            <div class="countdown-box">
+              <span class="countdown-num" id="cdSecs">00</span>
+              <span class="countdown-lbl">Secs</span>
+            </div>
+          </div>
+          <div class="countdown-today-banner" id="countdownTodayBanner">
+            🎉 Today is Mishi's Day! Happy Birthday, Mishi! 🎂✨
+          </div>
+        </div>
 
         <a href="#ch2-meet" class="btn-storybook breathe-pulse" id="btnStartStory">
           <span>Start Her Story ✨</span>
@@ -3499,6 +3612,53 @@
         setTimeout(() => p.remove(), 1800);
       }
     }
+
+    /* =========================================
+       DAYS UNTIL MISHI'S DAY (SEPTEMBER 4TH)
+       ========================================= */
+    function updateMishiCountdown() {
+      const daysEl = document.getElementById('cdDays');
+      const hoursEl = document.getElementById('cdHours');
+      const minsEl = document.getElementById('cdMins');
+      const secsEl = document.getElementById('cdSecs');
+      const gridEl = document.getElementById('countdownTimerGrid');
+      const bannerEl = document.getElementById('countdownTodayBanner');
+
+      if (!daysEl || !hoursEl || !minsEl || !secsEl) return;
+
+      const now = new Date();
+      const currentYear = now.getFullYear();
+
+      // Check if today is September 4th (month 8 in 0-indexed JS Dates)
+      if (now.getMonth() === 8 && now.getDate() === 4) {
+        if (gridEl) gridEl.style.display = 'none';
+        if (bannerEl) bannerEl.style.display = 'block';
+        return;
+      }
+
+      // Next September 4th at midnight (00:00:00)
+      let targetDate = new Date(currentYear, 8, 4, 0, 0, 0, 0);
+      if (now.getTime() > targetDate.getTime()) {
+        targetDate = new Date(currentYear + 1, 8, 4, 0, 0, 0, 0);
+      }
+
+      const diff = Math.max(0, targetDate.getTime() - now.getTime());
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+      daysEl.textContent = days;
+      hoursEl.textContent = String(hours).padStart(2, '0');
+      minsEl.textContent = String(mins).padStart(2, '0');
+      secsEl.textContent = String(secs).padStart(2, '0');
+
+      if (gridEl) gridEl.style.display = 'grid';
+      if (bannerEl) bannerEl.style.display = 'none';
+    }
+
+    updateMishiCountdown();
+    setInterval(updateMishiCountdown, 1000);
 
     /* =========================================
        HIDDEN EASTER EGGS
