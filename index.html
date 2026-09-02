@@ -177,44 +177,84 @@
       100% { transform: translate(calc(var(--rand-x, 1) * 32px), -50px) scale(1.2) rotate(15deg); opacity: 0; }
     }
 
-    /* Floating Navigation Pills */
+    /* Floating Navigation Pills / Responsive Category Menu */
     .mobile-floating-nav {
       position: fixed;
       bottom: 16px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 999;
-      background: rgba(255, 253, 248, 0.94);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      background: rgba(255, 253, 248, 0.96);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border: 2px solid var(--border-soft);
-      padding: 6px 14px;
+      padding: 6px 12px;
       border-radius: var(--radius-pill);
       display: flex;
       align-items: center;
-      gap: 12px;
-      box-shadow: var(--shadow-md);
+      gap: 5px;
+      box-shadow: 0 8px 24px rgba(255, 117, 151, 0.16), 0 2px 6px rgba(92, 64, 51, 0.08);
       font-size: 12.5px;
       font-weight: 700;
       color: var(--text-deep);
+      
+      /* Fully Responsive Horizontal Scroll & No Overflow Clipping */
+      max-width: calc(100vw - 20px);
+      width: max-content;
+      box-sizing: border-box;
+      overflow-x: auto;
+      overflow-y: hidden;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior-x: contain;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE/Edge */
+      scroll-padding: 0 12px;
     }
+
+    .mobile-floating-nav::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera */
+      width: 0;
+      height: 0;
+    }
+
     .nav-pill-btn {
       background: none;
       border: none;
       font-family: inherit;
-      font-size: inherit;
+      font-size: 12.5px;
       font-weight: 700;
       color: var(--text-deep);
       cursor: pointer;
-      display: flex;
+      display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 4px;
-      padding: 4px 8px;
+      padding: 5px 9px;
       border-radius: var(--radius-pill);
-      transition: background 0.2s ease;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      flex-shrink: 0;
+      white-space: nowrap;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
     }
-    .nav-pill-btn:active {
+    .nav-pill-btn:hover {
       background: var(--pink-soft);
+      color: var(--pink-deep);
+      transform: translateY(-1px);
+    }
+    .nav-pill-btn:active,
+    .nav-pill-btn.active {
+      background: var(--pink-blush);
+      color: var(--pink-deep);
+    }
+
+    .nav-pill-sep {
+      color: var(--border-soft);
+      font-size: 10px;
+      flex-shrink: 0;
+      user-select: none;
+      padding: 0 1px;
     }
 
     /* =========================================
@@ -1243,20 +1283,30 @@
     <span id="musicIcon">🎵</span>
   </button>
 
-  <!-- Floating Mobile Navigation -->
-  <div class="mobile-floating-nav">
-    <button class="nav-pill-btn" onclick="scrollToChapter('ch1-start')">📖 Start</button>
-    <span>•</span>
-    <button class="nav-pill-btn" onclick="scrollToChapter('ch5-chef')">👩‍🍳 Chef</button>
-    <span>•</span>
-    <button class="nav-pill-btn" onclick="scrollToChapter('ch6-artist')">🎨 Artist</button>
-    <span>•</span>
-    <button class="nav-pill-btn" onclick="scrollToChapter('ch7-ghost')">👻 Ghost</button>
-    <span>•</span>
-    <button class="nav-pill-btn" onclick="scrollToChapter('ch9-birthday')">🎂 Cake</button>
-    <span>•</span>
-    <button class="nav-pill-btn" onclick="scrollToChapter('ch10-letter')">💌 Letter</button>
-  </div>
+  <!-- Floating Mobile Navigation / Category Menu -->
+  <nav class="mobile-floating-nav" id="mobileFloatingNav" aria-label="Storybook Chapters Navigation">
+    <button class="nav-pill-btn active" data-target="ch1-start" onclick="scrollToChapter('ch1-start')">📖 Start</button>
+    <span class="nav-pill-sep">•</span>
+    <button class="nav-pill-btn" data-target="ch2-meet" onclick="scrollToChapter('ch2-meet')">🎀 Mishi</button>
+    <span class="nav-pill-sep">•</span>
+    <button class="nav-pill-btn" data-target="ch3-books" onclick="scrollToChapter('ch3-books')">📚 Books</button>
+    <span class="nav-pill-sep">•</span>
+    <button class="nav-pill-btn" data-target="ch4-icecream" onclick="scrollToChapter('ch4-icecream')">🍦 Ice Cream</button>
+    <span class="nav-pill-sep">•</span>
+    <button class="nav-pill-btn" data-target="ch5-chef" onclick="scrollToChapter('ch5-chef')">👩‍🍳 Chef</button>
+    <span class="nav-pill-sep">•</span>
+    <button class="nav-pill-btn" data-target="ch6-artist" onclick="scrollToChapter('ch6-artist')">🎨 Artist</button>
+    <span class="nav-pill-sep">•</span>
+    <button class="nav-pill-btn" data-target="ch7-ghost" onclick="scrollToChapter('ch7-ghost')">👻 Ghost</button>
+    <span class="nav-pill-sep">•</span>
+    <button class="nav-pill-btn" data-target="ch8-things" onclick="scrollToChapter('ch8-things')">✨ Details</button>
+    <span class="nav-pill-sep">•</span>
+    <button class="nav-pill-btn" data-target="ch9-birthday" onclick="scrollToChapter('ch9-birthday')">🎂 Cake</button>
+    <span class="nav-pill-sep">•</span>
+    <button class="nav-pill-btn" data-target="ch10-letter" onclick="scrollToChapter('ch10-letter')">💌 Letter</button>
+    <span class="nav-pill-sep">•</span>
+    <button class="nav-pill-btn" data-target="ch11-reveal" onclick="scrollToChapter('ch11-reveal')">🎉 Tanvir</button>
+  </nav>
 
   <!-- Interactive Easter Egg Toast Notification -->
   <div class="easter-toast" id="easterToast">✨ Easter Egg Found!</div>
@@ -2459,8 +2509,48 @@
 
     function scrollToChapter(id) {
       const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+        // Update active navigation pill and center in scrollable bar
+        const navBtns = document.querySelectorAll('.nav-pill-btn');
+        navBtns.forEach(btn => {
+          if (btn.getAttribute('data-target') === id) {
+            btn.classList.add('active');
+            btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+      }
     }
+
+    // Automatically update active bottom nav pill based on scroll position
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('.chapter-section');
+      const navBtns = document.querySelectorAll('.nav-pill-btn');
+
+      if ('IntersectionObserver' in window && sections.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const secId = entry.target.id;
+              navBtns.forEach(b => {
+                const isMatch = b.getAttribute('data-target') === secId;
+                b.classList.toggle('active', isMatch);
+                if (isMatch) {
+                  const nav = document.getElementById('mobileFloatingNav');
+                  if (nav && nav.scrollWidth > nav.clientWidth) {
+                    b.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                  }
+                }
+              });
+            }
+          });
+        }, { threshold: 0.35, rootMargin: "-10% 0px -40% 0px" });
+
+        sections.forEach(s => observer.observe(s));
+      }
+    });
 
     /* =========================================
        SPARKLE CANVAS BACKGROUND
