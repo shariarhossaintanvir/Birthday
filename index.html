@@ -570,80 +570,222 @@
     }
 
     /* =========================================
-       9. CHAPTER 05: CHEF MISHI
+       9. CHAPTER 05: CHEF MISHI'S BIRYANI SPECIAL 🍛
        ========================================= */
     .kitchen-scene-stage {
       width: 100%;
-      max-width: 420px;
+      max-width: 440px;
       background: #FFFDF8;
       border: 2px solid var(--border-soft);
       border-radius: var(--radius-md);
-      padding: 16px 12px;
-      margin: 12px auto;
+      padding: 18px 14px;
+      margin: 14px auto;
       box-shadow: var(--shadow-sm);
       display: flex;
       flex-direction: column;
       align-items: center;
       position: relative;
+      box-sizing: border-box;
     }
-    .kitchen-items-row {
+    .special-dish-reveal {
+      font-family: var(--font-hand);
+      font-size: clamp(1.8rem, 5vw, 2.3rem);
+      font-weight: 700;
+      color: #B45309;
+      background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%);
+      border: 2px dashed #FDBA74;
+      padding: 8px 18px;
+      border-radius: var(--radius-pill);
+      display: inline-block;
+      margin: 8px auto 12px;
+      box-shadow: 0 4px 12px rgba(180, 83, 9, 0.08);
+      animation: gentle-bob 3s ease-in-out infinite;
+    }
+    .kitchen-ingredients-shelf {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
-      margin: 8px 0;
+      gap: 8px;
+      margin: 8px 0 12px;
       flex-wrap: wrap;
+      width: 100%;
     }
-    .kitchen-item-icon {
-      font-size: 26px;
+    .ingredient-chip {
+      background: #FFFFFF;
+      border: 1.5px solid var(--border-soft);
+      border-radius: var(--radius-pill);
+      padding: 4px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-deep);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
       transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
-    .kitchen-scene-stage.active-chef .kitchen-item-icon {
+    .kitchen-scene-stage.active-chef .ingredient-chip {
       animation: ingredient-bounce 0.6s infinite alternate ease-in-out;
     }
-    @keyframes ingredient-bounce {
-      0% { transform: translateY(0) rotate(0deg); }
-      100% { transform: translateY(-8px) rotate(6deg); }
+    .kitchen-scene-stage.active-chef .ingredient-chip:nth-child(2) { animation-delay: 0.1s; }
+    .kitchen-scene-stage.active-chef .ingredient-chip:nth-child(3) { animation-delay: 0.2s; }
+    .kitchen-scene-stage.active-chef .ingredient-chip:nth-child(4) { animation-delay: 0.3s; }
+    .kitchen-scene-stage.active-chef .ingredient-chip:nth-child(5) { animation-delay: 0.4s; }
+
+    .biryani-pot-display {
+      width: 150px;
+      height: 140px;
+      background: radial-gradient(circle at 50% 30%, #FFFBEB 0%, #FEF3C7 100%);
+      border: 2.5px solid #D97706;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 16px rgba(217, 119, 6, 0.15);
+      margin: 10px auto;
+      position: relative;
+      transition: all 0.4s ease;
+      overflow: visible;
     }
-    .kitchen-pan-display {
+    .biryani-pot-display.cooking {
+      animation: handi-dum-simmer 0.6s infinite ease-in-out;
+      background: radial-gradient(circle at 50% 30%, #FEF3C7 0%, #FDE68A 100%);
+      border-color: #B45309;
+    }
+    @keyframes handi-dum-simmer {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      25% { transform: translateY(-3px) rotate(-1.5deg); }
+      75% { transform: translateY(-1px) rotate(1.5deg); }
+    }
+
+    .pot-lid-top {
+      position: absolute;
+      top: -16px;
       width: 110px;
-      height: 110px;
-      background: #FFFDF8;
-      border: 2.5px solid var(--border-soft);
-      border-radius: 50%;
+      height: 22px;
+      background: #B45309;
+      border-radius: 12px 12px 4px 4px;
+      border: 2px solid #78350F;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 48px;
-      box-shadow: var(--shadow-sm);
-      margin: 8px auto;
-      position: relative;
-      transition: all 0.3s ease;
+      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.12);
+      z-index: 3;
     }
-    .kitchen-pan-display.cooking {
-      animation: pan-sizzle 0.5s infinite;
-      background: #FFF8E1;
-    }
-    @keyframes pan-sizzle {
-      0%, 100% { transform: translate(0, 0) rotate(0deg); }
-      25% { transform: translate(-3px, 2px) rotate(-4deg); }
-      75% { transform: translate(3px, -2px) rotate(4deg); }
-    }
-    .steam-bubble-puff {
+    .pot-lid-knob {
+      width: 14px;
+      height: 10px;
+      background: #F59E0B;
+      border-radius: 4px 4px 0 0;
+      border: 1.5px solid #78350F;
       position: absolute;
-      top: -12px;
-      font-size: 18px;
+      top: -9px;
+    }
+    .biryani-pot-display.lid-open .pot-lid-top {
+      transform: translateY(-28px) rotate(-12deg);
+    }
+
+    .pot-center-icon {
+      font-size: 52px;
+      line-height: 1;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .pot-center-icon.pop {
+      transform: scale(1.2);
+    }
+
+    .biryani-steam-cluster {
+      position: absolute;
+      top: -30px;
+      display: flex;
+      gap: 12px;
       opacity: 0;
       pointer-events: none;
+      transition: opacity 0.4s ease;
     }
-    .kitchen-pan-display.cooking .steam-bubble-puff {
-      animation: steam-rise 1s infinite ease-out;
+    .biryani-pot-display.cooking .biryani-steam-cluster,
+    .biryani-pot-display.lid-open .biryani-steam-cluster {
+      opacity: 1;
     }
-    @keyframes steam-rise {
-      0% { opacity: 0; transform: translateY(0) scale(0.6); }
-      50% { opacity: 0.9; }
-      100% { opacity: 0; transform: translateY(-24px) scale(1.2); }
+    .biryani-steam-cluster span {
+      font-size: 20px;
+      animation: biryani-steam-flow 1.4s infinite ease-out;
     }
+    .biryani-steam-cluster span:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+    .biryani-steam-cluster span:nth-child(3) {
+      animation-delay: 0.8s;
+    }
+    @keyframes biryani-steam-flow {
+      0% { opacity: 0; transform: translateY(10px) scale(0.6); }
+      40% { opacity: 0.95; }
+      100% { opacity: 0; transform: translateY(-26px) scale(1.3); }
+    }
+
+    .biryani-progress-steps {
+      width: 100%;
+      max-width: 360px;
+      background: #FFFFFF;
+      border: 1.5px solid var(--border-soft);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      margin: 10px auto 4px;
+      text-align: center;
+      font-size: 13.5px;
+      min-height: 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.03);
+    }
+
+    .taste-result-container {
+      width: 100%;
+      max-width: 380px;
+      background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+      border: 2px solid #F59E0B;
+      border-radius: var(--radius-md);
+      padding: 16px 14px;
+      margin: 12px auto;
+      text-align: center;
+      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.12);
+      display: none;
+      animation: theater-fade-in 0.4s ease-out forwards;
+    }
+    .taste-result-container.show {
+      display: block;
+    }
+    .taste-verdict-large {
+      display: block;
+      font-family: var(--font-hand);
+      font-size: clamp(1.4rem, 4.5vw, 1.85rem);
+      color: #B45309;
+      margin: 6px 0 8px;
+      line-height: 1.25;
+    }
+    .taste-appreciation-box {
+      font-size: 14px;
+      color: var(--text-deep);
+      line-height: 1.6;
+      border-top: 1px dashed rgba(180, 83, 9, 0.3);
+      padding-top: 10px;
+      margin-top: 8px;
+    }
+    .chef-respect-tag {
+      display: inline-block;
+      margin-top: 8px;
+      font-weight: 800;
+      color: #92400E;
+      background: #FDE68A;
+      padding: 5px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 13.5px;
+    }
+
     .recipe-book-box {
       width: 100%;
       max-width: 360px;
@@ -1536,58 +1678,108 @@
     </section>
 
     <!-- =========================================
-         CHAPTER 05: CHEF MISHI 👩‍🍳
+         CHAPTER 05: CHEF MISHI'S SPECIAL 👩‍🍳🍛
          ========================================= -->
     <section class="chapter-section" id="ch5-chef">
       <div class="chapter-card">
-        <div class="chapter-pill" style="background: var(--pink-soft);">
+        <div class="chapter-pill" style="background: var(--peach-soft);">
           <span>👩‍🍳</span>
           <span>Chapter 05 — Kitchen Magic</span>
         </div>
 
-        <h2>Chef Mishi 👩‍🍳✨</h2>
-        <p style="color: var(--text-muted); font-size: 15px; margin: 4px 0 12px; line-height: 1.6;">
-          Some people know how to cook.<br>
-          <strong style="color: var(--pink-deep);">Mishi? She knows how to make something special. 🤍</strong><br>
-          <span style="font-size: 13.5px; color: var(--text-muted);">She's not just good at cooking... she's REALLY good at it.</span>
+        <h2>Chef Mishi's Special 👩‍🍳</h2>
+        <p style="color: var(--text-muted); font-size: 15px; margin: 4px 0 6px;">
+          Today's special...
         </p>
 
-        <!-- Kitchen Scene Visual Stage -->
+        <!-- Large Biryani Special Reveal -->
+        <div class="special-dish-reveal" id="biryaniTitleReveal">
+          BIRYANI! 🍛✨
+        </div>
+
+        <p style="color: var(--text-deep); font-size: 14.5px; margin: 0 0 14px; line-height: 1.6;">
+          Some people know how to cook.<br>
+          <strong style="color: #B45309;">Mishi? She knows how to create an absolute masterpiece. 🤍</strong>
+        </p>
+
+        <!-- Cute Biryani Cooking Scene Visual Stage -->
         <div class="kitchen-scene-stage" id="kitchenScene">
-          <div class="kitchen-items-row">
-            <span class="kitchen-item-icon" title="Chef Hat">👩‍🍳</span>
-            <span class="kitchen-item-icon" title="Wooden Spoon">🥄</span>
-            <span class="kitchen-item-icon" title="Cupcake">🧁</span>
-            <span class="kitchen-item-icon" title="Fresh Cookies">🍪</span>
-            <span class="kitchen-item-icon" title="Cooking Pot">🍲</span>
-            <span class="kitchen-item-icon" title="Fresh Herbs">🌸</span>
+          <!-- Ingredients Shelf -->
+          <div class="kitchen-ingredients-shelf" id="ingredientsShelf">
+            <span class="ingredient-chip"><span>🍗</span> Tender Chicken</span>
+            <span class="ingredient-chip"><span>🌾</span> Basmati Rice</span>
+            <span class="ingredient-chip"><span>⭐</span> Whole Spices</span>
+            <span class="ingredient-chip"><span>🌿</span> Mint & Herbs</span>
+            <span class="ingredient-chip"><span>🧈</span> Pure Ghee</span>
           </div>
 
-          <div class="kitchen-pan-display" id="kitchenPan">
-            <span>🍳</span>
-            <span class="steam-bubble-puff">♨️</span>
+          <!-- Central Animated Biryani Dum Handi / Pot -->
+          <div class="biryani-pot-display" id="biryaniPot">
+            <!-- Rising Steam Cluster -->
+            <div class="biryani-steam-cluster">
+              <span>♨️</span>
+              <span>♨️</span>
+              <span>♨️</span>
+            </div>
+
+            <!-- Pot Lid for Dum Seal Animation -->
+            <div class="pot-lid-top" id="potLid">
+              <div class="pot-lid-knob"></div>
+            </div>
+
+            <!-- Center Stage Food Icon -->
+            <span class="pot-center-icon" id="potCenterIcon">🍲</span>
+
+            <div style="font-size: 11px; font-weight: 800; color: #92400E; margin-top: 6px; letter-spacing: 0.5px;">
+              CHEF MISHI'S POT
+            </div>
           </div>
 
-          <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: var(--text-deep); margin-top: 4px;">
-            <span class="actor-avatar" style="font-size: 26px;">🐱 👩‍🍳</span>
-            <span>Chef's Assistant Mascot</span>
+          <!-- Step Progress Description Bar -->
+          <div class="biryani-progress-steps" id="biryaniStepBar">
+            <span id="biryaniStepText">Tap "Enter Chef Mode 👩‍🍳" to start cooking! ✨</span>
+          </div>
+
+          <!-- Chef Assistant Mascot -->
+          <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: var(--text-deep); margin-top: 8px;">
+            <span class="actor-avatar" style="font-size: 24px;">🐱 👩‍🍳</span>
+            <span>Chef Mishi's Kitchen</span>
+          </div>
+        </div>
+
+        <!-- Taste Test Result Container -->
+        <div class="taste-result-container" id="tasteResultBox">
+          <div id="tasteStepPreview" style="font-size: 14.5px; font-weight: 700; color: var(--text-deep); min-height: 24px;">
+            Hmm...
+          </div>
+          <strong class="taste-verdict-large" id="tasteVerdictLarge" style="display: none;">
+            THIS IS REALLY GOOD. 😭🍛
+          </strong>
+          <div class="taste-appreciation-box" id="tasteAppreciationBox" style="display: none;">
+            <p style="margin: 0 0 6px;">
+              Some people cook food...<br>
+              <strong style="color: #B45309;">Mishi somehow makes it feel special. 👩‍🍳✨</strong>
+            </p>
+            <div class="chef-respect-tag">
+              Chef Mishi officially has my respect. 🫡🍛
+            </div>
           </div>
         </div>
 
         <!-- Recipe Book Interactive Box -->
         <div class="recipe-book-box" id="recipeBookBox">
           <div class="recipe-page-item active" id="recipePage1">
-            <p style="font-size: 12px; font-weight: 800; color: var(--pink-deep); text-transform: uppercase;">📖 Secret Recipe Book • Page 1</p>
+            <p style="font-size: 12px; font-weight: 800; color: #B45309; text-transform: uppercase;">📖 Secret Recipe Book • Page 1</p>
             <p style="font-weight: 800; font-size: 1.1rem; color: var(--text-deep); margin: 6px 0;">First Secret Ingredient:</p>
-            <p style="font-size: 1.25rem; font-family: var(--font-hand); color: #B45309;">"Patience." ⏳</p>
+            <p style="font-size: 1.25rem; font-family: var(--font-hand); color: #B45309;">"Patience & slow Dum cooking." ⏳</p>
           </div>
           <div class="recipe-page-item" id="recipePage2">
-            <p style="font-size: 12px; font-weight: 800; color: var(--pink-deep); text-transform: uppercase;">📖 Secret Recipe Book • Page 2</p>
+            <p style="font-size: 12px; font-weight: 800; color: #B45309; text-transform: uppercase;">📖 Secret Recipe Book • Page 2</p>
             <p style="font-weight: 800; font-size: 1.1rem; color: var(--text-deep); margin: 6px 0;">Second Secret Ingredient:</p>
-            <p style="font-size: 1.25rem; font-family: var(--font-hand); color: #B45309;">"Practice." 🥄</p>
+            <p style="font-size: 1.25rem; font-family: var(--font-hand); color: #B45309;">"Aromatic spices, saffron milk & ghee." 🌶️✨</p>
           </div>
           <div class="recipe-page-item" id="recipePage3">
-            <p style="font-size: 12px; font-weight: 800; color: var(--pink-deep); text-transform: uppercase;">📖 Secret Recipe Book • Page 3</p>
+            <p style="font-size: 12px; font-weight: 800; color: #B45309; text-transform: uppercase;">📖 Secret Recipe Book • Page 3</p>
             <p style="font-weight: 800; font-size: 1.1rem; color: var(--text-deep); margin: 6px 0;">Most Important Ingredient:</p>
             <p style="font-size: 1.35rem; font-family: var(--font-hand); color: var(--pink-deep);">"A little bit of Mishi magic. ✨"</p>
           </div>
@@ -1596,24 +1788,25 @@
           </button>
         </div>
 
-        <div id="chefStatusTag" style="min-height: 44px; font-weight: 700; color: var(--text-deep); font-size: 14px; margin: 8px 0;">
+        <div id="chefStatusTag" style="min-height: 40px; font-weight: 700; color: var(--text-deep); font-size: 14px; margin: 8px 0;">
           Step into Chef Mishi's kitchen below! ✨
         </div>
 
+        <!-- Action Control Buttons -->
         <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 320px;">
-          <button class="btn-storybook secondary" id="btnEnterChefMode">
+          <button class="btn-storybook butter" id="btnEnterChefMode">
             <span>Enter Chef Mode 👩‍🍳</span>
-          </button>
-          <button class="btn-storybook secondary" id="btnOpenRecipeBook" style="font-size: 13.5px;">
-            <span>Open Her Recipe Book 📖</span>
           </button>
           <button class="btn-storybook secondary" id="btnTasteTest" style="font-size: 13.5px;">
             <span>Taste Test 👀</span>
           </button>
+          <button class="btn-storybook secondary" id="btnOpenRecipeBook" style="font-size: 13px;">
+            <span>Secret Recipe Book 📖</span>
+          </button>
         </div>
 
         <a href="#ch6-artist" class="btn-storybook" style="margin-top: 20px;">
-          <span>Chapter 06: The Girl Who Paints Her World 🎨 →</span>
+          <span>Continue →</span>
         </a>
       </div>
     </section>
@@ -2712,29 +2905,165 @@
     });
 
     /* =========================================
-       CHAPTER 05: CHEF MISHI 👩‍🍳
+       CHAPTER 05: CHEF MISHI'S BIRYANI SPECIAL 👩‍🍳🍛
        ========================================= */
     const btnEnterChefMode = document.getElementById('btnEnterChefMode');
     const btnOpenRecipeBook = document.getElementById('btnOpenRecipeBook');
     const btnNextRecipePage = document.getElementById('btnNextRecipePage');
     const btnTasteTest = document.getElementById('btnTasteTest');
     const chefStatusTag = document.getElementById('chefStatusTag');
-    const kitchenPan = document.getElementById('kitchenPan');
+    const biryaniPot = document.getElementById('biryaniPot');
+    const potLid = document.getElementById('potLid');
+    const potCenterIcon = document.getElementById('potCenterIcon');
+    const biryaniStepText = document.getElementById('biryaniStepText');
     const kitchenScene = document.getElementById('kitchenScene');
     const recipeBookBox = document.getElementById('recipeBookBox');
-    let currentRecipePage = 1;
+    const tasteResultBox = document.getElementById('tasteResultBox');
+    const tasteStepPreview = document.getElementById('tasteStepPreview');
+    const tasteVerdictLarge = document.getElementById('tasteVerdictLarge');
+    const tasteAppreciationBox = document.getElementById('tasteAppreciationBox');
 
-    if (btnEnterChefMode && chefStatusTag && kitchenPan) {
+    let currentRecipePage = 1;
+    let isCookingInProgress = false;
+
+    if (btnEnterChefMode && biryaniPot) {
       btnEnterChefMode.addEventListener('click', () => {
+        if (isCookingInProgress) return;
+        isCookingInProgress = true;
         playSweetChime();
-        kitchenPan.classList.add('cooking');
+
+        if (tasteResultBox) tasteResultBox.classList.remove('show');
         if (kitchenScene) kitchenScene.classList.add('active-chef');
-        chefStatusTag.innerHTML = "<strong style='color: var(--pink-deep);'>Chef Mode Active! 👩‍🍳</strong><br><em>Warning:</em> Entering Mishi's kitchen may cause sudden hunger and high happiness! ✨";
+        biryaniPot.classList.add('cooking');
+        biryaniPot.classList.remove('lid-open');
+
+        // Step 1: Cooking pot appears / heats up
+        biryaniStepText.innerHTML = "<strong>Step 1/9:</strong> Cooking pot ready & pure ghee heating up... 🧈";
+        potCenterIcon.textContent = "🍲";
+        showToast("Step 1: Pot heating up... 🧈");
+
+        // Step 2: Ingredients appear (chicken/meat pieces)
         setTimeout(() => {
-          kitchenPan.classList.remove('cooking');
-          if (kitchenScene) kitchenScene.classList.remove('active-chef');
+          playTone(480, 0.2, 'sine', 0.08);
+          biryaniStepText.innerHTML = "<strong>Step 2/9:</strong> Adding tender marinated meat & whole spices... 🍗⭐";
+          potCenterIcon.textContent = "🍗";
+          potCenterIcon.classList.add('pop');
+          setTimeout(() => potCenterIcon.classList.remove('pop'), 300);
+          showToast("Adding meat & whole spices... 🍗");
+        }, 900);
+
+        // Step 3: Rice layers appear
+        setTimeout(() => {
+          playTone(520, 0.2, 'sine', 0.08);
+          biryaniStepText.innerHTML = "<strong>Step 3/9:</strong> Layering aromatic fragrant Basmati rice... 🌾🍚";
+          potCenterIcon.textContent = "🍚";
+          potCenterIcon.classList.add('pop');
+          setTimeout(() => potCenterIcon.classList.remove('pop'), 300);
+          showToast("Layering Basmati rice... 🌾");
         }, 1800);
-        showToast("Chef Mishi in her kingdom! 👩‍🍳✨");
+
+        // Step 4: Spices sprinkle & saffron
+        setTimeout(() => {
+          playTone(580, 0.2, 'sine', 0.08);
+          biryaniStepText.innerHTML = "<strong>Step 4/9:</strong> Sprinkling saffron, fried onions & mint herbs... 🌿✨";
+          potCenterIcon.textContent = "✨";
+          potCenterIcon.classList.add('pop');
+          setTimeout(() => potCenterIcon.classList.remove('pop'), 300);
+          showToast("Sprinkling saffron & herbs... 🌿✨");
+        }, 2700);
+
+        // Step 5: Steam rises
+        setTimeout(() => {
+          playTone(620, 0.2, 'sine', 0.08);
+          biryaniStepText.innerHTML = "<strong>Step 5/9:</strong> Fragrant steam rising from the layers... ♨️";
+          showToast("Steam rising... ♨️");
+        }, 3500);
+
+        // Step 6: The pot closes (Dum seal)
+        setTimeout(() => {
+          playTone(420, 0.25, 'triangle', 0.1);
+          biryaniPot.classList.remove('lid-open');
+          biryaniStepText.innerHTML = "<strong>Step 6/9:</strong> Pot sealed tight for traditional Dum cooking... 🍲";
+          potCenterIcon.textContent = "⏳";
+          showToast("Pot sealed for Dum... 🍲");
+        }, 4300);
+
+        // Step 7: Small waiting / simmering animation
+        setTimeout(() => {
+          playTone(460, 0.3, 'sine', 0.08);
+          biryaniStepText.innerHTML = "<strong>Step 7/9:</strong> Slow-simmering flavors to perfection... ⏳✨";
+          showToast("Slow simmering... ⏳");
+        }, 5100);
+
+        // Step 8: The pot opens
+        setTimeout(() => {
+          playSweetChime();
+          biryaniPot.classList.add('lid-open');
+          biryaniStepText.innerHTML = "<strong>Step 8/9:</strong> The lid opens with a golden cloud of aroma... ✨♨️";
+          showToast("Lid opens... ✨");
+        }, 6000);
+
+        // Step 9: Beautiful Biryani is revealed!
+        setTimeout(() => {
+          playSweetChime();
+          biryaniPot.classList.remove('cooking');
+          if (kitchenScene) kitchenScene.classList.remove('active-chef');
+          potCenterIcon.textContent = "🍛";
+          potCenterIcon.classList.add('pop');
+          biryaniStepText.innerHTML = "<strong style='color: #B45309; font-size: 14.5px;'>Beautiful Biryani is revealed! ✨🍛</strong>";
+          
+          triggerConfettiBurst(window.innerWidth / 2, window.innerHeight / 2, ['🍛', '✨', '🌾', '🍗', '🌸'], 24);
+          
+          // Revelation Text Sequence
+          chefStatusTag.innerHTML = "<span style='font-style: italic;'>Hmm...</span>";
+          
+          setTimeout(() => {
+            chefStatusTag.innerHTML = "<strong style='font-size: 15px; color: #B45309;'>That smells REALLY good. 😭🍛</strong>";
+            
+            setTimeout(() => {
+              chefStatusTag.innerHTML = "<strong style='font-size: 15px; color: #B45309;'>That smells REALLY good. 😭🍛</strong><br><span style='color: var(--text-deep); font-weight: 700;'>Chef Mishi has done it again. 👩‍🍳✨</span>";
+              showToast("Chef Mishi has done it again. 👩‍🍳✨");
+              isCookingInProgress = false;
+            }, 1200);
+          }, 1100);
+
+        }, 6800);
+      });
+    }
+
+    // Taste Test Interaction Flow
+    if (btnTasteTest && tasteResultBox) {
+      btnTasteTest.addEventListener('click', () => {
+        playSweetChime();
+        tasteResultBox.classList.add('show');
+        tasteVerdictLarge.style.display = 'none';
+        tasteAppreciationBox.style.display = 'none';
+        tasteStepPreview.style.display = 'block';
+
+        tasteStepPreview.textContent = "Hmm...";
+        showToast("Tasting Chef Mishi's biryani... 🥄");
+
+        setTimeout(() => {
+          playTone(520, 0.18, 'sine', 0.08);
+          tasteStepPreview.textContent = "Wait...";
+
+          setTimeout(() => {
+            playTone(560, 0.18, 'sine', 0.08);
+            tasteStepPreview.textContent = "Okay...";
+
+            setTimeout(() => {
+              playSweetChime();
+              tasteStepPreview.style.display = 'none';
+              tasteVerdictLarge.style.display = 'block';
+              tasteAppreciationBox.style.display = 'block';
+
+              triggerConfettiBurst(window.innerWidth / 2, window.innerHeight / 2, ['🍛', '🤍', '✨', '🏆', '👩‍🍳'], 28);
+              showToast("THIS IS REALLY GOOD. 😭🍛");
+            }, 900);
+
+          }, 800);
+
+        }, 800);
       });
     }
 
@@ -2743,8 +3072,8 @@
         playSweetChime();
         recipeBookBox.classList.toggle('open');
         const isOpen = recipeBookBox.classList.contains('open');
-        btnOpenRecipeBook.textContent = isOpen ? 'Close Recipe Book 📖' : 'Open Her Recipe Book 📖';
-        showToast(isOpen ? "Flipping through secret recipes... 📖" : "Recipe book tucked away ✨");
+        btnOpenRecipeBook.textContent = isOpen ? 'Close Recipe Book 📖' : 'Secret Recipe Book 📖';
+        showToast(isOpen ? "Opening Mishi's secret recipe book... 📖" : "Recipe book closed ✨");
       });
     }
 
@@ -2760,14 +3089,6 @@
         } else {
           document.getElementById('btnRecipePageText').textContent = `Next Page (Page ${currentRecipePage === 1 ? 2 : 3}) 📖 →`;
         }
-      });
-    }
-
-    if (btnTasteTest && chefStatusTag) {
-      btnTasteTest.addEventListener('click', () => {
-        playSweetChime();
-        chefStatusTag.innerHTML = "<strong style='color: #059669;'>Official Taste Test Result: 10/10! 🏆</strong><br><span style='font-size: 13px; color: var(--text-muted);'>Delicious every single time. 🤍</span>";
-        showToast("10/10 Chef Mishi masterpiece! 😋✨");
       });
     }
 
