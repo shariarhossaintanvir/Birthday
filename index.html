@@ -518,6 +518,13 @@
     .btn-storybook.butter {
       background: var(--butter-yellow);
     }
+    .btn-storybook:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      pointer-events: none;
+      transform: none !important;
+      box-shadow: var(--shadow-sm) !important;
+    }
 
     /* Cute Mascot Avatar Frame */
     .mascot-avatar-frame {
@@ -1802,7 +1809,7 @@
           </div>
         </div>
 
-        <button class="btn-storybook secondary" id="btnRevealNextTrait" style="margin-bottom: 12px;">
+        <button class="btn-storybook secondary breathe-pulse" id="btnRevealNextTrait" style="margin-bottom: 12px;">
           <span id="btnRevealTraitText">Reveal Next Trait ✨</span>
         </button>
 
@@ -3090,33 +3097,69 @@
     /* =========================================
        CHAPTER 02: MEET MISHI TRAIT REVEAL
        ========================================= */
-    let currentTraitStep = 1;
-    const btnRevealNextTrait = document.getElementById('btnRevealNextTrait');
-    const btnGoToCh3 = document.getElementById('btnGoToCh3');
-    if (btnRevealNextTrait) {
-      btnRevealNextTrait.addEventListener('click', () => {
-        currentTraitStep++;
-        playSweetChime();
-        if (currentTraitStep === 2) {
-          const item = document.getElementById('traitItem2');
-          if (item) item.classList.add('visible');
-          showToast("Ice cream is essential! 🍦");
-        } else if (currentTraitStep === 3) {
-          const item = document.getElementById('traitItem3');
-          if (item) item.classList.add('visible');
-          showToast("Chef Mishi in the building! 👩‍🍳");
-        } else if (currentTraitStep === 4) {
-          const item = document.getElementById('traitItem4');
-          if (item) item.classList.add('visible');
-          showToast("A blank canvas comes alive! 🎨");
-        } else if (currentTraitStep === 5) {
-          const item = document.getElementById('traitItem5');
-          if (item) item.classList.add('visible');
-          btnRevealNextTrait.style.display = 'none';
-          if (btnGoToCh3) btnGoToCh3.style.display = 'inline-flex';
-          showToast("And yes... ghosts. 👻😂");
+    function showNextActionButton(targetId) {
+      const btn = targetId
+        ? (typeof targetId === 'string' ? document.getElementById(targetId) : targetId)
+        : document.getElementById('btnGoToCh3');
+      if (btn) {
+        btn.style.display = 'inline-flex';
+        btn.classList.add('breathe-pulse');
+      }
+    }
+
+    function startTraitSequence() {
+      const btn = document.getElementById('btnRevealNextTrait');
+      if (btn) {
+        if (btn.disabled) return;
+        btn.disabled = true;
+        btn.classList.remove('breathe-pulse');
+        btn.style.animation = 'none';
+      }
+
+      const items = document.querySelectorAll('.trait-reveal-item');
+      if (!items || items.length === 0) {
+        if (typeof window.showNextActionButton === 'function') {
+          window.showNextActionButton();
+        } else {
+          showNextActionButton();
         }
+        return;
+      }
+
+      const traitToasts = [
+        "She loves stories & getting lost in books! 📚",
+        "Ice cream is essential! 🍦",
+        "Chef Mishi in the building! 👩‍🍳",
+        "A blank canvas comes alive! 🎨",
+        "And yes... ghosts. 👻😂"
+      ];
+
+      items.forEach((item, index) => {
+        setTimeout(() => {
+          item.classList.add('visible');
+          if (traitToasts[index]) {
+            showToast(traitToasts[index]);
+          }
+          if (index === items.length - 1) {
+            playTone(280, 0.3, 'sawtooth', 0.08);
+            if (typeof window.showNextActionButton === 'function') {
+              window.showNextActionButton();
+            } else {
+              showNextActionButton();
+            }
+          } else {
+            playSweetChime();
+          }
+        }, index * 1500);
       });
+    }
+
+    window.showNextActionButton = showNextActionButton;
+    window.startTraitSequence = startTraitSequence;
+
+    const btnRevealNextTrait = document.getElementById('btnRevealNextTrait');
+    if (btnRevealNextTrait) {
+      btnRevealNextTrait.addEventListener('click', startTraitSequence);
     }
 
     /* =========================================
