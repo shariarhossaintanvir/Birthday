@@ -1121,7 +1121,34 @@
       padding: 6px;
       font-size: 14px;
     }
+    .art-layer-strokes {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.6s ease-in-out;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      padding: 6px 12px;
+      z-index: 2;
+    }
+    .brush-stroke-item {
+      height: 6px;
+      border-radius: 4px;
+      opacity: 0.85;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .art-layer-strokes.visible .brush-stroke-item {
+      transform: scaleX(1);
+    }
+    .stroke-1 { background: linear-gradient(90deg, #FFB3C6, #FFD166); width: 85%; }
+    .stroke-2 { background: linear-gradient(90deg, #BDE0FE, #E2CAFF); width: 70%; align-self: flex-end; transform-origin: right; }
+    .stroke-3 { background: linear-gradient(90deg, #C7F9CC, #FFB3C6); width: 90%; }
     .art-layer-bg.visible,
+    .art-layer-strokes.visible,
     .art-layer-colors.visible,
     .art-layer-scenery.visible,
     .art-layer-sparkles.visible {
@@ -2106,6 +2133,11 @@
               <!-- 1. Dedicated Illustration Area (Decorations / Paintings Stay Inside) -->
               <div class="painting-art painting-art-stage">
                 <div class="art-layer-bg" id="artLayerBg"></div>
+                <div class="art-layer-strokes" id="artLayerStrokes">
+                  <div class="brush-stroke-item stroke-1"></div>
+                  <div class="brush-stroke-item stroke-2"></div>
+                  <div class="brush-stroke-item stroke-3"></div>
+                </div>
                 <div class="art-layer-colors" id="artLayerColors"></div>
                 <div class="art-layer-scenery" id="artLayerScenery">
                   <span>🌷</span>
@@ -2153,7 +2185,7 @@
 
         <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 320px; margin-top: 4px;">
           <button class="btn-storybook secondary breathe-pulse" id="btnPaintCanvas">
-            <span>Let Mishi Paint 🎨✨</span>
+            <span>Let Mishi Paint 🎨</span>
           </button>
           <button class="btn-storybook secondary" id="btnSecretStroke" style="display: none; font-size: 13.5px;">
             <span>One More Brush Stroke 🖌️</span>
@@ -2169,8 +2201,8 @@
           </p>
         </div>
 
-        <a href="#ch7-ghost" class="btn-storybook" style="margin-top: 20px;">
-          <span>Chapter 07: The Little Ghost Incident 👻 →</span>
+        <a href="#ch7-ghost" class="btn-storybook" id="btnContinueCh7" style="margin-top: 20px; display: none;">
+          <span>Continue →</span>
         </a>
       </div>
     </section>
@@ -3425,36 +3457,114 @@
     const artistStatusText = document.getElementById('artistStatusText');
     const artCanvasFrame = document.getElementById('artCanvasFrame');
     const canvasEmptyPrompt = document.getElementById('canvasEmptyPrompt');
-    let paintStep = 0;
 
-    const paintSteps = [
-      { id: 'artLayerBg', msg: "Soft pastel background washes over the canvas... 🌸" },
-      { id: 'artLayerColors', msg: "Rich colors blending together seamlessly... 🎨" },
-      { id: 'artLayerScenery', msg: "Flowers and delicate skies appearing... 🌷☁️" },
-      { id: 'artLayerDetails', msg: "Fine brushstrokes and finishing touches... ✨" },
-      { id: 'artLayerSparkles', msg: "A complete painting created by Mishi. 🤍" }
-    ];
+    function startPaintingSequence() {
+      const btn = document.getElementById('btnPaintCanvas');
+      if (btn) {
+        if (btn.disabled) return;
+        btn.disabled = true;
+        btn.classList.remove('breathe-pulse');
+        btn.style.animation = 'none';
+      }
 
-    if (btnPaintCanvas) {
-      btnPaintCanvas.addEventListener('click', () => {
-        playSweetChime();
-        if (canvasEmptyPrompt) canvasEmptyPrompt.style.display = 'none';
+      const canvasEmpty = document.getElementById('canvasEmptyPrompt');
+      if (canvasEmpty) canvasEmpty.style.display = 'none';
 
-        if (paintStep < paintSteps.length) {
-          const stepData = paintSteps[paintStep];
-          const el = document.getElementById(stepData.id);
-          if (el) el.classList.add('visible');
-          if (artistStatusText) artistStatusText.textContent = stepData.msg;
-          showToast(stepData.msg);
-          paintStep++;
+      const statusEl = document.getElementById('artistStatusText');
 
-          if (paintStep === paintSteps.length) {
-            btnPaintCanvas.style.display = 'none';
-            if (btnSecretStroke) btnSecretStroke.style.display = 'inline-flex';
-            triggerConfettiBurst(window.innerWidth / 2, window.innerHeight / 2, ['🎨', '🌸', '✨', '🌷', '🤍'], 20);
+      const paintingSteps = [
+        {
+          text: "Soft pastel background washes over the canvas... 🌸",
+          action: () => {
+            playTone(480, 0.25, 'sine', 0.08);
+            const bg = document.getElementById('artLayerBg');
+            if (bg) bg.classList.add('visible');
+          }
+        },
+        {
+          text: "Delicate watercolor brush strokes glide across... 🖌️✨",
+          action: () => {
+            playTone(520, 0.25, 'sine', 0.08);
+            const strokes = document.getElementById('artLayerStrokes');
+            if (strokes) strokes.classList.add('visible');
+          }
+        },
+        {
+          text: "Rich colors blending together seamlessly... 🎨",
+          action: () => {
+            playTone(560, 0.25, 'sine', 0.08);
+            const colors = document.getElementById('artLayerColors');
+            if (colors) colors.classList.add('visible');
+          }
+        },
+        {
+          text: "Flowers and delicate skies blooming into view... 🌷☁️",
+          action: () => {
+            playTone(600, 0.25, 'sine', 0.08);
+            const scenery = document.getElementById('artLayerScenery');
+            if (scenery) scenery.classList.add('visible');
+          }
+        },
+        {
+          text: "Fine brushstrokes and finishing touches... ✨",
+          action: () => {
+            playTone(640, 0.25, 'sine', 0.08);
+            const details = document.getElementById('artLayerDetails');
+            if (details) details.classList.add('visible');
+          }
+        },
+        {
+          text: "Sparkles shimmer over Mishi's complete masterpiece! 🤍✨",
+          action: () => {
+            playSweetChime();
+            const sparkles = document.getElementById('artLayerSparkles');
+            if (sparkles) sparkles.classList.add('visible');
+            const secret = document.getElementById('artHiddenSecret');
+            if (secret) secret.classList.add('visible');
+            triggerConfettiBurst(window.innerWidth / 2, window.innerHeight / 2, ['🎨', '🌸', '✨', '🌷', '🤍'], 24);
           }
         }
-      });
+      ];
+
+      // Immediately trigger Step 1 upon clicking
+      if (statusEl) {
+        statusEl.textContent = paintingSteps[0].text;
+      }
+      showToast(paintingSteps[0].text);
+      if (paintingSteps[0].action) paintingSteps[0].action();
+
+      // Automate subsequent steps with smooth stagger
+      for (let i = 1; i < paintingSteps.length; i++) {
+        const step = paintingSteps[i];
+        const isLast = (i === paintingSteps.length - 1);
+        setTimeout(() => {
+          if (statusEl) {
+            statusEl.textContent = step.text;
+          }
+          showToast(step.text);
+          if (step.action) step.action();
+
+          if (isLast) {
+            if (typeof window.showNextActionButton === 'function') {
+              window.showNextActionButton('btnContinueCh7');
+            } else if (typeof showNextActionButton === 'function') {
+              showNextActionButton('btnContinueCh7');
+            } else {
+              const continueBtn = document.getElementById('btnContinueCh7');
+              if (continueBtn) {
+                continueBtn.style.display = 'inline-flex';
+                continueBtn.classList.add('breathe-pulse');
+              }
+            }
+          }
+        }, i * 1300);
+      }
+    }
+
+    window.startPaintingSequence = startPaintingSequence;
+
+    if (btnPaintCanvas) {
+      btnPaintCanvas.addEventListener('click', startPaintingSequence);
     }
 
     if (btnSecretStroke) {
